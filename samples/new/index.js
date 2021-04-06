@@ -26,4 +26,4 @@ function Person(name) {
 
 
 const myP1=createInstance(Person,'xxg');
-myP1.print();
+myP1.print()
