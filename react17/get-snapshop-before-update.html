@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>演示getSnapshotBeforeUpdate使用</title>
+  </head>
+  <body>
+    <!-- react挂载的容器 -->
+    <div id="app"></div>
+    <!-- 引入react核心库 -->
+    <script src="./libs/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script src="./libs/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="./libs/babel.min.js"></script>
+    <!-- react 类型 -->
+    <script src="./libs/prop-types.js"></script>
+    <!-- 因为是通过babel转换的，此处type一定腰围text/babel -->
+    <script type="text/babel">
+      class News extends React.Component {
+        state = {
+          news: [],
+        };
+        listRef = React.createRef();
+
+        componentDidMount() {
+          this.timeer = setInterval(() => {
+            const { news } = this.state;
+            const item = `新闻${news.length + 1}`;
+            this.setState({
+              news: [item, ...news],
+            });
+          }, 1000);
+        }
+
+        // 通过getSnapshotBeforeUpdate来记录滚动条位置
+        getSnapshotBeforeUpdate() {
+          return this.listRef.current.scrollHeight;
+        }
+
+        componentDidUpdate(prevProps, prevState, snapshotValue) {
+          this.listRef.current.scrollTop +=
+            this.listRef.current.scrollHeight - snapshotValue;
+        }
+
+        componentWillUnmount() {
+          this.timeer && clearInterval(this.timeer);
+        }
+
+        render() {
+          const { userName, password } = this.state;
+          return (
+            <div
+              ref={this.listRef}
+              style={{
+                width: 200,
+                height: 300,
+                border: "1px solid gray",
+                overflow: "auto",
+              }}
+            >
+              {this.state.news.map((item, index) => {
+                return <p key={index}>{item}</p>;
+              })}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<News />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
