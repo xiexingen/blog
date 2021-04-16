@@ -1,0 +1,21 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+/* 通过 media print先把所有元素隐藏，在通过样式开放出特定的元素 */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .section-to-print,
+    .section-to-print * {
+        visibility: visible;
+    }
+
+    .section-to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
