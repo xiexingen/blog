@@ -15,7 +15,7 @@
 
 ## 生命周期
 
-### 旧版 16.x
+### 旧版 16.3之前
 
 - 初始化阶段
     1. constructor()
@@ -44,6 +44,8 @@
 - 组件卸载
     1. componentWillUnMount()
 
+
+### 旧版 16.3开始
 
 componentWillMount、componentWillReceiveProps、componentWillUpdate前面增加了UNSAFE_
 
