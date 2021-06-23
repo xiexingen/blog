@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绝对居中</title>
+    <style>
+      .container {
+        width: 100%;
+        height: 600px;
+        background-color: green;
+        margin: 0 auto;
+      }
+      .modal {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+      }
+      /*  通过flex实现绝对居中 */
+      .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /*  通过绝对定位+负magin值实现 */
+      .margin {
+        position: relative;
+      }
+      .margin > .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -100px;
+      }
+      /* 通过绝对定位 + transform实现 */
+      .transform {
+        position: relative;
+      }
+      .transform > .modal {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      /* 通过绝对定位 + left/right/bottom/top + margin实现  */
+      .margin-all{
+        position: relative;
+      }
+      .margin-all>.modal{
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        margin:auto;        
+      }
+      /* 通过grid实现  */
+      .grid{
+        display: grid;
+      }
+      .grid>.modal{
+        margin:auto;     
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h3通过flex实现</h3>
+      <div class="container flex">
+        <div class="modal"></div>
+      </div>
+    </section>
+    <section>
+      <h3>通过绝对定位+负magin值实现<small>需要给具体的宽高</small></h3>
+      <div class="container margin">
+        <div class="modal"></div>
+      </div>
+    </section>
+    <section>
+      <h3>通过绝对定位 + transform实现</h3>
+      <div class="container transform">
+        <div class="modal"></div>
+      </div>
+    </section>
+    <section>
+        <h3>通过绝对定位 + left/right/bottom/top + margin实现</h3>
+        <div class="container margin-all">
+          <div class="modal"></div>
+        </div>
+      </section>
+      <section>
+        <h3>通过grid实现</h3>
+        <div class="container grid">
+          <div class="modal"></div>
+        </div>
+      </section>
+  </body>
+</html>
