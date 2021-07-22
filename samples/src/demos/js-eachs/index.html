@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 遍历知识</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <h3>js 遍历总结</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>含原型属性</th>
+                <th>含不可枚举属性</th>
+                <th>含Symbol属性</th>
+                <th>返回值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>for...in</td>
+                <td>是</td>
+                <td>否</td>
+                <td>否</td>
+                <td>key</td>
+            </tr>
+            <tr>
+                <td>Object.keys</td>
+                <td>否</td>
+                <td>否</td>
+                <td>否</td>
+                <td>[key...]</td>
+            </tr>
+            <tr>
+                <td>Object.getOwnPropertyNames</td>
+                <td>否</td>
+                <td>是</td>
+                <td>否</td>
+                <td>[key...]</td>
+            </tr>
+            <tr>
+                <td>Object.getOwnPropertySymbols</td>
+                <td>否</td>
+                <td>是(只有symbol的)</td>
+                <td>是</td>
+                <td>[key...]</td>
+            </tr>
+            <tr>
+                <td>Reflect.ownKeys</td>
+                <td>否</td>
+                <td>是</td>
+                <td>是</td>
+                <td>[key...]</td>
+            </tr>
+            <tr>
+                <td>Object.values</td>
+                <td>否</td>
+                <td>否</td>
+                <td>否</td>
+                <td>[value...]</td>
+            </tr>
+            <tr>
+                <td>Object.entries</td>
+                <td>否</td>
+                <td>否</td>
+                <td>否</td>
+                <td>[[key,value]...]</td>
+            </tr>
+        </tbody>
+    </table>
+    <section>
+        <ul>
+            <li>只有for...in 可以遍历到原型上的属性</li>
+            <li>Object.getOwnPropertyNames和Reflect.ownKeys可以获取到不可枚举的属性</li>
+            <li>Ojbect.getOwnPropertySymbols和Reflect.ownKeys可以获取到Symbol属性</li>
+        </ul>
+    </section>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
