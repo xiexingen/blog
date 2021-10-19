@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  height: 600px;
+  width: 600px;
+  border: 2px solid red;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+
+  /*
+   *   grid-auto-flow 只能控制超出元素项是占用一列还是占用一行，不能控制到元素的宽高
+   *  通过grid-auto-columns和grid-auto-rows控制超出数量的元素的宽高
+  */
+  // 不指定的情况会自动填充满剩余宽度(grid-auto-flow为column的情况)
+  grid-auto-columns: 150px 200px 300px;
+  // 不指定的情况会自动填充满剩余高度(grid-auto-flow为row的情况)
+  grid-auto-rows: 100px;
+
+  :global {
+    .item {
+      font-size: 2em;
+      text-align: center;
+      border: 1px solid #e5e4e9;
+    }
+    .item-1 {
+      background-color: #b53471;
+    }
+
+    .item-2 {
+      background-color: #ffcccc;
+    }
+
+    .item-3 {
+      background-color: #ff4d4d;
+    }
+
+    .item-4 {
+      background-color: #ffaf40;
+    }
+
+    .item-5 {
+      background-color: #32ff7e;
+    }
+
+    .item-6 {
+      background-color: #18dcff;
+    }
+
+    .item-7 {
+      background-color: #7d5fff;
+    }
+
+    .item-8 {
+      background-color: #0652dd;
+    }
+
+    .item-9 {
+      background-color: #4b4b4b;
+    }
+
+    .item-10 {
+      background-color: gray;
+    }
+  }
+}

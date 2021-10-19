@@ -1,0 +1,59 @@
+.grid {
+  display: grid;
+  border: 1px solid gray;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+
+  justify-items: center;
+  align-items: center;
+
+  :global {
+    .item {
+      font-size: 4em;
+      height: 80px;
+      width: 80px;
+      text-align: center;
+      border: 1px solid #e5e4e9;
+    }
+    .item-1 {
+      // 简写形式，相当于align-self: start;align-items: start;
+      place-self: start;
+      background-color: #b53471;
+    }
+
+    .item-2 {
+      background-color: #ffcccc;
+    }
+
+    // 跨两列
+    .item-3 {
+      place-self: end;
+      background-color: #ff4d4d;
+    }
+
+    .item-4 {
+      place-self: end start;
+      background-color: #ffaf40;
+    }
+
+    .item-5 {
+      background-color: #32ff7e;
+    }
+
+    .item-6 {
+      background-color: #18dcff;
+    }
+
+    .item-7 {
+      background-color: #7d5fff;
+    }
+
+    .item-8 {
+      background-color: #0652dd;
+    }
+
+    .item-9 {
+      background-color: #4b4b4b;
+    }
+  }
+}

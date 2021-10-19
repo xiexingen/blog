@@ -1,0 +1,60 @@
+.container {
+  background-color: #e3e3e3;
+  .grid {
+    display: grid;
+  }
+
+  .inline-grid {
+    display: inline-grid;
+  }
+
+  // 定义一个三行三列的grid
+  .grid,
+  .inline-grid {
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+
+    :global {
+      .item {
+        font-size: 4em;
+        text-align: center;
+        border: 1px solid #e5e4e9;
+      }
+      .item-1 {
+        background-color: #b53471;
+      }
+
+      .item-2 {
+        background-color: #ffcccc;
+      }
+
+      .item-3 {
+        background-color: #ff4d4d;
+      }
+
+      .item-4 {
+        background-color: #ffaf40;
+      }
+
+      .item-5 {
+        background-color: #32ff7e;
+      }
+
+      .item-6 {
+        background-color: #18dcff;
+      }
+
+      .item-7 {
+        background-color: #7d5fff;
+      }
+
+      .item-8 {
+        background-color: #0652dd;
+      }
+
+      .item-9 {
+        background-color: #4b4b4b;
+      }
+    }
+  }
+}

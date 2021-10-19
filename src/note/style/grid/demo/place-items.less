@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  height: 400px;
+  width: 400px;
+  border: 2px solid red;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  // 可以使用place-item代替justify-items和align-items
+  // place-items: start start;
+
+  :global {
+    .item {
+      min-width: 100px;
+      font-size: 4em;
+      text-align: center;
+      border: 1px solid #e5e4e9;
+    }
+    .item-1 {
+      background-color: #b53471;
+    }
+
+    .item-2 {
+      background-color: #ffcccc;
+    }
+
+    .item-3 {
+      background-color: #ff4d4d;
+    }
+
+    .item-4 {
+      background-color: #ffaf40;
+    }
+
+    .item-5 {
+      background-color: #32ff7e;
+    }
+
+    .item-6 {
+      background-color: #18dcff;
+    }
+
+    .item-7 {
+      background-color: #7d5fff;
+    }
+
+    .item-8 {
+      background-color: #0652dd;
+    }
+
+    .item-9 {
+      background-color: #4b4b4b;
+    }
+  }
+}

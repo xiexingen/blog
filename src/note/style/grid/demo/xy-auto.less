@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+
+  :global {
+    .item {
+      font-size: 4em;
+      text-align: center;
+      border: 1px solid #e5e4e9;
+    }
+    .item-1 {
+      background-color: #b53471;
+    }
+
+    .item-2 {
+      background-color: #ffcccc;
+    }
+
+    .item-3 {
+      background-color: #ff4d4d;
+    }
+  }
+}
