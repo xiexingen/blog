@@ -1,5 +1,5 @@
 ---
-title: js的奇淫异技
+title: js工具方法
 nav:
   title: 笔记
   path: /note
