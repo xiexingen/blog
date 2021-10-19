@@ -1,0 +1,50 @@
+.loading {
+  width: 4em;
+  height: 4em;
+  margin: auto;
+  .squre {
+    width: 33%;
+    height: 33%;
+    background-color: #e04960;
+    float: left;
+    animation: squre-grid-scale-delay 1.3s infinite ease-in-out;
+  }
+  .squre-1 {
+    animation-delay: 0.2s;
+  }
+  .squre-2 {
+    animation-delay: 0.3s;
+  }
+  .squre-3 {
+    animation-delay: 0.4s;
+  }
+  .squre-4 {
+    animation-delay: 0.1s;
+  }
+  .squre-5 {
+    animation-delay: 0.2s;
+  }
+  .squre-6 {
+    animation-delay: 0.3s;
+  }
+  .squre-7 {
+    animation-delay: 0s;
+  }
+  .squre-8 {
+    animation-delay: 0.1s;
+  }
+  .squre-9 {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes squre-grid-scale-delay {
+    0%,
+    70%,
+    100% {
+      transform: scale3D(1, 1, 1);
+    }
+    35% {
+      transform: scale3D(0, 0, 1);
+    }
+  }
+}
