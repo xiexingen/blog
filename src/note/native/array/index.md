@@ -11,10 +11,26 @@ group:
 
 # 原生 Array 相关
 
-js 原生 Array 相关
+js 原生 foreach、map、filter、some、reduce 实现
 
 ## 代码演示
 
-<!-- ### 金额格式化 -->
+### forEach
 
-<!-- <code src="./demo/for-each.tsx" /> -->
+<code src="./demo/for-each.tsx" />
+
+### map
+
+<code src="./demo/map.tsx" />
+
+### filter
+
+<code src="./demo/filter.tsx" />
+
+### some
+
+<code src="./demo/some.tsx" />
+
+### reduce
+
+<code src="./demo/reduce.tsx" />

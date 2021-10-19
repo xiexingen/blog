@@ -1,5 +1,5 @@
 /**
- * title: forEach
+ * title: some
  * desc: 请打开浏览器查看
  */
 // @ts-nocheck
@@ -9,9 +9,10 @@ import '..';
 
 export default () => {
   const run = () => {
-    [1, 2].myForEach((item) => {
-      console.log(item);
+    const result = [1, 2, 3, 4].mySome((item) => {
+      return item === 4;
     });
+    console.log(result);
   };
   return <Button onClick={run}>Print</Button>;
 };

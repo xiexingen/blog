@@ -6,7 +6,6 @@ nav:
 group:
   title: 样式
   path: /style
-  order: 5
 ---
 
 # loading 案例

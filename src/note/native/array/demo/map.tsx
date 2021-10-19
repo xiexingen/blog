@@ -1,5 +1,5 @@
 /**
- * title: forEach
+ * title: map
  * desc: 请打开浏览器查看
  */
 // @ts-nocheck
@@ -9,9 +9,10 @@ import '..';
 
 export default () => {
   const run = () => {
-    [1, 2].myForEach((item) => {
-      console.log(item);
+    const result = [1, 2].myMap((item) => {
+      return item + 10;
     });
+    console.log(result);
   };
   return <Button onClick={run}>Print</Button>;
 };

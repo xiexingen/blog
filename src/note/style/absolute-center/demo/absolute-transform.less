@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  height: 400px;
+  background-color: #ededed;
+
+  // 由于要设置子元素为absolute，所有给父容器一个position:relative;
+  position: relative;
+
+  .children {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    // 通过positon:absolute+margin实现绝对居中
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // 平移元素一半的宽高
+    transform: translate(-50%, -50%);
+  }
+}

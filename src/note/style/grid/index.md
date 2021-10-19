@@ -6,7 +6,6 @@ nav:
 group:
   title: 样式
   path: /style
-  order: 1
 ---
 
 # grid 布局
