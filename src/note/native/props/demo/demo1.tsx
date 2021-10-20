@@ -3,45 +3,52 @@
  * desc: 请打开浏览器控制台查看结果
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Space } from 'antd';
 
-const user = {
-  name: 'xxg',
-  [Symbol('gender')]: '男',
-};
+function createUser() {
+  const user = {
+    name: 'xxg',
+    [Symbol('gender')]: '男',
+  };
 
-Object.defineProperties(user, {
-  isHallofFame: {
-    enumerable: false,
-    value: true,
-  },
-  [Symbol('ScoreKingTime')]: {
-    enumerable: false,
-    value: 4,
-  },
-});
+  Object.defineProperties(user, {
+    isHallofFame: {
+      enumerable: false,
+      value: true,
+    },
+    [Symbol('ScoreKingTime')]: {
+      enumerable: false,
+      value: 4,
+    },
+  });
 
-Object.defineProperties(user.__proto__, {
-  worker: {
-    enumerable: true,
-    value: '长沙',
-  },
-  team: {
-    enumerable: false,
-    value: '76ers',
-  },
-  [Symbol('country')]: {
-    enumerable: true,
-    value: 'USA',
-  },
-  [Symbol('hometown')]: {
-    enumerable: false,
-    value: 'Virginia',
-  },
-});
+  Object.defineProperties(user.__proto__, {
+    worker: {
+      enumerable: true,
+      value: '长沙',
+    },
+    team: {
+      enumerable: false,
+      value: '76ers',
+    },
+    [Symbol('country')]: {
+      enumerable: true,
+      value: 'USA',
+    },
+    [Symbol('hometown')]: {
+      enumerable: false,
+      value: 'Virginia',
+    },
+  });
+  return user;
+}
 
 export default () => {
+  const [user, setUser] = useState(() => {
+    return createUser();
+  });
+
   const forIn = () => {
     console.log(
       '----for in 包含自身以及原型上所有可枚举的属性，【不包括Symbol属性】------',

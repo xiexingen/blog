@@ -1,5 +1,5 @@
 ---
-title: BFC
+title: bfc
 nav:
   title: 笔记
   path: /note
@@ -12,7 +12,7 @@ group:
 
 bcf 是指 margin 塌陷，父子嵌套元素在垂直方向上会取最大的 margin 值
 
-触发 BFC 条件
+触发 bfc 条件
 
 1. float 属性为 left|right
 2. overflow 为 hidden|scroll|auto

@@ -19,6 +19,7 @@ import { Input } from 'antd';
 function debounce(func, wait, immediate) {
   let timeout;
   const debounced = function () {
+    // @ts-ignore
     const context = this;
     const args = arguments;
 
