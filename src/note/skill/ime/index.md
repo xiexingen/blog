@@ -25,7 +25,11 @@ IME 问题就是指在一些输入法下(比如中文)录入文字的时候会�
 
 > 注意此方案日语下会有问题，日语下触发的机制不一样，实验结果 日语输入法下内容多的时候会自动触发 compositioned
 
-<code src="./demo/demo1.tsx" />
+<code src="./demo/composition.tsx" />
+
+### composition + 防抖 方案
+
+<code src="./demo/composition-debounce.tsx" />
 
 > 参考资料
 
