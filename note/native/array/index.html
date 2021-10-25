@@ -11,6 +11,22 @@
       type="image/x-icon"
       href="https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png"
     />
+    <style>
+      .markdown table td:first-child {
+        font-weight: 500;
+        background: #fcfcfc;
+      }
+      .markdown table td > a:not(:last-child) {
+        margin-right: 18px;
+      }
+      .markdown table td > a:not(:last-child)::after {
+        position: absolute;
+        margin: 0 6px 0 8px;
+        color: #bbb;
+        content: "|";
+        pointer-events: none;
+      }
+    </style>
     <link rel="stylesheet" href="/frontend-study/umi.css" />
     <script>
       window.routerBase = "/frontend-study/";
@@ -29,7 +45,7 @@
         );
       })();
     </script>
-    <title>原生Array相关</title>
+    <title>原生Array相关 - 程序有Bug-前端笔记</title>
   </head>
   <body>
     <div id="root"></div>
