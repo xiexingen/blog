@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  overflow: hidden;
+  // 固定高度
+  height: 82px;
+  line-height: 1.5;
+  flex-direction: column;
+  .content {
+    // 自适应剩余空间
+    flex: 1;
+    overflow: hidden;
+
+    &::before {
+      content: '...';
+      float: right;
+      // 由于上面两行代码会生成一个右上角的...，需要换成右下角
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      // 由于... 占用了一整咧
+      shape-outside: inset(calc(100% - 1.5em) 0 0);
+    }
+
+    // 当内容较少时候隐藏...
+    &::after {
+      content: '';
+      position: absolute;
+      width: 999vh;
+      height: 999vh;
+      background: #fff;
+      box-shadow: -2em 2em #fff; /*左下的阴影*/
+    }
+  }
+}

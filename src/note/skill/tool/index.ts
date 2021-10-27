@@ -4,7 +4,28 @@
  * @returns string 返回格式化后的字符串
  */
 export function moneyFormat(value: number): string {
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return value.toString().replace(/(?!^)(?=(\d{3})+$)/g, ',');
+}
+
+/**
+ * 密码长度是6-12位，由数字、小写字符和大写字母组成，但必须至少包括2种字符
+ */
+export function passwordVertify(password: string) {
+  return /((?=.*\d)((?=.*[a-z])|(?=.*[A-Z])))|(?=.*[a-z])(?=.*[A-Z])^[a-zA-Z\d]{6,12}$/.test(
+    password,
+  );
+}
+
+/**
+ * 手机号码 3-4-4 格式化
+ * @param value 手机号码
+ * @returns 格式化后的手机号码
+ */
+export function phoneFormat(value: string): string {
+  return String(value)
+    .slice(0, 11)
+    .replace(/(?<=\d{3})\d+/, ($0) => '-' + $0)
+    .replace(/(?<=[\d-]{8})\d{1,4}/, ($0) => '-' + $0);
 }
 
 /**

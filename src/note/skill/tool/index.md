@@ -19,6 +19,10 @@ group:
 
 <code src="./demo/money-format.tsx" />
 
+### 手机号码格式化
+
+<code src="./demo/phone-format.tsx" />
+
 ### 随机 Id
 
 <code src="./demo/random-id.tsx" />
