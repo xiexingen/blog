@@ -34,3 +34,7 @@ js 原生 foreach、map、filter、some、reduce 实现
 ### reduce
 
 <code src="./demo/reduce.tsx" />
+
+### flat
+
+<code src="./demo/flat.tsx" />

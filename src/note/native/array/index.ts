@@ -138,3 +138,13 @@ Array.prototype['myReduce'] = function (callback, initValue, thisArg) {
   }
   return acc;
 };
+
+/**
+ * 扁平化数组
+ * @param array 数组
+ */
+export function flat(array: any[]) {
+  return array.reduce((result, item) => {
+    return result.concat(Array.isArray(item) ? flat(item) : item);
+  }, []);
+}
