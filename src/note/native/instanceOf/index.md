@@ -15,7 +15,7 @@ instanceOf 运算符用于检测构造函数的 prototype 属性是否出现在�
 
 # 实现原理
 
-遍历实例对象的原型链，挨个往上查找看是否有与构造函数的 prototype 相等的原型，直到最顶层 Object 还找不到就返回 false
+遍历实例对象的原型链，挨个往上查找看是否有与构造函数的 prototype 相等的原型，直到最顶层 Object 还找不到就返回 false(主要通过 getPrototypeOf 获取实例指向的构造函数)
 
 ## 代码演示
 
