@@ -45,3 +45,9 @@ Object.create() 方法创建一个新对象，使用现有的对象来提供新�
 ### 案例
 
 <code src="./demo/demo2.tsx" />
+
+## Object iterator
+
+正常情况下 Object 是没有 for of 的，通过定义 iterator 实现 for of
+
+<code src="./demo/demo3.tsx" />
