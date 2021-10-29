@@ -1,4 +1,43 @@
-class MyPromise {
+export default class MyPromise {
+  /**
+   * 等待所有执行完成
+   * @param promises 要执行的promise
+   */
+  static all(promises: MyPromise[]) {
+    return new MyPromise((resolve, reject) => {
+      let count = 0;
+      let result: any[] = [];
+      const len = promises.length;
+      promises.forEach((promise, index) => {
+        // TODO 替换成MyPromise的静态方法
+        Promise.resolve(promise)
+          .then((res) => {
+            count += 1;
+            result[index] = res;
+            if (count === len) {
+              resolve(result);
+            }
+          })
+          .catch(reject);
+      });
+    });
+  }
+  /**
+   * 任何一个完成/异常 都会结束
+   * @param promises
+   */
+  static race(promises: MyPromise[]) {
+    return new MyPromise((resolve, reject) => {
+      promises.forEach((promise, index) => {
+        // TODO 替换成MyPromise的静态方法
+        Promise.resolve(promise)
+          .then((res) => {
+            resolve(res);
+          })
+          .catch(reject);
+      });
+    });
+  }
   /**
    * 存储实际值，Promise.then接受或者catch接收的值，默认为undefined
    */
@@ -108,4 +147,40 @@ class MyPromise {
   }
 }
 
-export default MyPromise;
+/**
+ * 一个可以控制并发数量的调度器
+ */
+export class Scheduler {
+  // 任务队列
+  private queue: any[] = [];
+  // 限制的并发数
+  private limitConcurrent: number = 2;
+  // 当前执行中的任务数
+  private runCount: number = 0;
+  constructor(limitConcurrent = 2) {
+    this.limitConcurrent = limitConcurrent;
+  }
+
+  add(promise) {
+    this.queue.push(promise);
+    // 每次添加的时候都会尝试去执行任务
+    this.runQueue();
+  }
+
+  runQueue() {
+    // 队列中还有任务才会被执行
+    if (this.queue.length && this.runCount < this.limitConcurrent) {
+      // 执行先加入队列的函数
+      const promise = this.queue.shift();
+      // 开始执行任务 记数+1
+      this.runCount += 1;
+      // TODO 需要做异常处理
+      promise().then(() => {
+        // 任务执行完毕 计数-1
+        this.runCount -= 1;
+        // 尝试下一次任务
+        this.runQueue();
+      });
+    }
+  }
+}

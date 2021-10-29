@@ -1,5 +1,5 @@
 ---
-title: props
+title: Object
 nav:
   title: 笔记
   path: /note
@@ -9,7 +9,7 @@ group:
   order: 1
 ---
 
-# props 总结
+# Object 总结
 
 ## js 遍历总结
 
@@ -37,3 +37,11 @@ group:
 ### 案例
 
 <code src="./demo/demo1.tsx" />
+
+## Object.create
+
+Object.create() 方法创建一个新对象，使用现有的对象来提供新创建的对象的**proto**
+
+### 案例
+
+<code src="./demo/demo2.tsx" />
