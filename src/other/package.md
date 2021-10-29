@@ -9,10 +9,14 @@ nav:
 
 ## 通用
 
-| 类型        | 推荐                                       | 备注                                                   |
-| ----------- | ------------------------------------------ | ------------------------------------------------------ |
-| ajax 请求库 | [axios](https://github.com/axios/axios)    | 目前为止用的最爽的请求库                               |
-| 工具库      | [lodash](https://github.com/lodash/lodash) | 提供模块化、性能和附加功能的现代 JavaScript 实用程序库 |
+| 类型        | 推荐                                               | 备注                                                   |
+| ----------- | -------------------------------------------------- | ------------------------------------------------------ |
+| ajax 请求库 | [axios](https://github.com/axios/axios)            | 目前为止用的最爽的请求库                               |
+| 工具库      | [lodash](https://github.com/lodash/lodash)         | 提供模块化、性能和附加功能的现代 JavaScript 实用程序库 |
+| 日期处理库  | [dayjs](https://github.com/iamkun/dayjs)           | 2kb 的日期类操作库，已经放弃 moment.js                 |
+| 动画库      | [animejs](https://github.com/juliangarnier/anime/) | 动画                                                   |
+| canvas 绘图 | [fabricjs](https://github.com/fabricjs/fabric.js)  | canvas 库                                              |
+| 3d          | [three.js](https://github.com/mrdoob/three.js/)    | 3d 库                                                  |
 
 ## react 专用
 

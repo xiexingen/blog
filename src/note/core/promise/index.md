@@ -4,8 +4,9 @@ nav:
   title: 笔记
   path: /note
 group:
-  title: 原生方法
-  path: /native
+  title: 核心方法
+  path: /core
+  order: 1
 ---
 
 # Promise
