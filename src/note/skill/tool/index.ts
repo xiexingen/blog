@@ -38,15 +38,6 @@ export function randomId(length: number): string {
 }
 
 /**
- * 生成评分值
- * @param value 的分
- * @returns 星星级别字符串
- */
-export function rate(value: number): string {
-  return '★★★★★☆☆☆☆☆'.slice(5 - value, 10 - value);
-}
-
-/**
  * 小数位数精确
  * @param number 数值
  * @param decimal 要精确的位数
@@ -76,4 +67,101 @@ export function type(value: any): string {
     .call(value)
     .replace(/\[object (\w+)\]/, '$1')
     .toLowerCase();
+}
+
+/**
+ * 生成评分值
+ * @param value 的分
+ * @returns 星星级别字符串
+ */
+export function rate(value: number): string {
+  return '★★★★★☆☆☆☆☆'.slice(5 - value, 10 - value);
+}
+
+/**
+ * 将树结构转成对象结构
+ * @param tree 要转换的数组对象
+ * @param key 作为key的属性名
+ * @param childrenProp 字节点属性名称
+ * @returns Object
+ */
+export function treeToObject<T = any>(
+  tree: T,
+  key = 'id',
+  childrenProp = 'childrens',
+): { [key: string]: T } {
+  let map: { [key: string]: T } = {};
+  const dataKey = tree[key];
+  const treeWithOutChildren = {
+    ...tree,
+    [childrenProp]: undefined,
+  };
+  map[dataKey] = treeWithOutChildren;
+  const childrens = tree[childrenProp];
+  if (childrens && childrens.length > 0) {
+    map = childrens.reduce((map, item) => {
+      const tmpMap = treeToObject(item, key, childrenProp);
+      return {
+        ...map,
+        ...tmpMap,
+      };
+    }, map);
+  }
+  return map;
+}
+
+/**
+ * 将数组转成对象结构
+ * @param array 要转换的数组对象
+ * @param key 作为key的属性名
+ */
+export function arrayToObject<T = any>(array: T[], key: string = 'id') {
+  const result: { [key: string]: T } = {};
+  array.forEach((item) => {
+    result[item[key]] = item;
+  });
+
+  return result;
+}
+
+/**
+ * 将array转成tree格式
+ * @param array 要转换的数组
+ * @param option 配置项
+ * @returns 返回tree数组，如果只要一棵树可以直接获取第一项
+ */
+export function arrayToTree<T = any>(
+  array: T[],
+  option?: {
+    keyName?: string;
+    childrenName?: string;
+    parentName?: string;
+  },
+) {
+  const defaultOptions = {
+    keyName: 'id',
+    childrenName: 'childrens',
+    parentName: 'parentId',
+  };
+  const mergeOptions = { ...defaultOptions, ...option };
+  const treeMap = arrayToObject(array, mergeOptions.keyName);
+  const result: T[] = [];
+
+  array.forEach((item) => {
+    const parentId = item[mergeOptions.parentName];
+    if (parentId !== null && parentId !== undefined && parentId !== '') {
+      const parentNode = treeMap[parentId];
+      if (!parentNode) {
+        throw `not found ${parentId} in map`;
+      }
+      parentNode[mergeOptions.childrenName] =
+        parentNode[mergeOptions.childrenName] || [];
+      const siblings = parentNode[mergeOptions.childrenName];
+      siblings.push(item);
+    } else {
+      result.push(treeMap[item[mergeOptions.keyName]]);
+    }
+  });
+
+  return result;
 }

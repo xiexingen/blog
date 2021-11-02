@@ -50,3 +50,15 @@ params.get('sex'); // "male"
 ### 数据类型判断
 
 <code src="./demo/type.tsx" />
+
+### 数组转对象
+
+<code src="./demo/array-object.tsx" />
+
+### 树转数组
+
+<code src="./demo/tree-object.tsx" />
+
+### 数组转树
+
+<code src="./demo/array-tree.tsx" />
