@@ -113,12 +113,31 @@ export function treeToObject<T = any>(
 /**
  * 将数组转成对象结构
  * @param array 要转换的数组对象
- * @param key 作为key的属性名
+ * @param key 作为key的属性名 默认为 value
+ * @param valueConvert 值转换器，默认为对象 可以传入字符串，会使用对象中特定属性名的值作为值 默认为(item)=>item
  */
-export function arrayToObject<T = any>(array: T[], key: string = 'id') {
-  const result: { [key: string]: T } = {};
+export function arrayToObject<T = any>(
+  array: T[],
+  key?: string,
+  valueConvert?: string,
+): { [key: string]: any };
+export function arrayToObject<T = any>(
+  array: T[],
+  key?: string,
+  valueConvert?: (item: T) => any,
+): { [key: string]: any };
+export function arrayToObject<T = any>(
+  array: T[],
+  key: string = 'value',
+  valueConvert: string | ((item: T) => any) = (item: T) => item,
+) {
+  const result: { [key: string]: any } = {};
   array.forEach((item) => {
-    result[item[key]] = item;
+    const value =
+      typeof valueConvert === 'function'
+        ? valueConvert(item)
+        : item[valueConvert];
+    result[item[key]] = value;
   });
 
   return result;
@@ -164,4 +183,53 @@ export function arrayToTree<T = any>(
   });
 
   return result;
+}
+
+/**
+ * 计算两个日期之间的间隔
+ * @param date1
+ * @param date2
+ */
+export function distance(date1: Date, date2: Date) {
+  return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000);
+}
+
+/**
+ * 日期位于一年中的第几天
+ * @param date
+ */
+export function dayOfYear(date: Date) {
+  return Math.floor(
+    (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) /
+      1000 /
+      60 /
+      60 /
+      24,
+  );
+}
+
+/**
+ * 过滤html中的标签
+ * @param html
+ * @returns
+ */
+export function stripHtml(html: string) {
+  return (
+    new DOMParser().parseFromString(html, 'text/html').body.textContent || ''
+  );
+}
+/**
+ * 拷贝到粘贴板
+ * @param text
+ */
+export function copyToClipborad(text: string) {
+  navigator.clipboard.writeText(text);
+}
+
+/**
+ * 获取选中的内容
+ * @returns
+ */
+export function getSelectedText() {
+  return window.getSelection()?.toString();
 }
