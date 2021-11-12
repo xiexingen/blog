@@ -116,3 +116,79 @@ group:
 ### 案例
 
 <code src="./demo/demo1.tsx" />
+
+### 手机号码
+
+<code src="./demo/phone.tsx" />
+
+### 身份证
+
+<code src="./demo/idcard.tsx" />
+
+### email
+
+<code src="./demo/email.tsx" />
+
+### url
+
+<code src="./demo/url.tsx" />
+
+### ip
+
+<code src="./demo/ipv4.tsx" />
+
+### 16 进制颜色
+
+<code src="./demo/color16.tsx" />
+
+### YYYY-MM-DD
+
+<code src="./demo/date-ymd.tsx" />
+
+### YYYY-MM-DD HH:mm:ss
+
+<code src="./demo/date-ymdhms.tsx" />
+
+### 整数
+
+<code src="./demo/integer.tsx" />
+
+### 小数
+
+<code src="./demo/float.tsx" />
+
+### 特定小数位
+
+<code src="./demo/limit-precision.tsx" />
+
+### 邮编
+
+<code src="./demo/postal-no.tsx" />
+
+### qq
+
+<code src="./demo/qq.tsx" />
+
+### 微信
+
+<code src="./demo/wx.tsx" />
+
+### 车牌号
+
+<code src="./demo/car-no.tsx" />
+
+### 全字母
+
+<code src="./demo/letter.tsx" />
+
+### 中文&字母&特殊字符
+
+<code src="./demo/chinese.tsx" />
+
+### 密码强度
+
+<code src="./demo/password.tsx" />
+
+### 文件扩展名
+
+<code src="./demo/file-extens.tsx" />
