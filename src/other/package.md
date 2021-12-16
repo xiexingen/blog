@@ -9,18 +9,19 @@ nav:
 
 ## 通用
 
-| 类型           | 推荐                                                     | 备注                                                   |
-| -------------- | -------------------------------------------------------- | ------------------------------------------------------ |
-| ajax 请求库    | [axios](https://github.com/axios/axios)                  | 目前为止用的最爽的请求库                               |
-| 工具库         | [lodash](https://github.com/lodash/lodash)               | 提供模块化、性能和附加功能的现代 JavaScript 实用程序库 |
-| 日期处理库     | [dayjs](https://github.com/iamkun/dayjs)                 | 2kb 的日期类操作库，已经放弃 moment.js                 |
-| 动画库         | [animejs](https://github.com/juliangarnier/anime/)       | 动画                                                   |
-| canvas 绘图    | [fabricjs](https://github.com/fabricjs/fabric.js)        | canvas 库                                              |
-| 3d             | [three.js](https://github.com/mrdoob/three.js/)          | 3d 库                                                  |
-| 算数运算       | [big.js ](https://github.com/MikeMcl/big.js/)            | 任意精度的十进制算术运算                               |
-| url 参数转化   | [qs ](https://github.com/ljharb/qs)                      | url 参数转化 (parse 和 stringify)的轻量级 js 库        |
-| 客户端文件保存 | [FileSaver.js ](https://github.com/eligrey/FileSaver.js) | 客户端保存文件的解决方案                               |
-| 图片裁剪       | [cropperjs](https://github.com/fengyuanchen/cropperjs)   | 图片裁剪                                               |
+| 类型           | 推荐                                                                                                  | 备注                                                   |
+| -------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| ajax 请求库    | [axios](https://github.com/axios/axios)                                                               | 目前为止用的最爽的请求库                               |
+| 工具库         | [lodash](https://github.com/lodash/lodash)                                                            | 提供模块化、性能和附加功能的现代 JavaScript 实用程序库 |
+| 日期处理库     | [dayjs](https://github.com/iamkun/dayjs)                                                              | 2kb 的日期类操作库，已经放弃 moment.js                 |
+| 动画库         | [animejs](https://github.com/juliangarnier/anime/)                                                    | 动画                                                   |
+| canvas 绘图    | [fabricjs](https://github.com/fabricjs/fabric.js)                                                     | canvas 库                                              |
+| 3d             | [three.js](https://github.com/mrdoob/three.js/)                                                       | 3d 库                                                  |
+| 算数运算       | [big.js ](https://github.com/MikeMcl/big.js/)                                                         | 任意精度的十进制算术运算                               |
+| url 参数转化   | [qs ](https://github.com/ljharb/qs)                                                                   | url 参数转化 (parse 和 stringify)的轻量级 js 库        |
+| 客户端文件保存 | [FileSaver.js ](https://github.com/eligrey/FileSaver.js)                                              | 客户端保存文件的解决方案                               |
+| 图片裁剪       | [cropperjs](https://github.com/fengyuanchen/cropperjs)                                                | 图片裁剪                                               |
+| 高亮           | [highlight.js](https://github.com/highlightjs/highlight.js) [prism](https://github.com/PrismJS/prism) | 内容高亮                                               |
 
 ## react 专用
 
