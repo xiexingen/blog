@@ -20,6 +20,10 @@ group:
 
 <code src="./demo/squre.tsx" />
 
+## 填充
+
+<code src="./demo/fill.tsx" />
+
 ## 圈圈
 
 <code src="./demo/spinner.tsx" />
@@ -31,3 +35,7 @@ group:
 ## 音浪
 
 <code src="./demo/loading.tsx" />
+
+## 弹珠
+
+<code src="./demo/ball.tsx" />
