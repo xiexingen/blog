@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - net_redis
+    volumes:
+      - /docker/redis/config:/docker/config
+      - /docker/redis/data:/data
+    command: redis-server /docker/config/redis.conf
+networks:
+  net_redis:
+    external: true

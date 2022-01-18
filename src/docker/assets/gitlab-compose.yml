@@ -1,0 +1,21 @@
+version: '2.2'
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce'
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.xxgtalk.cn'
+    environment:
+      TZ: 'Asia/Shanghai'
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'gitlab.xxgtalk.cn'
+        gitlab_rails['time_zone'] = 'Asia/Shanghai'
+        gitlab_rails['gitlab_shell_ssh_port'] = 23
+    ports:
+      - '8090:80'
+      - '443:443'
+      - '23:22'
+    volumes:
+      - /docker/gitlab/config:/etc/gitlab
+      - /docker/gitlab/data:/var/opt/gitlab
+      - /docker/gitlab/logs:/var/log/gitlab
