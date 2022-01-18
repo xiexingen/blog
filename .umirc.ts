@@ -2,7 +2,10 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   base: '/frontend-study/',
-  publicPath: '/frontend-study/',
+  // publicPath: '/frontend-study/',
+  publicPath: 'https://cdn.jsdelivr.net/gh/xiexingen/frontend-study@gh-pages/',
+  // publicPath:
+  //   'https://github.com.cnpmjs.org/xiexingen/frontend-study/tree/gh-pages/',
   title: '程序有Bug-前端笔记',
   favicon:
     'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',

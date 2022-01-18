@@ -20,12 +20,14 @@ nav:
 
 ## 本地工具
 
-| 类型       | 推荐        | 备注                     |
-| ---------- | ----------- | ------------------------ |
-| 文件比对   | bcompare    | 目前用的最爽的比对工具   |
-| hosts 文件 | SwitchHosts | 一键切换 hosts，适合后端 |
-| api 连调   | postman     | 发送 api 请求            |
-| 截图、录屏 | iShot       | mac 使用                 |
+| 类型             | 推荐                                               | 备注                     |
+| ---------------- | -------------------------------------------------- | ------------------------ |
+| 文件比对         | bcompare                                           | 目前用的最爽的比对工具   |
+| hosts 文件       | [SwitchHosts](https://github.com/oldj/SwitchHosts) | 一键切换 hosts，适合后端 |
+| api 连调         | postman                                            | 发送 api 请求            |
+| 截图、录屏       | iShot                                              | mac 使用                 |
+| redis 桌面管理器 | [RedisPlus](https://gitee.com/MaxBill/RedisPlus)   |                          |
+| 内网穿透         | ngrok                                              |                          |
 
 ## 浏览器插件
 
@@ -39,6 +41,15 @@ nav:
 
 ## 框架
 
-| 类型     | 推荐                                                   | 备注                                         |
-| -------- | ------------------------------------------------------ | -------------------------------------------- |
-| 自动测试 | [Airtest]（https://github.com/AirtestProject/Airtest） | 跨平台的 UI 自动化测试框架，适用于游戏和 App |
+| 类型     | 推荐                                                                                                 | 备注                                         |
+| -------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| 自动测试 | [Airtest]（https://github.com/AirtestProject/Airtest）                                               | 跨平台的 UI 自动化测试框架，适用于游戏和 App |
+| 爬虫     | [puppeteer](https://github.com/GoogleChrome/puppeteer) [Hawk](https://github.com/ferventdesert/Hawk) | 爬虫                                         |
+| 定时任务 | [quartzui](https://github.com/zhaopeiym/quartzui)、[Topshelf](https://github.com/Topshelf/Topshelf)  |                                              |
+
+## vscode 插件
+
+| 类型     | 推荐                                                                                                              | 备注 |
+| -------- | ----------------------------------------------------------------------------------------------------------------- | ---- |
+| 同步插件 | Settings Sync vscode                                                                                              |      |
+| 图床     | https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A)、[github](http://picgo.github.io |      |
