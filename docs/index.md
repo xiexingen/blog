@@ -1,7 +1,7 @@
 ---
 hero:
-  title: 程序有Bug-前端笔记
-  desc: 程序有Bug的前端笔记
+  title: 程序有Bug-随笔
+  desc: 程序有Bug的随笔
   actions:
     - text: Getting Started
       link: /getting-started
@@ -18,4 +18,4 @@ features:
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
-## 程序有 Bug-前端笔记
+## 程序有 Bug-随笔
