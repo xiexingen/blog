@@ -1,21 +1,20 @@
 ---
 hero:
   title: 程序有Bug-随笔
-  desc: 程序有Bug的随笔
-  actions:
-    - text: Getting Started
-      link: /getting-started
-features:
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
-    title: Feature 1
-    desc: Balabala
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
-    title: Feature 2
-    desc: Balabala
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
-    title: Feature 3
-    desc: Balabala
+  desc: 分享一些工作中趟过的坑、做过的笔记
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
 ## 程序有 Bug-随笔
+
+- React、Antd、TypeScript、Webpack、Nodejs、Vue、ElementUI、umi、taro、uni-app
+
+- AST、低代码等
+
+- axios、lodash、dayjs、bpmnjs...
+
+- .NETCore、SqlServer、Dapper、EF、PetaPoco、ABP、Redis、MongoDB
+
+- Docker、CICD、Linux
+
+- 第三方支付、第三方登录、快递接口、短信接口、web 快递单打印、条码打印、导出 excel,word,pdf 等常用第三的东西
