@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "frontend-study",
+  "name": "blog",
   "version": "1.0.0",
   "scripts": {
     "start": "cross-env UMI_ENV=dev dumi dev",
