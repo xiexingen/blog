@@ -54,7 +54,7 @@ export default defineConfig({
   //   },
   //   { rel: 'stylesheet', href: '/style.css' },
   // ],
-  copy: ['CNAME'], // 自定义域名
+  // copy: ['CNAME'], // 自定义域名,放public文件夹即可
   navs: {
     'en-US': [
       { title: '笔记', path: '/note' },
