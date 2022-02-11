@@ -47,13 +47,13 @@ export default defineConfig({
       pointer-events: none;
     }`,
   ],
-  links: [
-    {
-      rel: 'stylesheet',
-      href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next-noreset.min.css',
-    },
-    { rel: 'stylesheet', href: '/style.css' },
-  ],
+  // links: [
+  //   {
+  //     rel: 'stylesheet',
+  //     href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next-noreset.min.css',
+  //   },
+  //   { rel: 'stylesheet', href: '/style.css' },
+  // ],
   copy: ['CNAME'], // 自定义域名
   navs: {
     'en-US': [
@@ -74,6 +74,10 @@ export default defineConfig({
           {
             title: '手撕ahooks',
             path: 'https://xiexingen.github.io/hand-tear-ahooks/hooks/async/use-request',
+          },
+          {
+            title: 'Wetrial',
+            path: 'https://github.com/wetrial',
           },
         ],
       },
