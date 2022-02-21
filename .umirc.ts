@@ -59,7 +59,8 @@ export default defineConfig({
     'en-US': [
       { title: '笔记', path: '/note' },
       { title: 'Docker', path: '/docker' },
-      { title: '珍藏', path: '/other' },
+      { title: '随笔', path: '/articles' },
+      { title: '珍藏', path: '/collection' },
       {
         title: '其他',
         children: [

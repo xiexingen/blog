@@ -1,8 +1,8 @@
 ---
 title: git提交规范
 nav:
-  title: 其他
-  path: /other
+  title: 随笔
+  path: /articles
   order: 2
 ---
 

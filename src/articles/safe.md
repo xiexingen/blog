@@ -1,8 +1,8 @@
 ---
 title: 前端安全
 nav:
-  title: 其他
-  path: /other
+  title: 随笔
+  path: /articles
 ---
 
 # 前端安全

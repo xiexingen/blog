@@ -1,8 +1,8 @@
 ---
 title: 精选产品、工具
 nav:
-  title: 其他
-  path: /other
+  title: 珍藏
+  path: /collection
 ---
 
 # 精选产品、工具(长期更新)

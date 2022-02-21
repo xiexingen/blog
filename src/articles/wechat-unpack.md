@@ -1,8 +1,8 @@
 ---
 title: 微信小程序反编译
 nav:
-  title: 其他
-  path: /other
+  title: 随笔
+  path: /articles
 ---
 
 # 微信小程序反编译

@@ -1,8 +1,8 @@
 ---
 title: github cdn
 nav:
-  title: 其他
-  path: /other
+  title: 随笔
+  path: /articles
 ---
 
 # github cdn

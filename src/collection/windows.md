@@ -1,8 +1,8 @@
 ---
 title: windows技巧
 nav:
-  title: 其他
-  path: /other
+  title: 珍藏
+  path: /collection
 ---
 
 # window 技巧-长期更新

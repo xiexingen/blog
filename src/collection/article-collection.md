@@ -1,8 +1,8 @@
 ---
 title: 精选文章收集
 nav:
-  title: 其他
-  path: /other
+  title: 珍藏
+  path: /collection
   order: 10000
 ---
 

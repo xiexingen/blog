@@ -1,8 +1,8 @@
 ---
 title: git 命令
 nav:
-  title: 其他
-  path: /other
+  title: 随笔
+  path: /articles
 ---
 
 # git 笔记(常用)
