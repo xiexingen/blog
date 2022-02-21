@@ -1,4 +1,19 @@
 /**
+ * 去前后空格
+ */
+export const trimReg = /^\s*|\s*$/g;
+
+/**
+ * 数字千分位
+ */
+export const priceSplit = /(?!^)(?=(\d{3})+$)/g;
+
+/**
+ * 手机号3-4-4分割
+ */
+export const phoneSplit = /(?=(\d{4})+$)/g;
+
+/**
  * 手机号码
  */
 export const phoneReg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
@@ -129,3 +144,8 @@ export const styleReg = /style="[^=>]*"([(\s+\w+=)|>])/g;
  * html 中的标签
  */
 export const tagReg = /<("[^"]*"|'[^']*'|[^'">])*>/g;
+
+/**
+ * 重叠词 如:abcabc
+ */
+export const repeatReg = /(.+)\1+/g;

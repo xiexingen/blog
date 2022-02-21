@@ -117,9 +117,17 @@ group:
 
 <code src="./demo/demo1.tsx" />
 
+### trim
+
+<code src="./demo/trim.tsx" />
+
 ### 手机号码
 
 <code src="./demo/phone.tsx" />
+
+### 手机号码 3-4-4 格式
+
+<code src="./demo/phone-split.tsx" />
 
 ### 身份证
 
@@ -161,6 +169,10 @@ group:
 
 <code src="./demo/limit-precision.tsx" />
 
+### 数字千分位
+
+<code src="./demo/price-split.tsx" />
+
 ### 邮编
 
 <code src="./demo/postal-no.tsx" />
@@ -192,3 +204,7 @@ group:
 ### 文件扩展名
 
 <code src="./demo/file-extens.tsx" />
+
+### 重复片段
+
+<code src="./demo/repeat-fragment.tsx" />
