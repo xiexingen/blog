@@ -45,6 +45,9 @@ https://cdn.jsdelivr.net/gh/:user/:repo@:branch/:path.html
 - :branch: 分支名,可以没有，默认为 master
 - :path 文件路径
 
+> jsDeliver 强制刷新缓存，可以尝试使用 purge 子域名形式访问一下，比如当前博客站点
+> https://purge.jsdelivr.net/gh/xiexingen/blog@gh-pages/umi.js
+
 ### 案例
 
 https://github.com/xiexingen/blog/blob/gh-pages/index.html

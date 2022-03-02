@@ -3,13 +3,24 @@ interface IUser {
   name: string;
 }
 
-const user: Readonly<IUser> = {
-  id: 1,
-  name: 'xxg',
+const user: Record<string, IUser> = {
+  first: { id: 1, name: 'xxg' },
+  second: { id: 2, name: 'xxg2' },
 };
 
-// 【报错】 无法分配到 "name" ，因为它是只读属性
-// user.name='xxg'
+// 另类写法
+const user2: { [key: string]: IUser } = {
+  first: { id: 1, name: 'xxg' },
+  second: { id: 2, name: 'xxg2' },
+};
+
+// 还可以约束Key的范围值
+const user3: Record<'first' | 'second', IUser> = {
+  first: { id: 1, name: 'xxg' },
+  second: { id: 2, name: 'xxg2' },
+  // 【错误】last不在K限制范围内
+  // last:{id:2,name:'xxg2'},
+};
 
 export default () => {
   return '请查看代码';
