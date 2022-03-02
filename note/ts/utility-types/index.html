@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png"
+    />
+    <style>
+      .markdown table td:first-child {
+        font-weight: 500;
+        background: #fcfcfc;
+      }
+      .markdown table td > a:not(:last-child) {
+        margin-right: 18px;
+      }
+      .markdown table td > a:not(:last-child)::after {
+        position: absolute;
+        margin: 0 6px 0 8px;
+        color: #bbb;
+        content: "|";
+        pointer-events: none;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/xiexingen/blog@gh-pages/umi.css"
+    />
+    <script>
+      window.routerBase = "/";
+    </script>
+    <script>
+      //! umi version: 3.5.21
+    </script>
+    <script>
+      !(function () {
+        var e = localStorage.getItem("dumi:prefers-color"),
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches,
+          r = ["light", "dark", "auto"];
+        document.documentElement.setAttribute(
+          "data-prefers-color",
+          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
+        );
+      })();
+    </script>
+    <title>Utility Types - 程序有Bug-随笔</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://cdn.jsdelivr.net/gh/xiexingen/blog@gh-pages/umi.js"></script>
+  </body>
+</html>
