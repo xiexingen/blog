@@ -89,6 +89,12 @@ git clean -n //将当前非暂存区的文件移除
 git clean -f //强制移除
 ```
 
+### 修改之前的提交
+
+```bash
+git commit --amend
+```
+
 7. 多人协作  
    A、git push -u origin [local-branch][:remote-branch] //吧本地库推送到远程库上，-u，不但回吧本地的分支推送到远程新的 master 分支，还会把本地分支和远程分支关联起来，在以后的推送或者拉去时就可以简化命名
    后面如果有修改的话，只需要执行：git push origin [local-branch] //吧本地分支的最新修改推送到服务器
