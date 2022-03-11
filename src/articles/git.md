@@ -3,6 +3,7 @@ title: git 命令
 nav:
   title: 随笔
   path: /articles
+  order: 2
 ---
 
 # git 笔记(常用)
@@ -115,6 +116,10 @@ git commit --amend
 - 合并远程仓库的 tag 到本地：$ git pull origin --tags
 - 上传本地 tag 到远程仓库：$ git push origin --tags
 - 创建带注释的 tag：$ git tag -a [name] -m 'yourMessage'
+
+### 合并 commit 信息
+
+- git rebase -i HEAD~[n]
 
 ### 忽略一些文件、文件夹不提交
 
