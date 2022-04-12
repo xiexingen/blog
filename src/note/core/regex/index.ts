@@ -6,7 +6,7 @@ export const trimReg = /^\s*|\s*$/g;
 /**
  * 数字千分位
  */
-export const priceSplit = /(?!^)(?=(\d{3})+$)/g;
+export const priceSplit = /\B(?=(\d{3})+(?!\d))/g;
 
 /**
  * 手机号3-4-4分割
