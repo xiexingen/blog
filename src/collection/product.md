@@ -33,13 +33,14 @@ nav:
 
 ## 浏览器插件
 
-| 类型           | 推荐                  | 备注                                                               |
-| -------------- | --------------------- | ------------------------------------------------------------------ |
-| 开发工具       | FeHelper              | 提供了很多方便的供(如:json 格式化、代码美化、图片编码、crontab 等) |
-| React 开发工具 | React Developer Tools | react 调试工具                                                     |
-| react 开发工具 | Redux DevTools        | react 状态调试工具                                                 |
-| 学习           | 掘金                  | 可能看到各大佬的经验文章                                           |
-| vue 开发工具   | Vue.js devtools       | vue 程序员必备                                                     |
+| 类型                    | 推荐                       | 备注                                                               |
+| ----------------------- | -------------------------- | ------------------------------------------------------------------ |
+| 开发工具                | FeHelper                   | 提供了很多方便的供(如:json 格式化、代码美化、图片编码、crontab 等) |
+| React 开发工具          | React Developer Tools      | react 调试工具                                                     |
+| react 开发工具          | Redux DevTools             | react 状态调试工具                                                 |
+| 学习                    | 掘金                       | 可能看到各大佬的经验文章                                           |
+| vue 开发工具            | Vue.js devtools            | vue 程序员必备                                                     |
+| 浏览器控制台安装 npm 包 | Console Importer extension | 比如:$i("dayjs")                                                   |
 
 ## 框架
 
