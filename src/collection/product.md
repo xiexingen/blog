@@ -52,7 +52,8 @@ nav:
 
 ## vscode 插件
 
-| 类型     | 推荐                                                                                                              | 备注 |
-| -------- | ----------------------------------------------------------------------------------------------------------------- | ---- |
-| 同步插件 | Settings Sync vscode                                                                                              |      |
-| 图床     | https://picgo.github.io/PicGo-Doc/zh/guide/config.html#github%E5%9B%BE%E5%BA%8A)、[github](http://picgo.github.io |      |
+| 类型     | 推荐                             | 备注 |
+| -------- | -------------------------------- | ---- |
+| 同步插件 | Settings Sync vscode             |      |
+| 图床     | [github](http://picgo.github.io) |      |
+| 顺序插入 | Increment Selection              |      |
