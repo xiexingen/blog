@@ -41,6 +41,8 @@ nav:
 | 学习                    | 掘金                       | 可能看到各大佬的经验文章                                           |
 | vue 开发工具            | Vue.js devtools            | vue 程序员必备                                                     |
 | 浏览器控制台安装 npm 包 | Console Importer extension | 比如:$i("dayjs")                                                   |
+| github 代码在线查看     | GitHub code tree           |                                                                    |
+| html 转成 MD            | Markdown Web Clipper       |                                                                    |
 
 ## 框架
 
