@@ -227,3 +227,16 @@ git branch --merged master
 ```js
 git branch --merged master |grep -v '^\*' | xargs git branch -d
 ```
+
+- 按文件目录层级拷贝 git 修改文件
+
+```bash
+// 在根目录下执行，将改动文件记录到 change.txt
+git status | grep modified | awk '{print $2}' > ../change.txt
+
+// 清空并重新创建临时空目录
+rm -rf ../tmp & mkdir ../tmp
+
+// 将改动的文件以及层级拷贝进去
+xargs -a ../change.txt cp --parents -t ../tmp
+```
