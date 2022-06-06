@@ -3,7 +3,7 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   // base: '/blog/',
   // publicPath: '/blog/',
-  publicPath: 'https://cdn.jsdelivr.net/gh/xiexingen/blog@gh-pages/',
+  publicPath: 'https://fastly.jsdelivr.net/gh/xiexingen/blog@gh-pages/', // cdn.jsdelivr.net
   // publicPath:
   //   'https://github.com.cnpmjs.org/xiexingen/blog/tree/gh-pages/',
   title: '程序有Bug-随笔',
