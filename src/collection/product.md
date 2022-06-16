@@ -56,8 +56,27 @@ nav:
 
 ## vscode 插件
 
-| 类型     | 推荐                             | 备注 |
-| -------- | -------------------------------- | ---- |
-| 同步插件 | Settings Sync vscode             |      |
-| 图床     | [github](http://picgo.github.io) |      |
-| 顺序插入 | Increment Selection              |      |
+| 类型         | 推荐                                    | 备注 |
+| ------------ | --------------------------------------- | ---- |
+| 同步插件     | Settings Sync vscode                    |      |
+| 图床         | [github](http://picgo.github.io)        |      |
+| 大小写命名   | wmaurer.change-case                     |      |
+| 快速选择     | dbankier.vscode-quick-select            |      |
+| 折叠、展开   | letrieu.expand-region                   |      |
+| 单词选择     | editor.emmet                            |      |
+| 书签         | alefragnani.Bookmarks                   |      |
+| 代码 review  | NicholasHsiang.vscode-opened-editors    |      |
+| 文件路径     | File: Copy Relative Path of Active File |      |
+| 顺序插入     | Insert Numbers (Asuka.insertnumbers)    |      |
+| 编码         | Encode Decode (mitchdenny.ecdc)         |      |
+| 代码比对     | Partial Diff (ryu1kn.partial-diff)      |      |
+| AI 代码      | GitHub Copilot (GitHub.copilot)         |      |
+| 代码片段贴图 | CodeSnap (adpyke.codesnap)              |      |
+
+### VS Code
+
+https://github.com/microsoft/vscode-extension-samples
+
+https://marketplace.visualstudio.com/publishers/NicholasHsiang
+
+Vue 2 Snippets (NicholasHsiang.vscode-vue2-snippets)
