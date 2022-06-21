@@ -71,3 +71,9 @@ nav:
 | 谷歌浏览器 API         | [puppeteer](https://github.com/GoogleChrome/puppeteer)                                                                                                                                                                                               | 可以用来写爬虫 一个无界面的谷歌浏览器                 |
 | 内存中的数据库         | [LokiJS](https://github.com/techfort/LokiJS)                                                                                                                                                                                                         | javascript 内存 数据库                                |
 | 并行或串行运行多个 npm | [npm-run-all](https://github.com/mysticatea/npm-run-all)                                                                                                                                                                                             | 可以用来并行或串行运行多个 npm script                 |
+
+## github
+
+| 类型     | 推荐                                          | 备注                                    |
+| -------- | --------------------------------------------- | --------------------------------------- |
+| 云策文档 | [think](https://github.com/fantasticit/think) | 云策文档是一款开源知识管理工具,类似语雀 |

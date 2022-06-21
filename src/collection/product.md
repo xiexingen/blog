@@ -9,14 +9,15 @@ nav:
 
 ## 在线产品
 
-| 类型         | 推荐                                                                  | 备注                                                     |
-| ------------ | --------------------------------------------------------------------- | -------------------------------------------------------- |
-| 文档管理     | [语雀](https://www.yuque.com/?chInfo=ch_antd)                         | 团队文档适用比较舒适，功能比较强大                       |
-| 图标         | [阿里巴巴矢量图标库](https://www.iconfont.cn/)                        |                                                          |
-| Sketch 插件  | [Kitchen](https://kitchen.alipay.com)                                 |                                                          |
-| 在线代码编辑 | [codesandbox](https://codesandbox.io/) [codepen](https://codepen.io/) |                                                          |
-| 图片压缩     | [tinypng](https://tinypng.com/)                                       | 在线工具                                                 |
-| 图表分类查询 | [图之典](http://tuzhidian.com/)                                       | 简单易用的图表词典，为你的学习和工作提供科学的可视化建议 |
+| 类型           | 推荐                                                                  | 备注                                                                                          |
+| -------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| 文档管理       | [语雀](https://www.yuque.com/?chInfo=ch_antd)                         | 团队文档适用比较舒适，功能比较强大                                                            |
+| 图标           | [阿里巴巴矢量图标库](https://www.iconfont.cn/)                        |                                                                                               |
+| Sketch 插件    | [Kitchen](https://kitchen.alipay.com)                                 |                                                                                               |
+| 在线代码编辑   | [codesandbox](https://codesandbox.io/) [codepen](https://codepen.io/) |                                                                                               |
+| 图片压缩       | [tinypng](https://tinypng.com/)                                       | 在线工具                                                                                      |
+| 图表分类查询   | [图之典](http://tuzhidian.com/)                                       | 简单易用的图表词典，为你的学习和工作提供科学的可视化建议                                      |
+| 多平台文字发布 | [Wechatsync](https://github.com/wechatsync/Wechatsync)                | 一键同步文章到多个内容平台，支持今日头条、WordPress、知乎、简书、掘金、CSDN、typecho 各大平台 |
 
 ## 本地工具
 
