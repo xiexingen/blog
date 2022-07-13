@@ -25,7 +25,7 @@ nav:
 | ------------------------ | ------------------------------------------------------ | ------------------------ |
 | 文件比对                 | bcompare                                               | 目前用的最爽的比对工具   |
 | hosts 文件               | [SwitchHosts](https://github.com/oldj/SwitchHosts)     | 一键切换 hosts，适合后端 |
-| api 连调                 | postman                                                | 发送 api 请求            |
+| api 连调                 | PostMan、ApiFox                                        | 发送 api 请求            |
 | 截图、录屏               | iShot                                                  | 【mac】                  |
 | 截图、录屏               | [snipaste](https://www.snipaste.com/)、FSCapture       |                          |
 | 压缩解压工具             | [FastZip](https://www.better365.cn/)                   | 【mac】                  |
