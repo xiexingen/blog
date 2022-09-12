@@ -21,18 +21,19 @@ nav:
 
 ## 本地工具
 
-| 类型                     | 推荐                                                   | 备注                     |
-| ------------------------ | ------------------------------------------------------ | ------------------------ |
-| 文件比对                 | bcompare                                               | 目前用的最爽的比对工具   |
-| hosts 文件               | [SwitchHosts](https://github.com/oldj/SwitchHosts)     | 一键切换 hosts，适合后端 |
-| api 连调                 | PostMan、ApiFox                                        | 发送 api 请求            |
-| 截图、录屏               | iShot                                                  | 【mac】                  |
-| 截图、录屏               | [snipaste](https://www.snipaste.com/)、FSCapture       |                          |
-| 压缩解压工具             | [FastZip](https://www.better365.cn/)                   | 【mac】                  |
-| redis 桌面管理器         | [RedisPlus](https://gitee.com/MaxBill/RedisPlus)       |                          |
-| 内网穿透                 | ngrok                                                  |                          |
-| 全局鼠标手势             | [WGestures](http://www.yingdev.com/projects/wgestures) |                          |
-| Windows 上好用的看图软件 | Honeyview                                              |                          |
+| 类型                     | 推荐                                                      | 备注                     |
+| ------------------------ | --------------------------------------------------------- | ------------------------ |
+| 文件比对                 | bcompare                                                  | 目前用的最爽的比对工具   |
+| hosts 文件               | [SwitchHosts](https://github.com/oldj/SwitchHosts)        | 一键切换 hosts，适合后端 |
+| api 连调                 | PostMan、ApiFox                                           | 发送 api 请求            |
+| 截图、录屏               | iShot                                                     | 【mac】                  |
+| 截图、录屏               | [snipaste](https://www.snipaste.com/)、FSCapture          |                          |
+| 压缩解压工具             | [FastZip](https://www.better365.cn/)                      | 【mac】                  |
+| redis 桌面管理器         | [RedisPlus](https://gitee.com/MaxBill/RedisPlus)          |                          |
+| 内网穿透                 | ngrok                                                     |                          |
+| 全局鼠标手势             | [WGestures](http://www.yingdev.com/projects/wgestures)    |                          |
+| Windows 上好用的看图软件 | Honeyview                                                 |                          |
+| 抓包                     | [whistle](http://wproxy.org/whistle/pattern.html) charles |                          |
 
 ## 浏览器插件
 
