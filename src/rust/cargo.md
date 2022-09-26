@@ -1,8 +1,12 @@
 ---
-title: cargo
+title: Cargo
+order: 1
 nav:
-  title: rust
+  title: Rust
   path: /rust
+group:
+  title: 前置准备
+  path: /pre
   order: 1
 ---
 
