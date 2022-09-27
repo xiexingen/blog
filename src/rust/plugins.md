@@ -1,6 +1,6 @@
 ---
 title: 推荐插件
-order: 2
+order: 10
 nav:
   title: Rust
   path: /rust
