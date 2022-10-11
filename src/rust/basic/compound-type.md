@@ -144,8 +144,102 @@ println!("{}",chin);
 
 ## 元祖
 
+由多种类型组合到一起形成的，因此它是复合类型，元组的长度是固定的，元组中元素的顺序也是固定的
+
+```bash
+let tup: (i32, f64, u8) = (10,20,30);
+
+let (x, y, z) = tup; // 通过这种形式取值，类似于 js 的解构
+
+let first = x.0; // 也可以通过下标形式
+```
+
 ## 结构体
+
+通过 `struct` 定义，类似于 js 中的 class
+
+```bash
+struct User {
+  active: bool,
+  username:String,
+  email:String,
+  login_count:u64,
+}
+
+// 实例化
+let user1= User{
+  active:true,
+  username: String::from("xxg"),
+  email:String::from("1002275364@qq.com"),
+  login_count:20
+};
+
+// 更新，类似于 js 的展开运算符，但是注意 .. 只能放在最后面
+ let user2=User{
+  username:String::from("xiexingen"),
+  ..user1
+};
+// 注意: 下行会报错，因为 user1的email 所有权已经转让给 user2 了，所以不可再使用 user1.email
+print!("{}",user1.email);
+```
+
+## 元祖结构体
+
+结构体必须要有名称，但是结构体的字段可以没有名称，这种结构体长得很像元组，因此被称为元组结构体
+
+```bash
+// 定义一个 结构体 Color，不用关心里面具体的名称，特定场景使用，比如 颜色由 RGB组成，那么可以定义成一个元祖结构体
+struct Color(i32, i32, i32);
+```
 
 ## 枚举
 
+跟其他语言类似，通过 enum 来定义。区别是 rust 的枚举可以定义复杂类型
+
+```bash
+enum Message {
+  Quit,
+  Move { x: i32, y: i32 },
+  Write(String),
+  ChangeColor(i32, i32, i32),
+}
+```
+
+## Option
+
+可以用来处理空值
+
+```bash
+// 一个可以接受空值的运算函数
+fn plus_one(x:Option<i32>)->Option<i32>{
+  match  x {
+      None=>None,
+      Some(i)=>Some(i+1)
+  }
+}
+
+fn main(){
+  let five=Some(5);
+  let six=plus_one(five);
+  let none=plus_one(None);
+}
+```
+
 ## 数组
+
+在 Rust 中，最常用的数组有两种，第一种是速度很快但是长度固定的 array，第二种是可动态增长的但是有性能损耗的 Vector，在本书中，我们称 array 为数组，Vector 为动态数组
+
+### Array
+
+固定长度的数组，分配在栈上
+
+```bash
+// 定义一个长度为4的数组
+let arr1:[i32;4]=[1,2,3,4];
+// 定义一个长度为3值为4的数组
+let arr2=[4;3];
+```
+
+数组切片
+
+### Vector
