@@ -82,3 +82,7 @@ https://github.com/microsoft/vscode-extension-samples
 https://marketplace.visualstudio.com/publishers/NicholasHsiang
 
 Vue 2 Snippets (NicholasHsiang.vscode-vue2-snippets)
+
+命名翻译工具
+
+https://www.npmjs.com/package/terminal-translate
