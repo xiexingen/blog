@@ -8,6 +8,83 @@ nav:
 
 # git 笔记(常用)
 
+## .gitconfig 文件配置
+
+### git 比对工具
+
+配置 git 使用 BCompare 来比对文件(用户目录\.gitconfig 里面)
+
+```bash
+[user]
+name = xiexingen
+email = 1002275364@qq.com
+[diff]
+    tool = bc4
+[difftool]
+    prompt = false
+[difftool "bc4"]
+    cmd = \"D:/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = bc4
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "bc4"]
+    cmd = \"D:/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+    trustExitCode = true
+[alias]
+    dt = difftool
+    mt = mergetool
+```
+
+使用：
+git difftool '文件 1' '文件 2'
+git mergetool
+
+### 别名配置
+
+```bash
+[alias]
+  a = add
+  b = branch
+  c = commit
+  co = checkout
+  m = merge
+  r = restore
+  s = switch
+  st = status
+```
+
+使用的时候 git add 可以用 git a 代替，依此类推
+
+### EOL 配置
+
+由于 windows 下跟 mac 下默认风格不一样，可以通过修改 gitconfig 来强制使用 LF
+
+````bash
+  [core]
+  # 多平台换行符
+
+  ## 提交混合换行符的文件
+  # 1. 拒绝 Commit
+  safecrlf = true
+  # 2. 允许 Commit
+  # safecrlf = false
+  # 3. 警告 Commit
+  # safecrlf = warn
+
+  ## 转换换行符
+  # 1. Commit 时转换为 LF，Checkout 时转换为 CRLF
+  # autocrlf = true
+  # 2. Commit 时转换为 LF，Checkout 时不转换
+  autocrlf = input
+  # 3. Commit Checkout 均不转换
+  # autocrlf = false
+
+  ## 统一换行符为 LF (默认，同操作系统)
+  eol = lf
+``
+
 ## 命令
 
 ### 创建版本库
@@ -15,7 +92,13 @@ nav:
 ```bash
 mkdir repository    //创建一个文件夹
 git init [name]       //把目录编程git可以管理的仓库,[name]可选
-```
+````
+
+注: 配置后，需要重新拉仓库，之前已经 clone 的仓库不会受影响
+
+附上一个完整 .gitconfig 文件
+
+![.gitconfig](./assets/gitconfig.txt)
 
 ### 提交
 
@@ -96,7 +179,7 @@ git clean -f //强制移除
 git commit --amend
 ```
 
-7. 多人协作  
+7. 多人协作
    A、git push -u origin [local-branch][:remote-branch] //吧本地库推送到远程库上，-u，不但回吧本地的分支推送到远程新的 master 分支，还会把本地分支和远程分支关联起来，在以后的推送或者拉去时就可以简化命名
    后面如果有修改的话，只需要执行：git push origin [local-branch] //吧本地分支的最新修改推送到服务器
    B、从本地推送分支，使用 git push origin [local_branch]:[remote-branch]，如果推送失败，先用 git pull 抓取远程的新提交；
@@ -123,7 +206,7 @@ git commit --amend
 
 ### 忽略一些文件、文件夹不提交
 
-git rm -f --cached [path] 移除单个文件，path 表示全路径  
+git rm -f --cached [path] 移除单个文件，path 表示全路径
 git rm -f --cached [path] -r 移除目录，path 表示目录
 git rm --cached [file] //将 file 从暂存区移除
 
@@ -136,17 +219,17 @@ bin
 \*.db
 ```
 
-.gitignore 文件无效的解决方法  
-git rm -r --cached [指定文件]  
+.gitignore 文件无效的解决方法
+git rm -r --cached [指定文件]
 提交
 
 ### 生成密钥
 
 - 查看是否已经有了 ssh 密钥：cd ~/.ssh
-  > 如果提示：No such file or directory 说明你是第一次使用 git  
-  > 如果不是第一次使用，请执行下面的操作,清理原有 ssh 密钥。  
-  >  $ mkdir key_backup $ cp id_rsa* key_backup $ rm id_rsa*  
-  > 生成新的密钥：  
+  > 如果提示：No such file or directory 说明你是第一次使用 git
+  > 如果不是第一次使用，请执行下面的操作,清理原有 ssh 密钥。
+  > $ mkdir key_backup $ cp id_rsa* key_backup $ rm id_rsa*
+  > 生成新的密钥：
   > $ ssh-keygen -t rsa -C “1002275364@qq.com”
 
 ### tag 相关
@@ -160,38 +243,7 @@ git rm -r --cached [指定文件]
 - git push origin --tags //将本地的所有 tag push 到远程
 - git push origin :refs/tags/[v1.0] //删除 v1.0
 
-### git 比对工具
-
-配置 git 使用 BCompare 来比对文件(用户目录\.gitconfig 里面)
-
-```bash
-[user]
-name = xiexingen
-email = 1002275364@qq.com
-[diff]
-    tool = bc4
-[difftool]
-    prompt = false
-[difftool "bc4"]
-    cmd = \"D:/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\"
-[merge]
-    tool = bc4
-[mergetool]
-    prompt = false
-    keepBackup = false
-[mergetool "bc4"]
-    cmd = \"D:/Program Files/Beyond Compare 4/BComp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
-    trustExitCode = true
-[alias]
-    dt = difftool
-    mt = mergetool
-```
-
-使用：  
-git difftool '文件 1' '文件 2'  
-git mergetool
-
-- 全局配置用户名
+### 全局配置用户名
 
 ```bash
 git config --global user.name xiexingen
