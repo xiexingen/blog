@@ -1,11 +1,10 @@
 ---
 hero:
-  title: 程序有Bug-随笔
+  title: 程序有Bug-秘密基地
   desc: 分享一些工作中趟过的坑、做过的笔记
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
-## 程序有 Bug-随笔
+## 程序有 Bug-秘密基地
 
 - React、Antd、TypeScript、Webpack、Nodejs、Vue、ElementUI、umi、taro、uni-app
 
