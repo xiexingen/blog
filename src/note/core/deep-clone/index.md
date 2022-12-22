@@ -4,8 +4,8 @@ nav:
   title: 笔记
   path: /note
 group:
-  title: 技巧
-  path: /skill
+  title: 核心方法
+  path: /core
 ---
 
 # 深度拷贝
