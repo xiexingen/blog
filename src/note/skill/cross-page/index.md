@@ -6,6 +6,7 @@ nav:
 group:
   title: 技巧
   path: /skill
+  order: 10
 ---
 
 # 跨页面通信

@@ -6,7 +6,7 @@ nav:
 group:
   title: 核心方法
   path: /core
-  order: 1
+  order: 1000
 ---
 
 # reduce

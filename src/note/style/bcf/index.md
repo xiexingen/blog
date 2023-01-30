@@ -6,6 +6,7 @@ nav:
 group:
   title: 样式
   path: /style
+  order: 20
 ---
 
 # bcf

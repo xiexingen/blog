@@ -6,7 +6,7 @@ nav:
 group:
   title:
   path: /core
-  order: 1
+  order: 1000
 ---
 
 # 发布订阅

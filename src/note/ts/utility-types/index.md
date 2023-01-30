@@ -6,7 +6,7 @@ nav:
 group:
   title: Typescript
   path: /ts
-  order: 2
+  order: 30
 ---
 
 # Typescript 工具类型

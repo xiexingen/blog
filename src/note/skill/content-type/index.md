@@ -6,7 +6,7 @@ nav:
 group:
   title: 技巧
   path: /skill
-  order: 1
+  order: 10
 ---
 
 ## query-string

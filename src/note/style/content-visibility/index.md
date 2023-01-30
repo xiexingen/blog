@@ -6,7 +6,7 @@ nav:
 group:
   title: 样式
   path: /style
-  order: 100
+  order: 20
 ---
 
 # content-visibility 浏览器支持的"虚拟渲染"

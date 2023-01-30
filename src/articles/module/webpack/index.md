@@ -2,10 +2,11 @@
 title: webpack解析
 nav:
   title: 笔记
-  path: /note
+  path: /articles
+  order: 105
 group:
-  title: webpack
-  path: /webpack
+  title: 模块化
+  path: /module
   order: 1000
 ---
 
