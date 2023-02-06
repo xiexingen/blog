@@ -3,6 +3,7 @@ title: github cdn
 nav:
   title: 随笔
   path: /articles
+  order: 105
 ---
 
 # github cdn

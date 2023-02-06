@@ -1,5 +1,6 @@
 ---
 title: 介绍
+order: 10
 nav:
   title: 随笔
   path: /articles
@@ -7,7 +8,7 @@ nav:
 group:
   title: 模块化
   path: /module
-  order: 1
+  order: 30
 ---
 
 # 模块化的由来

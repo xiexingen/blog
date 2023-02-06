@@ -3,7 +3,7 @@ title: git 命令
 nav:
   title: 随笔
   path: /articles
-  order: 2
+  order: 105
 ---
 
 # git 笔记(常用)

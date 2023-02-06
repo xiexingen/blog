@@ -1,9 +1,10 @@
 ---
 title: 前端安全
+order: 10
 nav:
   title: 随笔
   path: /articles
-  order: 100
+  order: 105
 ---
 
 # 前端安全

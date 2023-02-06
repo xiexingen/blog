@@ -1,5 +1,6 @@
 ---
 title: webpack解析
+order: 20
 nav:
   title: 笔记
   path: /articles
@@ -7,7 +8,7 @@ nav:
 group:
   title: 模块化
   path: /module
-  order: 1000
+  order: 30
 ---
 
 # webpack

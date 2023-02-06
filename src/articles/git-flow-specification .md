@@ -3,7 +3,7 @@ title: git-flow 规范
 nav:
   title: 随笔
   path: /articles
-  order: 2
+  order: 105
 ---
 
 # git-flow 规范
