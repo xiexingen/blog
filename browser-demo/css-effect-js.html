@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css加载会不会阻塞js执行</title>
+  <script>
+    console.log('css 之前的 js代码执行...')
+  </script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+  <h1>标题1</h1>
+  <script>
+    console.log('css 之后的 js代码执行...')
+  </script>
+</body>
+
+</html>

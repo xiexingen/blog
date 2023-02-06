@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片加载会不会阻塞页面</title>
+  <script>
+    console.time('window onload');
+    console.time('DOMContentLoaded');
+    window.onload = function () {
+      console.timeEnd('window onload');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      console.timeEnd('DOMContentLoaded');
+    })
+  </script>
+</head>
+
+<body>
+  <h1>标题1</h1>
+  <img width="200" height="100" src="/assets/demo.jpg" />
+  <h2>标题3</h2>
+</body>
+
+</html>
