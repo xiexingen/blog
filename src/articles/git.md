@@ -292,3 +292,105 @@ rm -rf ../tmp & mkdir ../tmp
 // 将改动的文件以及层级拷贝进去
 xargs -a ../change.txt cp --parents -t ../tmp
 ```
+
+### 常用场景
+
+#### 修改提交信息
+
+```bash
+git commit --amend --only
+git commit --amend --only -m '这是修改后的信息'
+
+#修改提交信息中的用户名和邮箱
+git commit --amend --no-edit --author "xiexingen <1002275364@qq.com>"
+```
+
+#### 在错误的分支上做了修改同时已提交？（比如错误地提交到了 main）
+
+```bash
+# 新建分支
+$ git branch {{branch}}
+# 删除 main 分支的最后一次 commit
+$ git reset HEAD~ --hard
+# 删除的 commit 会切换到 {{branch}} 分支上
+$ git checkout {{branch}}
+```
+
+#### 修改提交内容
+
+```bash
+git commit --amend
+
+#删除所有 staged 改动
+git reset --hard HEAD
+#删除所有未 staged 改动
+git clean -fd
+加 -x 参数可删除所有 ignored 的文件
+git clean -fdx
+```
+
+#### 设置远程库
+
+```bash
+git remote set-url origin {{url}}
+```
+
+#### 更新 Github Fork 的项目
+
+```bash
+0. 添加 upstream 为 fork 的仓库地址[只需要做一次]
+git remote add upstream {{url}}
+
+1. 拉取远程 main 分支到当前分支
+git pull upstream main
+也可以这样
+git fetch upstream  # 拉取上游所有分支
+git merge upstream/main # 合并上游 main 分支到当前分支
+```
+
+#### 丢弃掉最后一次提交
+
+```bash
+# 已推送
+git reset HEAD^ --hard
+git push --force-with-lease [remote] [branch]
+
+# 未推送
+git reset --soft HEAD@{1}
+```
+
+#### 恢复删除了的分支
+
+```bash
+# 找到被删 分支 的 hash 值
+git reflog
+git checkout -b {{newBranchName}}
+git reset --hard {{hash}}
+```
+
+#### 撤销一个提交
+
+```bash
+# 找到要撤销的 commit hash
+$ git log 或 git reflog
+# 回滚
+$ git revert {{hash}}
+```
+
+#### 撤销某一个文件的修改
+
+```bash
+# 找到要文件修改的前一个 commit hash
+$ git log 或 git reflog
+# 回滚文件
+$ git checkout {{hash}} path/to/file
+```
+
+#### git 重置
+
+```bash
+git fetch origin
+git checkout master
+git reset --hard origin/master
+git clean -d --force
+```
