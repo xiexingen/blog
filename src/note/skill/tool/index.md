@@ -1,5 +1,6 @@
 ---
 title: js工具方法
+order: 50
 nav:
   title: 笔记
   path: /note

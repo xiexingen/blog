@@ -1,5 +1,6 @@
 ---
 title: 请求合并管理
+order: 5
 nav:
   title: 笔记
   path: /note

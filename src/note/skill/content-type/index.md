@@ -1,5 +1,6 @@
 ---
 title: Content-Type
+order: 10
 nav:
   title: 笔记
   path: /note

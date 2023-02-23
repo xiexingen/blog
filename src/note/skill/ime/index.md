@@ -1,5 +1,6 @@
 ---
 title: IME问题
+order: 40
 nav:
   title: 笔记
   path: /note

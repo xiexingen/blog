@@ -86,4 +86,5 @@ export default defineConfig({
       { title: 'GitHub', path: 'https://github.com/xiexingen' },
     ],
   },
+  webpack5: {},
 });

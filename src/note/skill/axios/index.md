@@ -1,5 +1,6 @@
 ---
 title: axios
+order: 40
 nav:
   title: 笔记
   path: /note

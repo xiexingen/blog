@@ -1,5 +1,6 @@
 ---
 title: 下载
+order: 100
 nav:
   title: 笔记
   path: /note

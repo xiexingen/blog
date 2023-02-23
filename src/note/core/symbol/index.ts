@@ -10,7 +10,6 @@ function create(
   if (!['object', 'function'].includes(typeof o)) {
     throw new TypeError(`Object prototype may only be an Object or null: ${o}`);
   }
-  debugger;
   // 创建构造函数
   const Ctor = function () {};
 
