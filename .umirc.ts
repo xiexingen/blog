@@ -3,9 +3,9 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   // base: '/blog/',
   // publicPath: '/blog/',
-  publicPath: 'https://fastly.jsdelivr.net/gh/xiexingen/blog@gh-pages/', // cdn.jsdelivr.net
-  // publicPath:
-  //   'https://github.com.cnpmjs.org/xiexingen/blog/tree/gh-pages/',
+  // 国内提速，部分案例会使用不了(如:web worker部分的案例)
+  // publicPath: 'https://fastly.jsdelivr.net/gh/xiexingen/blog@gh-pages/', // cdn.jsdelivr.net
+  // publicPath: 'https://github.com.cnpmjs.org/xiexingen/blog/tree/gh-pages/',
   title: '程序有Bug-秘密基地',
   favicon:
     'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
