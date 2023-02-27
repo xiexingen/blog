@@ -1,0 +1,52 @@
+
+[user]
+  name = 谢新根
+  email = 1002275364@qq.com
+
+[diff]
+    tool = bc4
+[difftool]
+    prompt = false
+[difftool "bc4"]
+    #use cygpath to transform cygwin path $LOCAL (something like /tmp/U5VvP1_abc) to windows path, because bc3 is a windows software
+    cmd = \"D:/Program Files/BCompare/BComp.exe\" "$(cygpath -w $LOCAL)" "$REMOTE"
+[merge]
+    tool = bc4
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "bc4"]
+    #trustExitCode = true
+    cmd = \"D:/Program Files/BCompare/BComp.exe\" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+
+[alias]
+  a = add
+  b = branch
+  c = commit
+  co = checkout
+  m = merge
+  r = restore
+  s = switch
+  st = status
+
+[core]
+  # 多平台换行符
+
+  ## 提交混合换行符的文件
+  # 1. 拒绝 Commit
+  safecrlf = true
+  # 2. 允许 Commit
+  # safecrlf = false
+  # 3. 警告 Commit
+  # safecrlf = warn
+
+  ## 转换换行符
+  # 1. Commit 时转换为 LF，Checkout 时转换为 CRLF
+  # autocrlf = true
+  # 2. Commit 时转换为 LF，Checkout 时不转换
+  autocrlf = input
+  # 3. Commit Checkout 均不转换
+  # autocrlf = false
+
+  ## 统一换行符为 LF (默认，同操作系统)
+  eol = lf

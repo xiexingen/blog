@@ -1,0 +1,1 @@
+(function(){var r={};self.onmessage=function(t){var n=t.data,e=n.canvas,a=e.getContext("2d");if(!a)throw new Error("Canvas \u672A\u5B58\u5728");a.clearRect(0,0,e.width,e.height),a.beginPath(),a.arc(100,100,100,0,Math.PI*2),a.fillStyle="green",a==null||a.fill(),a.stroke(),self.postMessage(!0)}})();

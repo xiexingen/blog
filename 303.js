@@ -1,1 +1,0 @@
-(function(){"use strict";function s(s){for(var e=0,t=0;t<=s;t++)e+=t;return e}self.onmessage=e=>{var t=e.data,a=s(t);self.postMessage(a)}})();
