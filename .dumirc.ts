@@ -38,5 +38,5 @@ export default defineConfig({
     // modifyVars: userConfig.theme,
     javascriptEnabled: true,
   },
-  ssr: {},
+  // ssr: {},
 });
