@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Input, Select, Card } from 'antd';
-import style from './place-content.less';
+import './place-content.less';
 
 const PlaceItems = [
   'start',
@@ -57,7 +57,7 @@ export default () => {
       }
       bordered={false}
     >
-      <div className={style.grid} style={cssStyle}>
+      <div className="style-grid-place-content" style={cssStyle}>
         <div className="item item-1">1</div>
         <div className="item item-2">2</div>
         <div className="item item-3">3</div>

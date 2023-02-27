@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './demo1.less';
+import './demo1.less';
 
 export default () => {
   return (
     <>
-      <ul className={`${style.flex} ${style.left}`}>
+      <ul className="style-flex style-flex-left">
         <li>Alibaba</li>
         <li>Tencent</li>
         <li>Baidu</li>
@@ -12,7 +12,7 @@ export default () => {
         <li>Ant</li>
         <li>Netease</li>
       </ul>
-      <ul style={{ marginTop: 20 }} className={`${style.flex} ${style.right}`}>
+      <ul style={{ marginTop: 20 }} className="style-flex style-flex-right">
         <li>Alibaba</li>
         <li>Tencent</li>
         <li>Baidu</li>

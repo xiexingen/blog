@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './absolute-transform.less';
+import './absolute-transform.less';
 
 export default () => {
   return (
-    <div className={style.container}>
-      <div className={style.children}></div>
+    <div className="style-absolute-center-absolute-transform">
+      <div className="children"></div>
     </div>
   );
 };

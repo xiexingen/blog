@@ -1,13 +1,13 @@
 import React from 'react';
-import style from './switch.less';
+import './switch.less';
 
 export default () => {
   return (
-    <div className={style.loading}>
-      <div className={style.squre}></div>
-      <div className={style.squre}></div>
-      <div className={style.squre}></div>
-      <div className={style.squre}></div>
+    <div className="style-loading-switch">
+      <div className="squre"></div>
+      <div className="squre"></div>
+      <div className="squre"></div>
+      <div className="squre"></div>
     </div>
   );
 };

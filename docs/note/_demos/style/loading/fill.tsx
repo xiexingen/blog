@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './fill.less';
+import './fill.less';
 
 export default () => {
   return (
-    <div className={style.loading}>
-      <div className={`${style.fill}`}></div>
+    <div className="style-loading-fill">
+      <div className="fill"></div>
     </div>
   );
 };

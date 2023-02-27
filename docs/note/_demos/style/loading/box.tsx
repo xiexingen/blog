@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './box.less';
+import './box.less';
 
 export default () => {
-  return <div className={styles.loading}></div>;
+  return <div className="style-loading-box"></div>;
 };

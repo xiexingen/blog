@@ -2,13 +2,12 @@
  * title: grid-template-areas 划分区域
  * description: 使用. 表示不需要划分的区域
  */
-
 import React from 'react';
-import style from './areas.less';
+import './areas.less';
 
 export default () => {
   return (
-    <div className={style.grid}>
+    <div className="style-grid-area">
       <div className="item item-1">1</div>
       <div className="item item-2">2</div>
       <div className="item item-3">3</div>

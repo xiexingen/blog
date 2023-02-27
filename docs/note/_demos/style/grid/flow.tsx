@@ -6,7 +6,7 @@
 import React from 'react';
 import { InfoCircleFilled } from '@ant-design/icons';
 import { Row, Col, Card, Tooltip } from 'antd';
-import style from './flow.less';
+import './flow.less';
 
 const GridComponent = ({ className }) => {
   return (
@@ -29,12 +29,12 @@ export default () => {
     <Row gutter={16} justify="space-around">
       <Col span={12}>
         <Card title="row" bordered={false}>
-          <GridComponent className={style.row} />
+          <GridComponent className="style-grid-flow-row" />
         </Card>
       </Col>
       <Col span={12}>
         <Card title="row dense" bordered={false}>
-          <GridComponent className={style.rowDense} />
+          <GridComponent className="style-grid-flow-rowDense" />
         </Card>
       </Col>
       <Col span={12}>
@@ -47,7 +47,7 @@ export default () => {
           }
           bordered={false}
         >
-          <GridComponent className={style.rowWithColumnSpan} />
+          <GridComponent className="style-grid-flow-rowWithColumnSpan" />
         </Card>
       </Col>
       <Col span={12}>
@@ -60,17 +60,17 @@ export default () => {
           }
           bordered={false}
         >
-          <GridComponent className={style.rowDenseWithColumnSpan} />
+          <GridComponent className="style-grid-flow-rowDenseWithColumnSpan" />
         </Card>
       </Col>
       <Col span={12}>
         <Card title="column" bordered={false}>
-          <GridComponent className={style.column} />
+          <GridComponent className="style-grid-flow-column" />
         </Card>
       </Col>
       <Col span={12}>
         <Card title="column dense" bordered={false}>
-          <GridComponent className={style.columnDense} />
+          <GridComponent className="style-grid-flow-columnDense" />
         </Card>
       </Col>
       <Col span={12}>
@@ -83,7 +83,7 @@ export default () => {
           }
           bordered={false}
         >
-          <GridComponent className={style.columnWithRowSpan} />
+          <GridComponent className="style-grid-flow-columnWithRowSpan" />
         </Card>
       </Col>
       <Col span={12}>
@@ -96,7 +96,7 @@ export default () => {
           }
           bordered={false}
         >
-          <GridComponent className={style.columnDenseWithRowSpan} />
+          <GridComponent className="style-grid-flow-columnDenseWithRowSpan" />
         </Card>
       </Col>
     </Row>

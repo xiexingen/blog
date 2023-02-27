@@ -1,14 +1,14 @@
 import React from 'react';
-import style from './spinner.less';
+import './spinner.less';
 
 export default () => {
   return (
-    <div className={style.loading}>
-      <div className={style.outer}>
-        <div className={`${style.inner} ${style.tl}`}></div>
-        <div className={`${style.inner} ${style.tr}`}></div>
-        <div className={`${style.inner} ${style.br}`}></div>
-        <div className={`${style.inner} ${style.bl}`}></div>
+    <div className="style-loading-spinner">
+      <div className="outer">
+        <div className="inner tl"></div>
+        <div className="inner tr"></div>
+        <div className="inner br"></div>
+        <div className="inner bl"></div>
       </div>
     </div>
   );

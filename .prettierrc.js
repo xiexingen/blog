@@ -2,7 +2,7 @@ module.exports = {
   printWidth: 80,
   proseWrap: 'never',
   singleQuote: true,
-  trailingComma: 'all',
+  trailingComma: "all",
   overrides: [
     {
       files: '*.md',
@@ -10,5 +10,9 @@ module.exports = {
         proseWrap: 'preserve',
       },
     },
+    {
+      files: ".prettierrc",
+      options: { parser: "json" }
+    }
   ],
 };

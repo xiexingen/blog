@@ -5,11 +5,11 @@
 
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'antd';
-import style from './display.less';
+import './display.less';
 
 const GridComponent = ({ className }) => {
   return (
-    <div className={style.container}>
+    <div className="style-grid-display">
       <span>头部</span>
       <div className={className}>
         <div className="item item-1">1</div>
@@ -32,12 +32,12 @@ export default () => {
     <Row gutter={16} justify="space-around">
       <Col span={8}>
         <Card title="grid" bordered={false}>
-          <GridComponent className={style.grid} />
+          <GridComponent className="grid" />
         </Card>
       </Col>
       <Col span={8}>
         <Card title="inline-grid" bordered={false}>
-          <GridComponent className={style['inline-grid']} />
+          <GridComponent className={'inline-grid'} />
         </Card>
       </Col>
     </Row>

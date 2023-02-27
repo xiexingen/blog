@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './flex.less';
+import './flex.less';
 
 export default () => {
   return (
-    <div className={style.container}>
-      <div className={style.children}></div>
+    <div className="style-absolute-center-flex">
+      <div className="children"></div>
     </div>
   );
 };

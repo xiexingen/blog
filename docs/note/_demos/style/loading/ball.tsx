@@ -1,16 +1,16 @@
 import React from 'react';
-import style from './ball.less';
+import './ball.less';
 
 export default () => {
   return (
-    <div className={style.loading}>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
-      <div className={style.ball}></div>
+    <div className="style-loading-ball">
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
     </div>
   );
 };

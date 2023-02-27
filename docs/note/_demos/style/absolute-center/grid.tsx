@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './grid.less';
+import './grid.less';
 
 export default () => {
   return (
-    <div className={style.container}>
-      <div className={style.children}></div>
+    <div className="style-absolute-center-grid">
+      <div className="children"></div>
     </div>
   );
 };

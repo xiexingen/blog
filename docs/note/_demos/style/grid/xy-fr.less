@@ -1,25 +1,24 @@
-.grid {
+.style-grid-xy-fr {
   display: grid;
   // 当过度缩小到一定程度会出错，所以通过minmax来避免给另一个范围值
   grid-template-columns: 2fr minmax(400px, 4fr) 1fr;
   // grid-template-columns: 2fr 4fr 1fr;
 
-  :global {
-    .item {
-      font-size: 4em;
-      text-align: center;
-      border: 1px solid #e5e4e9;
-    }
-    .item-1 {
-      background-color: #b53471;
-    }
+  .item {
+    font-size: 4em;
+    text-align: center;
+    border: 1px solid #e5e4e9;
+  }
 
-    .item-2 {
-      background-color: #ffcccc;
-    }
+  .item-1 {
+    background-color: #b53471;
+  }
 
-    .item-3 {
-      background-color: #ff4d4d;
-    }
+  .item-2 {
+    background-color: #ffcccc;
+  }
+
+  .item-3 {
+    background-color: #ff4d4d;
   }
 }

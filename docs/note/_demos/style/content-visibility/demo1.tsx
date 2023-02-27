@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { Card, Row, Col } from 'antd';
-import style from './demo1.less';
+import './demo1.less';
 
 const CardComponent = ({ item, type }) => {
   console.log(`${type}${item} rendered`);
@@ -38,7 +38,7 @@ export default () => {
         >
           {arr.map((item) => {
             return (
-              <div key={item} className={style.card}>
+              <div key={item} className="style-content-visibility-card">
                 <CardComponent item={item} type="normal" />
               </div>
             );
@@ -52,7 +52,7 @@ export default () => {
         >
           {arr.map((item) => {
             return (
-              <div key={item} className={style.cardVirtual}>
+              <div key={item} className="style-content-visibility-cardVirtual">
                 <CardComponent item={item} type="auto" />
               </div>
             );

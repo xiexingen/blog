@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Card, Select, Input } from 'antd';
-import style from './grid-auto.less';
+import './grid-auto.less';
 
 const GridAutoFlows = ['row', 'column'].map((item) => ({
   label: item,
@@ -34,7 +34,7 @@ export default () => {
       }
       bordered={false}
     >
-      <div className={style.grid} style={styles}>
+      <div className="style-grid-grid-auto" style={styles}>
         <div className="item item-1">1</div>
         <div className="item item-2">2</div>
         <div className="item item-3">3</div>

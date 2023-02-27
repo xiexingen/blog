@@ -14,26 +14,7 @@ export default defineConfig({
   // mode: 'site',
   // more config: https://d.umijs.org/config
   exportStatic: {},
-  styles: [
-    `
-    .site-app > div > div:nth-child(3){
-      overflow-y: auto;
-    }
-    .markdown table td:first-child {
-      font-weight: 500;
-      background: #fcfcfc;
-    }
-    .markdown table td > a:not(:last-child) {
-      margin-right: 18px;
-    }
-    .markdown table td > a:not(:last-child)::after {
-      position: absolute;
-      margin: 0 6px 0 8px;
-      color: #bbb;
-      content: '|';
-      pointer-events: none;
-    }`,
-  ],
+  // styles: [],
   // links: [
   //   {
   //     rel: 'stylesheet',

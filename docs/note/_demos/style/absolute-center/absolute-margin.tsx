@@ -1,10 +1,10 @@
 import React from 'react';
-import style from './absolute-margin.less';
+import './absolute-margin.less';
 
 export default () => {
   return (
-    <div className={style.container}>
-      <div className={style.children}></div>
+    <div className="style-absolute-center-absolute-margin">
+      <div className="children"></div>
     </div>
   );
 };

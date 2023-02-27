@@ -5,12 +5,12 @@
 
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'antd';
-import style from './sub-span.less';
+import './sub-span.less';
 
 export default () => {
   return (
     <Card title="设置第三个元素跨行跨列" bordered={false}>
-      <div className={style.grid}>
+      <div className="style-grid-sub-span">
         <div className="item item-1">1</div>
         <div className="item item-2">2</div>
         <div className="item item-3">3</div>

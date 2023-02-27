@@ -1,55 +1,54 @@
-.grid {
+.style-grid-sub-span {
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
 
-  :global {
-    .item {
-      font-size: 4em;
-      text-align: center;
-      border: 1px solid #e5e4e9;
-    }
-    .item-1 {
-      background-color: #b53471;
-    }
+  .item {
+    font-size: 4em;
+    text-align: center;
+    border: 1px solid #e5e4e9;
+  }
 
-    .item-2 {
-      background-color: #ffcccc;
-    }
+  .item-1 {
+    background-color: #b53471;
+  }
 
-    // 跨两列
-    .item-3 {
-      background-color: #ff4d4d;
-      // 相当于 grid-column: 1/3;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      // 相当于 grid-row: 1 / 3;
-      grid-row-start: 1;
-      grid-row-end: 3;
-    }
+  .item-2 {
+    background-color: #ffcccc;
+  }
 
-    .item-4 {
-      background-color: #ffaf40;
-    }
+  // 跨两列
+  .item-3 {
+    background-color: #ff4d4d;
+    // 相当于 grid-column: 1/3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    // 相当于 grid-row: 1 / 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
 
-    .item-5 {
-      background-color: #32ff7e;
-    }
+  .item-4 {
+    background-color: #ffaf40;
+  }
 
-    .item-6 {
-      background-color: #18dcff;
-    }
+  .item-5 {
+    background-color: #32ff7e;
+  }
 
-    .item-7 {
-      background-color: #7d5fff;
-    }
+  .item-6 {
+    background-color: #18dcff;
+  }
 
-    .item-8 {
-      background-color: #0652dd;
-    }
+  .item-7 {
+    background-color: #7d5fff;
+  }
 
-    .item-9 {
-      background-color: #4b4b4b;
-    }
+  .item-8 {
+    background-color: #0652dd;
+  }
+
+  .item-9 {
+    background-color: #4b4b4b;
   }
 }

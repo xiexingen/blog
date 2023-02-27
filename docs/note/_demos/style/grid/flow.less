@@ -1,100 +1,94 @@
-.row,
-.rowWithColumnSpan {
+.style-grid-flow-row,
+.style-grid-flow-rowWithColumnSpan {
   grid-auto-flow: row;
 }
 
-.rowDense,
-.rowDenseWithColumnSpan {
+.style-grid-flow-rowDense,
+.style-grid-flow-rowDenseWithColumnSpan {
   grid-auto-flow: row dense;
 }
 
-.column,
-.columnWithRowSpan {
+.style-grid-flow-column,
+.style-grid-flow-columnWithRowSpan {
   grid-auto-flow: column;
 }
-.columnDense,
-.columnDenseWithRowSpan {
+.style-grid-flow-columnDense,
+.style-grid-flow-columnDenseWithRowSpan {
   grid-auto-flow: column dense;
 }
 
-.rowWithColumnSpan,
-.rowDenseWithColumnSpan {
-  :global {
-    // 设置item-1，item-2,item-3跨列2列
-    .item.item-1,
-    .item.item-2,
-    .item.item-3 {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
+.style-grid-flow-rowWithColumnSpan,
+.style-grid-flow-rowDenseWithColumnSpan {
+  // 设置item-1，item-2,item-3跨列2列
+  .item.item-1,
+  .item.item-2,
+  .item.item-3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 }
 
-.columnWithRowSpan,
-.columnDenseWithRowSpan {
-  :global {
-    // 设置item-1，item-2,item-3跨列2列
-    .item.item-1,
-    .item.item-2,
-    .item.item-3 {
-      grid-row-start: 1;
-      grid-row-end: 3;
-    }
+.style-grid-flow-columnWithRowSpan,
+.style-grid-flow-columnDenseWithRowSpan {
+  // 设置item-1，item-2,item-3跨列2列
+  .item.item-1,
+  .item.item-2,
+  .item.item-3 {
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
 }
 
-.row,
-.rowWithColumnSpan,
-.rowDense,
-.rowDenseWithColumnSpan,
-.column,
-.columnWithRowSpan,
-.columnDense,
-.columnDenseWithRowSpan {
+.style-grid-flow-row,
+.style-grid-flow-rowWithColumnSpan,
+.style-grid-flow-rowDense,
+.style-grid-flow-rowDenseWithColumnSpan,
+.style-grid-flow-column,
+.style-grid-flow-columnWithRowSpan,
+.style-grid-flow-columnDense,
+.style-grid-flow-columnDenseWithRowSpan {
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
 
-  :global {
-    .item {
-      font-size: 4em;
-      text-align: center;
-      border: 1px solid #e5e4e9;
-    }
-    .item-1 {
-      background-color: #b53471;
-    }
+  .item {
+    font-size: 4em;
+    text-align: center;
+    border: 1px solid #e5e4e9;
+  }
+  .item-1 {
+    background-color: #b53471;
+  }
 
-    .item-2 {
-      background-color: #ffcccc;
-    }
+  .item-2 {
+    background-color: #ffcccc;
+  }
 
-    .item-3 {
-      background-color: #ff4d4d;
-    }
+  .item-3 {
+    background-color: #ff4d4d;
+  }
 
-    .item-4 {
-      background-color: #ffaf40;
-    }
+  .item-4 {
+    background-color: #ffaf40;
+  }
 
-    .item-5 {
-      background-color: #32ff7e;
-    }
+  .item-5 {
+    background-color: #32ff7e;
+  }
 
-    .item-6 {
-      background-color: #18dcff;
-    }
+  .item-6 {
+    background-color: #18dcff;
+  }
 
-    .item-7 {
-      background-color: #7d5fff;
-    }
+  .item-7 {
+    background-color: #7d5fff;
+  }
 
-    .item-8 {
-      background-color: #0652dd;
-    }
+  .item-8 {
+    background-color: #0652dd;
+  }
 
-    .item-9 {
-      background-color: #4b4b4b;
-    }
+  .item-9 {
+    background-color: #4b4b4b;
   }
 }

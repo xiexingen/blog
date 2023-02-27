@@ -5,12 +5,12 @@
 
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'antd';
-import style from './place-self.less';
+import './place-self.less';
 
 export default () => {
   return (
     <Card title="注意看每个元素的对齐方式" bordered={false}>
-      <div className={style.grid}>
+      <div className="style-grid-place-self">
         <div className="item item-1">1</div>
         <div className="item item-2">2</div>
         <div className="item item-3">3</div>

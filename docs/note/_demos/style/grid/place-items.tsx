@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Input, Select, Card } from 'antd';
-import style from './place-items.less';
+import './place-items.less';
 
 const PlaceItems = ['start', 'end', 'center', 'stretch'].map((item) => ({
   label: item,
@@ -49,7 +49,7 @@ export default () => {
       }
       bordered={false}
     >
-      <div className={style.grid} style={cssStyle}>
+      <div className="style-grid-place-items" style={cssStyle}>
         <div className="item item-1">1</div>
         <div className="item item-2">2</div>
         <div className="item item-3">3</div>
