@@ -8,7 +8,9 @@ group:
   order: 10
 ---
 
-# 模块化的由来
+# 模块化的介绍
+
+> 注意: 本模块化系列文章源于参考了网络上的文章带上了自己的理解以及实际操作案例
 
 ## 前言
 
@@ -99,24 +101,24 @@ js 加载的时候浏览器会停止页面渲染，加载文件越多，页面�
 ```js
 // script 引入 requireJS 后，需要对 requireJs 进行配置
 requirejs.config({
-  baseUrl: "/assets/js", // 配置基础路径
+  baseUrl: '/assets/js', // 配置基础路径
   waitSeconds: 8, // 设置超时为6秒
   // 配置映射路径，会跟上面的 baseUrl 进行合并
   paths: {
-    jquery: "jquery-1.11.3",
-    jqueryui: "jquery-ui",
-    slimscroll: "jquery.slimscroll.min",
-    mock: "mock",
+    jquery: 'jquery-1.11.3',
+    jqueryui: 'jquery-ui',
+    slimscroll: 'jquery.slimscroll.min',
+    mock: 'mock',
   },
   // 配置依赖
   shim: {
-    slimscroll: ["jquery"],
+    slimscroll: ['jquery'],
   },
-  urlArgs: "v=2.1.2", // 版本，用来解决浏览器缓存问题
+  urlArgs: 'v=2.1.2', // 版本，用来解决浏览器缓存问题
 });
 
 // 使用，由于上面已经定义了 jquery 在要用的地方直接通过 require 来加载
-require(["jquery", "mock", "jqueryui"], function ($, Mock) {
+require(['jquery', 'mock', 'jqueryui'], function ($, Mock) {
   // 这里面通过 $ 就可以拿到 jquery 实例, Mock 就可以拿到 mock 实例
 });
 ```
@@ -161,10 +163,10 @@ export let name = 'name'; // 声明命名导出
 导入案例代码如:
 
 ```js
-import module1 from "module"; // 默认导入，注意自定义名称
-import { m1, p1 } from "module"; // 解构导入
-import * as module from "module";
-const promise = import("module"); // 动态导入(异步导入)
+import module1 from 'module'; // 默认导入，注意自定义名称
+import { m1, p1 } from 'module'; // 解构导入
+import * as module from 'module';
+const promise = import('module'); // 动态导入(异步导入)
 ```
 
 ## webpack 基础
