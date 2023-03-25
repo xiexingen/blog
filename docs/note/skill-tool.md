@@ -13,6 +13,10 @@ group:
 
 ## 代码演示
 
+### 时间分片
+
+<code src="./_demos/skill/tool/demo/date-step.tsx"></code>
+
 ### 金额格式化
 
 <code src="./_demos/skill/tool/demo/money-format.tsx"></code>
@@ -32,9 +36,9 @@ group:
 ### URL 查询参数
 
 ```js
-const params = new URLSearchParams(location.search.replace(/\?/gi, "")); // location.search = "?name=xxg&sex=male"
-params.has("name"); // true
-params.get("sex"); // "male"
+const params = new URLSearchParams(location.search.replace(/\?/gi, '')); // location.search = "?name=xxg&sex=male"
+params.has('name'); // true
+params.get('sex'); // "male"
 ```
 
 ### 精确小数位

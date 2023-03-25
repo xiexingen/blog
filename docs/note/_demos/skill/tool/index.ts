@@ -233,3 +233,29 @@ export function copyToClipborad(text: string) {
 export function getSelectedText() {
   return window.getSelection()?.toString();
 }
+
+
+/**
+ * 以指定 step 为基准值计算最近一次的时间
+ * @param step 基准值(默认为15)
+ * @param previous 是否上一个时间段
+ * @example
+ * 假如当前时间是 2023-03-25 19:20:20
+ * ```js
+ * getStartTime(15) == > 2023-03-25 19:15:00
+ * ```
+ */
+export function getTimePoint(step: number,previous: boolean){
+  const now = new Date();
+  let minutes = now.getMinutes();
+  // 如果是往前取的话，用当前分钟减去相对于基准值多出来的分钟
+  if (previous) {
+    minutes -= minutes % step;
+  } else {
+    // 如果是往往后的话，用当前分钟加上相对于下一个时间多缺少的部分
+    minutes += step - minutes % step;
+  }
+  const date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), 0, 0);
+  date.setMinutes(minutes);
+  return date;
+}
