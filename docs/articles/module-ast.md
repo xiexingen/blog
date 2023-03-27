@@ -1498,7 +1498,218 @@ const autoImportPlugin = {
 
 ### 星耀:实现简易版 ESLint
 
+相信大家在工作中都肯定使用过 [ESLint](https://www.npmjs.com/package/eslint)，今天我们就来扒一扒它的工作原理。本节会带着大家手写一个简易版的 ESLint，整体不难，更多的是抛砖引玉，帮助大家更好的理解 ESLint 的工作原理。
+
+在手写前先补充一个前置小知识：其实 [Babel](https://babeljs.io/docs/) 里面的 AST 遍历也是有生命周期的，有两个钩子：在遍历开始之前或遍历结束之后，它们可以用于设置或清理/分析工作。
+
+在手写前先补充一个前置小知识：其实 Babel 里面的 AST 遍历也是有生命周期的，有两个钩子：在遍历开始之前或遍历结束之后，它们可以用于设置或清理/分析工作
+
+```js
+export default function () {
+  return {
+    //遍历开始之前
+    pre(state) {
+      this.cache = new Map();
+    },
+    visitor: {
+      StringLiteral(path) {
+        this.cache.set(path.node.value, 1);
+      },
+    },
+    //遍历结束后
+    post(state) {
+      console.log(this.cache);
+    },
+  };
+}
+```
+
+前置小知识学完我们开干吧！ ESLint 中的一个比较简单的校验规则：[noconsole](https://eslint.org/docs/latest/rules/no-console#rule-details)，也就是代码中不允许有`console.log`，我们来简单实现一下他
+
+源代码：基于此规则，校验肯定不能通过了
+
+```js
+const print = (text) => {
+  console.log(text);
+  alert(text);
+};
+```
+
+思路：遍历 ATS，然后找出 console 节点，如果有 console 就报错,上代码
+
+```js
+/**
+ * 实现一个简易版的eslint插件
+ */
+// babel核心模块
+const core = require('@babel/core');
+//用来生成或者判断节点的AST语法树的节点
+const types = require('@babel/types');
+
+// fix=true：自动修复
+const noConsoleLogPlugin = ({ fix = false }) => ({
+  //遍历前
+  pre(file) {
+    file.set('errors', []);
+  },
+  visitor: {
+    CallExpression(path, state) {
+      const errors = state.file.get('errors');
+      const { node } = path;
+      if (node.callee.object && node.callee.object.name === 'console') {
+        //抛出一个语法错误
+        errors.push(
+          path.buildCodeFrameError(`代码中不能出现console语句`, Error),
+        );
+        //如果启动了fix，就删掉该节点
+        if (fix) {
+          path.parentPath.remove();
+        }
+      }
+    },
+  },
+  //遍历后
+  post(file) {
+    console.log(...file.get('errors'));
+  },
+});
+
+// 转换前的代码
+const sourceCode = `
+const print=(text)=>{
+  console.log(text);
+  alert(text)
+}`;
+
+// 通过插件对箭头函数进行转换
+const targetSource = core.transform(sourceCode, {
+  //使用插件,可以传入支持的配置项
+  plugins: [noConsoleLogPlugin({ fix: true })],
+});
+
+console.log(`输入:\r\n${sourceCode}`);
+/**
+ * 此处会输出
+ */
+console.log(`输出:\r\n${targetSource.code}`);
+```
+
+最后看运行效果
+
+![eslint-result](./assets/module-ast/eslint-result.png)
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-eslint)
+
 ### 王者:实现代码压缩
+
+代码压缩一般是在项目打包上线阶段做的，平时大家可能更多的是直接使用插件，今天也来趴一趴它的工作原理。
+
+压缩其实也很简单，就是把变量从有意义变成无意义，保证尽可能的短，例如变成：\_、a、b 等，当然其实远远不止这些，还有将空格缩进取消等等，此处同样也只是抛砖引玉。
+
+源代码：
+
+```js
+const print = (text) => {
+  const now = new Date().getTime();
+  console.log(now);
+  function log() {
+    console.log(new Date(now).toString());
+  }
+};
+```
+
+压缩后希望将 print、now、log 这些命名进行压缩。
+
+整体思路：
+
+第一步：需要捕获那些能够生成作用域的节点（函数、类的函数、函数表达式、语句块、if else 、while、for 等），因为只要有作用域，就有可能会使用变量
+第二步：给这些作用域内的捕获到的变量重新命名，进行简化
+
+1. 需要捕获那些能够生成作用域的节点
+
+这里引入一个新的知识点：`Bindings`，它是变量引用的集合。比如在下面这个例子中：
+
+```js
+function print() {
+  var now = new Date().getTime();
+
+  now; // 这里是该作用域下的一个引用
+
+  function subPrint() {
+    now; // 这里是上级作用域下的一个引用
+  }
+}
+```
+
+now 与 print 作用域和 subPrint 作用域之间的关系就称为 binding，它的大致结构如下：
+
+```js
+{
+  identifier: node,
+  scope: scope,
+  path: path,
+  kind: 'var',
+
+  referenced: true,
+  references: 3,
+  referencePaths: [path, path, path],
+
+  constant: false,
+  constantViolations: [path]
+}
+```
+
+有了这些信息我们就可以查找一个变量的所有引用，并且知道变量的类型是什么（参数，定义等等），寻找到它所属的作用域，或者得到它的标识符的拷贝。 甚至可以知道它是否是一个常量，并查看是哪个路径让它不是一个常量。
+
+知道了 binding 是否为常量在很多情况下都会很有用，最大的用处就是代码压缩。
+
+回到实战中，可以通过`Scopable`这个别名来捕获所有作用域节点，然后通过`path.scope.bindings`取出作用域内的所有变量
+
+```js
+const uglifyPlugin = () => {
+  return {
+    visitor: {
+      // 这是一个别名，用于捕获所有作用域节点：函数、类的函数、函数表达式、语句快、if else 、while、for
+      Scopable(path) {
+        // path.scope.bindings 取出作用域内的所有变量
+      },
+    },
+  };
+};
+```
+
+2. 给这些捕获到的变量重新命名
+
+```js
+const uglyPlugin = {
+  visitor: {
+    // 这是一个别名，用于捕获所有作用域节点(函数、类的方法、函数表达式、语句块、if else、while、for)
+    Scopable(path) {
+      // path.scope.bindings 可以取出作用域内的所有变量
+      //取出后进行重命名
+      Object.entries(path.scope.bindings).forEach(([key, binding]) => {
+        //在当前作用域内生成一个新的uid，并且不会和任何本地定义的变量冲突的标识符
+        const newName = path.scope.generateUid();
+        binding.path.scope.rename(key, newName);
+      });
+    },
+  },
+};
+```
+
+效果：代码中的变量命名已经经过压缩。如下图(假装是个图片)
+
+```js
+const _temp = (_temp5) => {
+  const _temp6 = new Date().getTime();
+  console.log(_temp6);
+  function _temp7() {
+    console.log(new Date(_temp6).toString());
+  }
+};
+```
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-ugly)
 
 ### 最强王者:实现按需加载插件
 
