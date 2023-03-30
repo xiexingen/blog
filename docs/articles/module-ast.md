@@ -1713,6 +1713,203 @@ const _temp = (_temp5) => {
 
 ### 最强王者:实现按需加载插件
 
+相信大家在工作中肯定都用过 [Lodash](https://lodash.com/) 这个工具库，它是一个一致性、模块化、高性能的 JavaScript 实用工具库。
+
+但是在使用它的时候有一个痛点，那就是它不支持按需加载，只要我们引用了这个工具库中的某个方法，就相当于引用整个工具库。
+
+这无疑是不能接受的，今天我们通过一个手写的 Babel 插件来解决这个痛点问题。
+
+在 Webpack 中使用 Babel 插件，配置：
+
+```js
+const path = require('path');
+
+// CommonJS 的写法
+module.exports = {
+  mode: 'development', // 开发环境，不压缩代码
+  entry: './src/main.js', // 配置入口文件，跟很多后端一样 习惯叫 main
+  output: {
+    path: path.resolve('dist'),
+    filename: 'bundle.js',
+  },
+  devtool: 'source-map', // 方便查看打包后的代码
+  // 想查看没有使用按需引入插件的时候的效果可以注释下面整个 module，然后查看 dist 目录下的代码
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              //我们自己手写的babel-plugin-import插件(数组中的第一个参数为我们的插件地址，第二个参数为我们的配置)
+              [
+                path.resolve(__dirname, 'plugins/babel-plugin-import.js'),
+                {
+                  libraryName: 'lodash',
+                  // libraryDirectory: 'lib', // 我们所使用的的版本不在 lib 中
+                },
+              ],
+            ],
+          },
+        },
+      },
+    ],
+  },
+};
+```
+
+源代码（src/main.js）：
+
+```js
+import { get } from 'lodash';
+console.log(get(null, 'test', '-'));
+```
+
+我们先看看未使用插件按需加载的情况效果图(可以在案例源码中吧 webpack.config.js 中的 module 注释看效果):
+
+```js
+import { get } from 'lodash';
+
+console.log(get(null, 'test', '-'));
+```
+
+只用了 lodash 中的一个 get 方法，实际编译后有 400 多 k
+
+![no-babel-import-result](./assets/module-ast/no-babel-import-result.png)
+
+解决思路：将源代码变成这样
+
+```js
+import get from 'lodash/get';
+import find from 'lodash/find';
+import pick from 'lodash/pick';
+
+console.log(get, find, pick);
+```
+
+整体方案：
+
+第一步：在插件中拿到我们在插件调用时传递的参数 libraryName
+第二步：获取 import 节点，找出引入模块是 libraryName 的语句
+第三步：进行批量替换旧节点
+
+1. 在插件中拿到我们在插件调用时传递的参数 libraryName
+
+```js
+/**
+ * 实现按需加载插件
+ */
+// babel核心模块
+const core = require('@babel/core');
+//用来生成或者判断节点的AST语法树的节点
+const types = require('@babel/types');
+// 用来生成模板代码
+const template = require('@babel/template');
+
+const visitor = {
+  ImportDeclaration(path, state) {
+    // 通过 state.opts 可以获取到配置项
+    const { libraryName, libraryDirectory } = state.opts;
+  },
+};
+
+// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+module.exports = function () {
+  return {
+    visitor,
+  };
+};
+```
+
+2. 获取 import 节点，找出引入模块是 libraryName 的语句
+
+```js
+/**
+ * 实现按需加载插件
+*/
+// babel核心模块
+const core = require("@babel/core");
+//用来生成或者判断节点的AST语法树的节点
+const types = require('@babel/types');
+// 用来生成模板代码
+const template = require("@babel/template");
+
+const visitor = {
+  ImportDeclaration(path, state) {
+    // 通过 state.opts 可以获取到配置项
+    const { libraryName, libraryDirectory } = state.opts;
++    const { node } = path; //获取节点
++    const { specifiers } = node; //获取批量导入声明数组(包括default导入)
++    //如果当前的节点的模块名称是我们需要的库的名称，并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
++    if ( node.source.value === libraryName && !types.isImportDefaultSpecifier(specifiers[0])) {
++    }
+  },
+}
+
+// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+module.exports = function () {
+  return {
+    visitor
+  }
+}
+```
+
+3. 进行批量替换旧节点
+
+```js
+/**
+ * 实现按需加载插件
+*/
+// babel核心模块
+const core = require("@babel/core");
+//用来生成或者判断节点的AST语法树的节点
+const types = require('@babel/types');
+// 用来生成模板代码
+const template = require("@babel/template");
+
+const visitor = {
+  ImportDeclaration(path, state) {
+    // 通过 state.opts 可以获取到配置项
+    const { libraryName, libraryDirectory } = state.opts;
+    const { node } = path; //获取节点
+    const { specifiers } = node; //获取批量导入声明数组(包括default导入)
+    //如果当前的节点的模块名称是我们需要的库的名称，并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
+    if (
+      node.source.value === libraryName && !types.isImportDefaultSpecifier(specifiers[0])
+    ) {
++      //遍历批量导入声明数组
++      const declarations = specifiers.map((specifier) => {
++        //返回一个 import Declaration 节点，这里也可以用 template
++        return types.importDeclaration(
++          //导入声明 import DefaultSpecifier get
++          [types.importDefaultSpecifier(specifier.local)],
++          //导入模块 source lodash/get(不同的包可能处理不同，有些没有lib目录，有些叫别的名称)
++          types.stringLiteral(
++            libraryDirectory
++              ? `${libraryName}/${libraryDirectory}/${specifier.imported.name}`
++              : `${libraryName}/${specifier.imported.name}`)
++        );
++      });
++      path.replaceWithMultiple(declarations); //替换当前节点
+    }
+  },
+}
+
+// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+module.exports = function () {
+  return {
+    visitor
+  }
+}
+```
+
+再看看最终打包的效果
+
+![babel-import-result](./assets/module-ast/babel-import-result.png)
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-babel-plugin-import)
+
 ### 荣耀王者:实现 Typescript 的类型校验
 
 ## 在线工具

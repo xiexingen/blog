@@ -1,0 +1,920 @@
+// #region DESCRIPTION
+
+// IDE不要配置自定义快捷键
+// 有用IDE和编辑器，将编辑器快捷键配置和IDE一致
+
+// Alt (Alternate), 切换改变、修改之意, 侧重“动”。如：实现切换窗口、关闭当前应用程序、选择(访问)菜单、命令和选项等功能。苹果上为Option键，用作其他命令代码的修饰键。
+// Ctrl (Control), 控制键, 侧重“控”
+// Shift 转换键, 辅助控制键, 范围获取键, 侧重“辅助”(挂档)。如：字符选择, 输入切换、字母大小写及数字字符转换。 不单独设置快捷按键,
+
+// 快捷键的设定原则：
+// 1. 不可覆盖系统常用 `Ctrl+Z/A/C/V/X/W/O/Q/S/F/H` 等按键
+// 2. 不可单独使用 `Shift` 按键
+// 3. 不单独使用 `F1~F12` 功能键
+// 4. 避免使用 `Alt+字母` 按键，此操作通常访问菜单
+// 5. 避开编辑器/IDE在其领域的常识性、公用性 Keymap 按键，如 `F5` `Ctrl+P`, `Ctrl+Shift+P`, `Ctrl+R`, `Ctrl+G`, `Ctrl+;`, `Ctrl+~` 等最通用的按键
+// 不建议选择依赖在线服务的插件，离线不可用，运用时需要连接网络等待
+
+// 可安装 Snippets 代码块，实现快速编码，
+// 可安装 Formatter 实现格式化代码
+
+// ------
+
+/* 窗口器 */
+// 新建文件    ctrl+n
+// 新建窗口    ctrl+shift+n
+// 打开文件    ctrl+o
+// 打开目录    ctrl+shift+o
+// 在新窗口打开当前文件    ctrl+alt+shift+o *
+// 关闭当前编辑器    ctrl+w
+// 关闭所有编辑器    ctrl+k+w *
+// 退出当前程序    ctrl+shift+w
+// 本地资源管理器打开文件所在位置 alt+x
+// 菜单栏显示隐藏   ctrl+t+m
+// 状态栏显示隐藏   ctrl+t+s
+// 侧边栏显示隐藏   ctrl+b
+
+/* 通用指令 */
+// 执行编辑器和插件的命令    ctrl+shift+p
+// 快速定位文件    ctrl+p
+// 跳转到行(Line)    ctrl+g
+// 查看定义(Definition) f12
+// 查看引用(Reference) shift+f12
+// 打开或关闭命令终端    ctrl+~
+// 列出文件中的 function ，可选择跳转(Symbol)    ctrl+r
+// 列出整个工程文件中的 function ，可选择跳转    ctrl+shift+r
+// 上一个function标识(Symbol) shift+f7
+// 下一个function标识(Symbol) f7
+// 代码换行显示切换 alt+z
+// 全屏    ctrl+k+z* / f11
+
+/* 加书签 */
+// 添加、取消书签         ctrl+k+k
+// 下一书签              ctrl+k+n
+// 上一书签              ctrl+k+p
+// 清除当前文档所有书签    ctrl+k+c
+// 当前文档所有书签列表    ctrl+k+a
+
+/* 强大的选择功能 */
+// 列模式选择    ctrl+d
+// 列模式选择所有项 alt+f3
+// 列模式垂直向上/下    ctrl+shift+↑/↓
+
+// 按行步进选择    ctrl+l
+// 层级范围向内(inner)、外(outer)选择    alt+shift+i←/o→
+// 按符号范围选择   alt+shift+({["<` *
+
+// Sublime Text 中向外扩展选择(expand selection)
+// 到行(line)           ctrl+e+l #
+// 括号对(brackets)     ctrl+e+b #
+// 同层级(indentation)  ctrl+e+i #
+// 同标签(tag)          ctrl+e+t #
+// 同作用域(scope)      ctrl+e+s #
+// 同段落(paragraph)    ctrl+e+p #
+
+// 删除行    ctrl+shift+k
+// 复制当前内容插入到上/下一位置 alt+shift+↑/↓
+
+/* 缩进和折叠 */
+// 代码缩进    ctrl+[/]
+// 当前代码折叠    ctrl+shift+[
+// 当前代码展开    ctrl+shift+]
+// 展开所有    ctrl+k+j
+// 层级折叠 Sublime Text 和 VS Code 有异同
+// Sublime Text 中
+// 层级折叠    ctrl+k+1-9
+// 展开所有    ctrl+k+0/j
+// 折叠属性    ctrl+k+t
+// VS Code 中
+// 层级折叠    ctrl+k+1~7
+// 折叠所有    ctrl+k+0
+// 折叠块级注释 ctrl+k+/
+
+/* 分屏(组)与移动 */
+// 聚焦侧边栏    ctrl+0
+// Sublime Text 分屏强大灵活：
+// 聚焦第1至9组     ctrl+1-9
+// 移至第1至9组     ctrl+shift+1-9
+// alt+shift+1/2(水平)/3/4/5(四宫格)/8(2个垂直)/9(3个垂直)
+
+// VS Code分屏不灵活，移动切换灵活，顶多3个分屏(需要开太多分屏？)
+// 新建编辑器分组(分屏)    ctrl + \
+// 撤销新建编辑器分组(撤销分屏)    ctrl+shift+ \
+// 垂直、水平方向分屏(Layout)    shift+alt+l *
+// 第1、2、3个编辑器组    ctrl+1/2/3
+// 移至第1、2、3个编辑器组    ctrl+shift+1/2/3 #
+// 编辑器移至前、后一组    ctrl+shift+pageup/pagedow
+// 编辑器在组内向左、右移    ctrl+alt+pageup/pagedown *
+// 前、后切换编辑器    ctrl+pageup/pagedown
+// 前、后聚焦编辑组    ctrl+alt+shift+pageup/pagedown *
+
+// 对HTML、CSS操作：强大的Emmet
+// HTML标签、CSS选择器 中以“属性、值”步进选择(向前、后)    alt+</>
+// HTML 中上、下一编辑点  ctrl+alt+</>
+// HTML 中向层级内、外选择      alt+shift+-/=
+// HTML 添加包裹标签
+// HTML 更新、移除标签   ctrl+shift+;/"
+
+/* 变量命名方式更新 */
+// underline(snake)             ctrl+u+s
+// screaming_snake(constant)    ctrl+u+u
+// camel                        ctrl+u+c
+// pascal                       ctrl+u+p
+// dot                          ctrl+u+d
+// dash(kebab)                  ctrl+u+k
+// separate_words               ctrl+u+b
+// slash(path)                  ctrl+u+/
+// back_slash                   ctrl+u+\
+
+// 触发建议        alt+/
+// 触发建议细节     ctrl+alt+/
+// 触发参数提示     ctrl+shift+alt+/
+
+// 查看编辑器输出日志    ctrl+shift+u
+
+// #endregion DESCRIPTION
+
+[
+  /* 编辑器部分 ⚙️⚙️ */
+
+  // #region 编辑器控制
+
+  // 打开文件位置
+  {
+    "key": "alt+x",
+    "command": "workbench.action.files.revealActiveFileInWindows"
+  },
+  // 保存所有
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  // 打开目录
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.files.openFolderInNewWindow"
+  },
+  // 在新窗口打开当前文件
+  {
+    "key": "ctrl+alt+shift+o",
+    "command": "workbench.action.files.showOpenedFileInNewWindow"
+  },
+  // 在新窗口打开文件夹
+  {
+    "key": "ctrl+k ctrl+o",
+    "command": "workbench.action.files.openFolder"
+  },
+  // 清除最近打开过的文件
+  {
+    "key": "ctrl+k ctrl+h",
+    "command": "workbench.action.clearRecentFiles"
+  },
+  // 关闭/退出当前目录
+  {
+    "key": "ctrl+k ctrl+q",
+    "command": "workbench.action.closeFolder"
+  },
+  {
+    "key": "ctrl+k f",
+    "command": "-workbench.action.closeFolder"
+  },
+  // 关闭所有编辑器窗口
+  {
+    "key": "ctrl+k ctrl+w",
+    "command": "workbench.action.closeAllEditors"
+  },
+  // 关闭其它编辑器窗口
+  {
+    "key": "ctrl+alt+w",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  // 切换面板
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  // Zen Mode
+  {
+    "key": "ctrl+k ctrl+z",
+    "command": "workbench.action.toggleZenMode"
+  },
+  // 另存为
+  {
+    "key": "ctrl+k ctrl+s",
+    "command": "workbench.action.files.saveAs"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "-markdown-preview-enhanced.syncPreview",
+    "when": "editorLangId == 'markdown'"
+  },
+
+  // #endregion 编辑器控制
+
+  // #region 编辑器面板
+
+  // 新建编辑器分组 Ctrl + \
+  {
+    "key": "ctrl+oem_5",
+    "command": "workbench.action.splitEditor"
+  },
+  // 撤销新建编辑器分组 Ctrl + Shift + \
+  {
+    "key": "ctrl+shift+oem_5",
+    "command": "workbench.action.joinTwoGroups"
+  },
+  // 编辑器组 垂直/水平 方向布局 Direction Layout
+  {
+    "key": "shift+alt+l",
+    "command": "workbench.action.toggleEditorGroupLayout"
+  },
+  // 聚焦编辑器组
+  {
+    "key": "ctrl+alt+1",
+    "command": "workbench.action.showEditorsInFirstGroup"
+  },
+  {
+    "key": "ctrl+alt+2",
+    "command": "workbench.action.showEditorsInSecondGroup"
+  },
+  {
+    "key": "ctrl+alt+3",
+    "command": "workbench.action.showEditorsInThirdGroup"
+  },
+  // 编辑器组左移
+  {
+    "key": "alt+shift+pageup",
+    "command": "workbench.action.moveActiveEditorGroupLeft"
+  },
+  // 编辑器组右移
+  {
+    "key": "alt+shift+pagedown",
+    "command": "workbench.action.moveActiveEditorGroupRight"
+  },
+  // 移至前一编辑器组
+  {
+    "key": "ctrl+shift+pageup",
+    "command": "workbench.action.moveEditorToPreviousGroup"
+  },
+  // 移至后一编辑器组
+  {
+    "key": "ctrl+shift+pagedown",
+    "command": "workbench.action.moveEditorToNextGroup"
+  },
+  // 编辑器在组内向左移
+  {
+    "key": "ctrl+alt+pageup",
+    "command": "workbench.action.moveEditorLeftInGroup"
+  },
+  // 编辑器在组内向右移
+  {
+    "key": "ctrl+alt+pagedown",
+    "command": "workbench.action.moveEditorRightInGroup"
+  },
+  // 禁用部分编辑器移动
+  {
+    "key": "shift+alt+9",
+    "command": "-workbench.action.moveEditorToLastGroup"
+  },
+
+  // #endregion 编辑器面板
+
+  // #region 编辑器控件
+
+  // 聚集“大纲”
+  {
+    "key": "ctrl+t ctrl+o",
+    "command": "outline.focus"
+  },
+  // 显示隐藏“菜单栏”
+  {
+    "key": "ctrl+t ctrl+m",
+    "command": "workbench.action.toggleMenuBar"
+  },
+  // 显示隐藏“状态栏”
+  {
+    "key": "ctrl+t ctrl+s",
+    "command": "workbench.action.toggleStatusbarVisibility"
+  },
+  // 显示隐藏“活动栏”
+  {
+    "key": "ctrl+t ctrl+b",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  // 显示隐藏“侧边栏” (跟 Sublime Text 一致)
+  {
+    "key": "ctrl+k ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  // 列出文件中的 function ，可选择跳转 (跟 Sublime Text 一致)
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "-workbench.action.gotoSymbol"
+  },
+  // 列出整个工程文件中的 function，可选择跳转 (跟 Sublime Text 一致)
+  {
+    "key": "ctrl+shift+r",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+
+  // #endregion 编辑器控件
+
+  // #region 代码相关控制
+
+  // 内容折不折行
+  {
+    "key": "alt+z",
+    "command": "editor.action.toggleWordWrap"
+  },
+  {
+    "key": "alt+z",
+    "command": "-extension.pxToremAndRemToPx"
+  },
+  {
+    "key": "ctrl+i ctrl+w",
+    "command": "workbench.action.evenEditorWidths"
+  },
+  // 选择功能切换为列模式
+  {
+    "key": "ctrl+shift+alt+l",
+    "command": "editor.action.toggleColumnSelection"
+  },
+  // 列模式: 选择全部匹配项
+  {
+    "key": "alt+f3",
+    "command": "editor.action.selectHighlights",
+    "when": "editorFocus"
+  },
+  // 列模式: 选择上一行
+  {
+    "key": "ctrl+shift+up",
+    "command": "cursorColumnSelectUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+up",
+    "command": "-cursorColumnSelectUp",
+    "when": "editorTextFocus"
+  },
+  // 列模式: 选择下一行
+  {
+    "key": "ctrl+shift+down",
+    "command": "cursorColumnSelectDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+alt+down",
+    "command": "-cursorColumnSelectDown",
+    "when": "editorTextFocus"
+  },
+  // 以“行”扩展选择
+  {
+    "key": "ctrl+l",
+    "command": "expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  // 列模式: 当前内容复制至上一行
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+alt+up",
+    "command": "-editor.action.copyLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // 列模式: 当前内容复制至下一行
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+alt+down",
+    "command": "-editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // 折叠、展开
+  {
+    "key": "ctrl+shift+[",
+    "command": "editor.fold",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+]",
+    "command": "editor.unfold",
+    "when": "editorTextFocus"
+  },
+  // 减少缩进
+  {
+    "key": "ctrl+oem_4",
+    "command": "editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // 块级注释
+  {
+    "key": "ctrl+shift+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // 触发建议
+  {
+    "key": "alt+/",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly"
+  },
+  // 触发建议细节
+  {
+    "key": "ctrl+alt+/",
+    "command": "toggleSuggestionDetails",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  // 触发参数提示
+  {
+    "key": "ctrl+shift+alt+/",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  // 删除所有断点
+  {
+    "key": "ctrl+shift+f9",
+    "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
+  },
+  // 删除末尾空白字符
+  {
+    "key": "shift+backspace",
+    "command": "editor.action.trimTrailingWhitespace",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // 删除右边字符
+  {
+    "key": "ctrl+delete",
+    "command": "deleteWordEndRight"
+  },
+  // 删除左边字符
+  {
+    "key": "ctrl+backspace",
+    "command": "deleteWordStartLeft"
+  },
+  // 删除光标右侧所有字符
+  {
+    "key": "shift+delete",
+    "command": "deleteAllRight"
+  },
+  // 删除光标左侧所有字符
+  {
+    "key": "shift+backspace",
+    "command": "deleteAllLeft"
+  },
+  // 文本转大写
+  {
+    "key": "ctrl+k ctrl+u",
+    "command": "editor.action.transformToUppercase",
+    "when": "editorTextFocus"
+  },
+  // 文本转小写
+  {
+    "key": "ctrl+k ctrl+l",
+    "command": "editor.action.transformToLowercase",
+    "when": "editorTextFocus"
+  },
+  // 行排序 (升)
+  {
+    "key": "ctrl+l ctrl+a",
+    "command": "editor.action.sortLinesAscending",
+    "when": "editorTextFocus"
+  },
+  // 行排序 (渐)
+  {
+    "key": "ctrl+l ctrl+d",
+    "command": "editor.action.sortLinesDescending",
+    "when": "editorTextFocus"
+  },
+  // 合并为一行
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.joinLines",
+    "when": "editorTextFocus"
+  },
+  // 跳转到括号
+  {
+    "key": "ctrl+m ctrl+b",
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+  // 执行构建命名
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.tasks.build"
+  },
+  // #endregion 代码相关控制
+
+  // #region 移除所有 `ctrl + r` 开头的绑定 (跟 Sublime Text gotoSymbol 一致)
+
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+r r",
+    "command": "-npm-script.rerun-last-script"
+  },
+  {
+    "key": "ctrl+r shift+r",
+    "command": "-npm-script.run"
+  },
+  {
+    "key": "ctrl+r t",
+    "command": "-npm-script.test"
+  },
+  {
+    "key": "ctrl+r l",
+    "command": "-npm-script.showOutput"
+  },
+  {
+    "key": "ctrl+r shift+x",
+    "command": "-npm-script.terminate-script"
+  },
+  {
+    "key": "ctrl+k ctrl+r",
+    "command": "-workbench.action.keybindingsReference"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
+    "key": "ctrl+k r",
+    "command": "-workbench.action.files.revealActiveFileInWindows"
+  },
+
+  {
+    "key": "shift+f12",
+    "command": "editor.action.revealDefinitionAside",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+f12",
+    "command": "editor.action.peekTypeDefinition"
+  },
+
+  // #endregion 移除所有 `ctrl + r` 开头的绑定 (跟 Sublime Text gotoSymbol 一致)
+
+  /* 扩展部分 🎉🎉🎉 */
+
+  // #region Emmet (VS Code 已内置)
+
+  // 更新标签对
+  {
+    "key": "ctrl+shift+;",
+    "command": "editor.emmet.action.updateTag",
+    "when": "editorTextFocus"
+  },
+  // 移除标签对
+  {
+    "key": "ctrl+shift+'",
+    "command": "editor.emmet.action.removeTag",
+    "when": "editorTextFocus"
+  },
+  // HTML 标签、CSS 选择器中以“属性、值”步进选择 (向前)
+  {
+    "key": "alt+,",
+    "command": "editor.emmet.action.selectPrevItem",
+    "when": "editorTextFocus"
+  },
+  // HTML 标签、CSS 选择器中以“属性、值”步进选择 (向后)
+  {
+    "key": "alt+.",
+    "command": "editor.emmet.action.selectNextItem",
+    "when": "editorTextFocus"
+  },
+  // HTML 中上一编辑点
+  {
+    "key": "ctrl+alt+,",
+    "command": "editor.emmet.action.prevEditPoint",
+    "when": "editorTextFocus"
+  },
+  // HTML 中下一编辑点
+  {
+    "key": "ctrl+alt+.",
+    "command": "editor.emmet.action.nextEditPoint",
+    "when": "editorTextFocus"
+  },
+  // HTML、CSS 中向内选择
+  {
+    "key": "shift+alt+-",
+    "command": "editor.emmet.action.balanceIn"
+  },
+  // HTML、CSS 中向外选择
+  {
+    "key": "shift+alt+=",
+    "command": "editor.emmet.action.balanceOut"
+  },
+  // 合并行 (Merge Lines)
+  {
+    "key": "ctrl+m ctrl+l",
+    "command": "editor.emmet.action.mergeLines"
+  },
+  // 更新或添加图片尺寸 (Image Size)
+  {
+    "key": "ctrl+i ctrl+s",
+    "command": "editor.emmet.action.updateImageSize",
+    "when": "editorTextFocus"
+  },
+  // 以1减
+  {
+    "key": "alt+oem_minus",
+    "command": "editor.emmet.action.decrementNumberByOne"
+  },
+  // 以1增
+  {
+    "key": "alt+oem_plus",
+    "command": "editor.emmet.action.incrementNumberByOne"
+  },
+  // 以10减
+  {
+    "key": "ctrl+alt+oem_minus",
+    "command": "editor.emmet.action.decrementNumberByTen"
+  },
+  // 以10增
+  {
+    "key": "ctrl+alt+oem_plus",
+    "command": "editor.emmet.action.incrementNumberByTen"
+  },
+  // 以0.1减
+  {
+    "key": "ctrl+shift+alt+oem_minus",
+    "command": "editor.emmet.action.decrementNumberByOneTenth"
+  },
+  // 以0.1增
+  {
+    "key": "ctrl+shift+alt+oem_plus",
+    "command": "editor.emmet.action.incrementNumberByOneTenth"
+  },
+  // 跳至 <tag /> 开始或结束 (Match Tag)
+  {
+    "key": "ctrl+m ctrl+t",
+    "command": "editor.emmet.action.matchTag"
+  },
+
+  // #endregion Emmet
+
+  // #region 代码书签 (bookmarks)
+
+  // 添加/取消书签
+  {
+    "key": "ctrl+k ctrl+k",
+    "command": "bookmarks.toggle",
+    "when": "editorTextFocus"
+  },
+  // 下一书签
+  {
+    "key": "ctrl+k ctrl+n",
+    "command": "bookmarks.jumpToNext",
+    "when": "editorTextFocus"
+  },
+  // 上一书签
+  {
+    "key": "ctrl+k ctrl+p",
+    "command": "bookmarks.jumpToPrevious",
+    "when": "editorTextFocus"
+  },
+  // 清除当前文档所有书签
+  {
+    "key": "ctrl+k ctrl+c",
+    "command": "bookmarks.clear",
+    "when": "editorTextFocus"
+  },
+  // 当前文档所有书签列表
+  {
+    "key": "ctrl+k ctrl+a",
+    "command": "bookmarks.list",
+    "when": "editorTextFocus"
+  },
+
+  // #endregion 代码书签 (bookmarks)
+
+  // #region 内外范围选择 (expand-region)
+
+  // 向内选择 (Outward)
+  {
+    "key": "shift+alt+o",
+    "command": "expand_region",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-expand_region",
+    "when": "editorTextFocus"
+  },
+  // 向外选择 (Inward)
+  {
+    "key": "shift+alt+i",
+    "command": "undo_expand_region",
+    "when": "editorHasSelection && editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "-undo_expand_region",
+    "when": "editorHasSelection && editorTextFocus"
+  },
+
+  // #endregion 内外范围选择 (expand-region)
+
+  // #region 强大的选择功能 (vscode-quick-select)
+
+  // [ ] 方括号内部：Ctrl + Shift + Alt + [
+  {
+    "key": "ctrl+shift+alt+oem_4",
+    "command": "extension.selectSquareBrackets"
+  },
+  // [ ] 包括方括号：Ctrl + Shift + Alt + ]
+  {
+    "key": "ctrl+shift+alt+oem_6",
+    "command": "extension.selectSquareBracketsOuter"
+  },
+  // ( ) 圆括号内部：Alt + Shift + (
+  {
+    "key": "shift+alt+9",
+    "command": "extension.selectParenthesis"
+  },
+  // ( ) 包括圆括号：Alt + Shift + )
+  {
+    "key": "shift+alt+0",
+    "command": "extension.selectParenthesisOuter"
+  },
+  // { } 花括号内部：Alt + Shift + {
+  {
+    "key": "shift+alt+oem_4",
+    "command": "extension.selectCurlyBrackets"
+  },
+  // { } 包括花括号：Alt + Shift + }
+  {
+    "key": "shift+alt+oem_6",
+    "command": "extension.selectCurlyBracketsOuter"
+  },
+  // ` ` 反引号内部：Alt + Shift + `
+  {
+    "key": "shift+alt+oem_3",
+    "command": "extension.selectBackTick"
+  },
+  // " ", ' ' 双/单引号内部：Alt + Shift + "
+  {
+    "key": "shift+alt+oem_7",
+    "command": "extension.selectEitherQuote"
+  },
+  // < > 尖括号内部：Alt + Shift + <
+  {
+    "key": "shift+alt+oem_comma",
+    "command": "extension.selectAngleBrackets"
+  },
+  // <> ... </> Tag 之间：Alt + Shift + >
+  {
+    "key": "shift+alt+oem_period",
+    "command": "extension.selectInTag"
+  },
+
+  // #endregion 强大的选择功能 (vscode-quick-select)
+
+  // #region Markdown (markdown-preview-enhanced, markdown-table-formatter)
+
+  // markdown 预览
+  {
+    "key": "ctrl+k ctrl+v",
+    "command": "markdown-preview-enhanced.openPreview",
+    "when": "editorLangId == 'markdown'"
+  },
+
+  // #endregion Markdown (markdown-preview-enhanced, markdown-table-formatter)
+
+  // #region 强大的变量名操作 (change-case)
+
+  // kebab-case
+  {
+    "key": "ctrl+u ctrl+k",
+    "command": "extension.changeCase.kebab"
+  },
+  // PascalCase
+  {
+    "key": "ctrl+u ctrl+p",
+    "command": "extension.changeCase.pascal",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // camelCase
+  {
+    "key": "ctrl+u ctrl+c",
+    "command": "extension.changeCase.camel",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // dot.case
+  {
+    "key": "ctrl+u ctrl+d",
+    "command": "extension.changeCase.dot",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // snake_case
+  {
+    "key": "ctrl+u ctrl+s",
+    "command": "extension.changeCase.snake",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // path/case
+  {
+    "key": "ctrl+u ctrl+/",
+    "command": "extension.changeCase.path",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // CONSTANT_CASE
+  {
+    "key": "ctrl+u ctrl+u",
+    "command": "extension.changeCase.constant",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // no case
+  {
+    "key": "ctrl+u ctrl+l",
+    "command": "extension.changeCase.no",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // Title Case
+  {
+    "key": "ctrl+u ctrl+t",
+    "command": "extension.changeCase.title",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // #endregion 强大的变量名操作 (change-case)
+
+  // #region 对打开文件的操作 (vscode-opened-editors)
+
+  // 在侧边栏资源目录中的位置
+  {
+    "key": "alt+r",
+    "command": "opened-editors.revealSidebar"
+  },
+  // 复制文件名
+  {
+    "key": "ctrl+shift+c",
+    "command": "opened-editors.copyFileName"
+  },
+  // 复制目录名
+  {
+    "key": "ctrl+alt+shift+c",
+    "command": "opened-editors.copyFolderName"
+  },
+
+  // #endregion 对打开文件的操作 (vscode-opened-editors)
+
+  /* Other 🏷️ */
+
+  // #region Other
+
+  // 禁用插入日期时间
+  {
+    "key": "ctrl+shift+alt+i",
+    "command": "-insertDateString.insertOwnFormatDateTime",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+q",
+    "command": "-rewrap.rewrapComment",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+oem_2",
+    "command": "-metaGo.addCursorSmart"
+  },
+  {
+    "key": "shift+alt+oem_2",
+    "command": "-metaGo.selectSmart",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+m",
+    "command": "metaGo.gotoSmart"
+  },
+  {
+    "key": "alt+oem_2",
+    "command": "-metaGo.gotoSmart"
+  },
+  {
+    "key": "shift+alt+o",
+    "command": "-editor.action.organizeImports",
+    "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)source\\.organizeImports\\b/"
+  }
+]
