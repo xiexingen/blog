@@ -748,14 +748,14 @@ console.log(result.code); //const helloWorld = () => {};
 
 ### 白银:手写简易版 babel-plugin-transform-es2015-arrow-functions
 
-接下来尝试稍微难度大一点的，手写箭头函数转换插件 [babel-plugin-transform-es2015-arrow-functions](https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions)，将箭头函数转换为普通函数
+接下来尝试稍微难度大一点的,手写箭头函数转换插件 [babel-plugin-transform-es2015-arrow-functions](https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions),将箭头函数转换为普通函数
 
 #### 使用插件
 
-先体验下使用插件的情况，安装依赖
+先体验下使用插件的情况,安装依赖
 
 ```bash
-// @babel/core 为核心模块，前面已经介绍过
+// @babel/core 为核心模块,前面已经介绍过
 // babel-plugin-transform-es2015-arrow-functions 就是将箭头函数转换成普通函数的插件
 yarn add @babel/core babel-plugin-transform-es2015-arrow-functions -D
 ```
@@ -788,7 +788,7 @@ console.log(targetSource.code);
 
 #### 自己实现插件
 
-接下来我们就来照着写一个类似的`Babel`插件。所谓的`Babel`插件其实是一个对象，对象里面有一个`visitor`属性，它也是一个对象，key 为类型，value 为函数，接受 path 作为参数。也就是这样
+接下来我们就来照着写一个类似的`Babel`插件。所谓的`Babel`插件其实是一个对象,对象里面有一个`visitor`属性,它也是一个对象,key 为类型,value 为函数,接受 path 作为参数。也就是这样
 
 ```js
 const arrowFunctionPlugin = {
@@ -800,7 +800,7 @@ const arrowFunctionPlugin = {
 };
 ```
 
-好了，进入正题。在写箭头函数转换插件之前，我们首先得知道代码转换前后的区别。还是通过 [astexplorer.net](https://astexplorer.net/) 这个网站去比较，经过比较分析，发现箭头函数和普通函数除了类型不一样，其他都一样。
+好了,进入正题。在写箭头函数转换插件之前,我们首先得知道代码转换前后的区别。还是通过 [astexplorer.net](https://astexplorer.net/) 这个网站去比较,经过比较分析,发现箭头函数和普通函数除了类型不一样,其他都一样。
 
 ![arrow-function](./assets/module-ast/arrow-function-diff.png)
 
@@ -814,7 +814,7 @@ const sourceCode = `const sum=(a,b)=>{ return a*b; }`;
 // 定义转换的插件
 const arrowFunctionPlugin = {
   visitor: {
-    // 如果是箭头函数，那么就会进来此函数，参数是箭头函数的节点路径对象
+    // 如果是箭头函数,那么就会进来此函数,参数是箭头函数的节点路径对象
     ArrowFunctionExpression(path) {
       let { node } = path;
       node.type = 'FunctionExpression';
@@ -855,20 +855,20 @@ const sum = (a, b) => a + b; // 我们发现没有大括号
 
 ![test](./assets/module-ast/arrow-function-test.png)
 
-结果肯定是不对的，转换后的代码缺少一对大括号，还缺少 return 关键字。
+结果肯定是不对的,转换后的代码缺少一对大括号,还缺少 return 关键字。
 
 附上[案例源码] (https://github.com/xiexingen/module-study/blob/main/module-ast-plugin-arrow-functions/src/test.js)
 
-解决思路: 先判断要转换的函数体是不是一个块语句，如果是就不处理，不是就生成一个块语句，将我们的代码添加到这个块里面去。在添加的过程中还需要在原代码中添加 return 关键字
+解决思路: 先判断要转换的函数体是不是一个块语句,如果是就不处理,不是就生成一个块语句,将我们的代码添加到这个块里面去。在添加的过程中还需要在原代码中添加 return 关键字
 
-在这过程中需要用到两个 api：[blockStatement](https://babeljs.io/docs/babel-types#blockstatement) 、[returnStatement](https://babeljs.io/docs/babel-types#returnstatement)，可以用它们来生成节点或判断节点
+在这过程中需要用到两个 api:[blockStatement](https://babeljs.io/docs/babel-types#blockstatement) 、[returnStatement](https://babeljs.io/docs/babel-types#returnstatement),可以用它们来生成节点或判断节点
 
 上代码
 
 ```js
 // babel核心模块
 const core = require('@babel/core');
-// 转换箭头函数插件,我们将之前的插件注释掉，自己实现插件部分
+// 转换箭头函数插件,我们将之前的插件注释掉,自己实现插件部分
 // let arrowFunctionPlugin = require("babel-plugin-transform-es2015-arrow-functions");
 
 //用来生成或者判断节点的AST语法树的节点
@@ -876,11 +876,11 @@ const types = require('@babel/types');
 
 const arrowFunctionPlugin = {
   visitor: {
-    //如果是箭头函数，那么就会进来此函数，参数是箭头函数的节点路径对象
+    //如果是箭头函数,那么就会进来此函数,参数是箭头函数的节点路径对象
     ArrowFunctionExpression(path) {
       const { node } = path;
       node.type = 'FunctionExpression';
-      // 如果函数体不是块语句,生成一个块语句，并将内容return
+      // 如果函数体不是块语句,生成一个块语句,并将内容return
       if (!types.isBlockStatement(node.body)) {
         const statementBody = types.returnStatement(node.body);
         node.body = types.blockStatement([statementBody]);
@@ -910,30 +910,30 @@ console.log(`输出:${targetSource.code}`);
 
 附上[案例源码](https://github.com/xiexingen/module-study/blob/main/module-ast-plugin-arrow-functions/src/simple2.js)
 
-再来看如果存在 this 的情况，原插件 [babel-plugin-transform-es2015-arrow-functions](https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions) 转换后的结果
+再来看如果存在 this 的情况,原插件 [babel-plugin-transform-es2015-arrow-functions](https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions) 转换后的结果
 
 ![test](./assets/module-ast/arrow-function-thirt2.png)
 
-老规矩，我们先得知道转化后的代码的`AST`和源代码的`AST`之间的差异，大家可以自己动手看一看比较一下。
+老规矩,我们先得知道转化后的代码的`AST`和源代码的`AST`之间的差异,大家可以自己动手看一看比较一下。
 
-整体思路：
+整体思路:
 
-第一步:找到当前箭头函数要使用哪个作用域内的 this，暂时称为父作用域
-第二步:往父作用域中加入\_this 变量，也就是添加语句：var \_this = this
+第一步:找到当前箭头函数要使用哪个作用域内的 this,暂时称为父作用域
+第二步:往父作用域中加入\_this 变量,也就是添加语句:var \_this = this
 第三步:找出当前箭头函数内所有用到 this 的地方
-第四步:将当前箭头函数中的 this，统一替换成\_this
+第四步:将当前箭头函数中的 this,统一替换成\_this
 
 #### 找到当前箭头函数要使用哪个作用域内的 this
 
-具体思路：`从当前节点开始向上查找，直到找到一个不是箭头函数的函数，最后还找不到那就是根节点`
+具体思路:`从当前节点开始向上查找,直到找到一个不是箭头函数的函数,最后还找不到那就是根节点`
 
-新增 `hoistFunctionEnvironment`函数：
+新增 `hoistFunctionEnvironment`函数:
 
 ```js
 // 处理 this 作用域
 function hoistFunctionEnvironment(path) {
   // 1.找到当前箭头函数要使用哪个作用域内的this
-  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数，找不到就返回根节点
+  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数,找不到就返回根节点
   const thisScope = path.findParent((parent) => {
     return (
       (parent.isFunction() && parent.isArrowFunctionExpression() === false) ||
@@ -945,10 +945,10 @@ function hoistFunctionEnvironment(path) {
 
 const arrowFunctionPlugin = {
   visitor: {
-    //如果是箭头函数，那么就会进来此函数，参数是箭头函数的节点路径对象
+    //如果是箭头函数,那么就会进来此函数,参数是箭头函数的节点路径对象
     ArrowFunctionExpression(path) {
       let { node } = path;
-      //提升函数环境，解决this作用域问题
+      //提升函数环境,解决this作用域问题
       +hoistFunctionEnvironment(path);
       //箭头函数转换为普通函数
       node.type = 'FunctionExpression';
@@ -963,9 +963,9 @@ const arrowFunctionPlugin = {
 
 #### 往父作用域中加入\_this 变量
 
-这里需要引入作用域（scope）的概念。大家都知道 JavaScript 拥有词法作用域，即代码块创建新的作用域会形成一个树状结构，它与别的作用域之间相互隔离不受影响。作用域（scope）同样如此，我们得确保在改变代码的各个部分时不会破坏其他的部分
+这里需要引入作用域（scope）的概念。大家都知道 JavaScript 拥有词法作用域,即代码块创建新的作用域会形成一个树状结构,它与别的作用域之间相互隔离不受影响。作用域（scope）同样如此,我们得确保在改变代码的各个部分时不会破坏其他的部分
 
-作用域（scope）的大致结构：
+作用域（scope）的大致结构:
 
 ```js
 {
@@ -977,12 +977,12 @@ const arrowFunctionPlugin = {
 }
 ```
 
-这一步比较简单，要想在作用域中加一个\_this 变量，其实就是对 AST 树中的（scope）新增一个节点即可。
+这一步比较简单,要想在作用域中加一个\_this 变量,其实就是对 AST 树中的（scope）新增一个节点即可。
 
 ```js
 function hoistFunctionEnvironment(path) {
   // 1.找到当前箭头函数要使用哪个作用域内的this
-  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数，找不到就返回根节点
+  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数,找不到就返回根节点
   const thisScope = path.findParent((parent) => {
     return (
       (parent.isFunction() && parent.isArrowFunctionExpression() === false) ||
@@ -991,7 +991,7 @@ function hoistFunctionEnvironment(path) {
   });
 
   // 2. 向父作用域内放入一个_this变量
-  // 在作用域中加一个_this变量，其实就是对AST树中的（scope）新增一个节点即可
+  // 在作用域中加一个_this变量,其实就是对AST树中的（scope）新增一个节点即可
   thisScope.scope.push({
     id: types.identifier('_this'), //生成标识符节点,也就是变量名
     init: types.thisExpression(), //生成this节点 也就是变量值
@@ -1002,12 +1002,12 @@ function hoistFunctionEnvironment(path) {
 
 #### 找出当前箭头函数内所有用到 this 的地方
 
-思路：遍历当前节点的子节点，如果有 this 变量，就收集起来。
+思路:遍历当前节点的子节点,如果有 this 变量,就收集起来。
 
 ```js
 function hoistFunctionEnvironment(path) {
   // 1.找到当前箭头函数要使用哪个作用域内的this
-  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数，找不到就返回根节点
+  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数,找不到就返回根节点
   const thisScope = path.findParent((parent) => {
     return (
       (parent.isFunction() && parent.isArrowFunctionExpression() === false) ||
@@ -1016,18 +1016,18 @@ function hoistFunctionEnvironment(path) {
   });
 
   // 2. 向父作用域内放入一个_this变量
-  // 在作用域中加一个_this变量，其实就是对AST树中的（scope）新增一个节点即可
+  // 在作用域中加一个_this变量,其实就是对AST树中的（scope）新增一个节点即可
   thisScope.scope.push({
     id: types.identifier('_this'), //生成标识符节点,也就是变量名
     init: types.thisExpression(), //生成this节点 也就是变量值
   });
 
   // 3. 找出当前箭头函数内所有用到this的地方
-  // 遍历当前节点的子节点，如果有this变量，就收集起来
+  // 遍历当前节点的子节点,如果有this变量,就收集起来
   const thisScopePaths = []; //获取当前节点this的路径
   //遍历当前节点的子节点
   path.traverse({
-    // 跟前面一样，如果是 ThisExpress 类型就收集起来
+    // 跟前面一样,如果是 ThisExpress 类型就收集起来
     ThisExpression(thisPath) {
       thisScopePaths.push(thisPath);
     },
@@ -1036,12 +1036,12 @@ function hoistFunctionEnvironment(path) {
 }
 ```
 
-#### 将当前箭头函数中的 this，统一替换成\_this
+#### 将当前箭头函数中的 this,统一替换成\_this
 
 ```js
 function hoistFunctionEnvironment(path) {
   // 1.找到当前箭头函数要使用哪个作用域内的this
-  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数，找不到就返回根节点
+  // 确定当前箭头函数要使用哪个地方的this,要求父节点是函数且不是箭头函数,找不到就返回根节点
   const thisScope = path.findParent((parent) => {
     return (
       (parent.isFunction() && parent.isArrowFunctionExpression() === false) ||
@@ -1050,24 +1050,24 @@ function hoistFunctionEnvironment(path) {
   });
 
   // 2. 向父作用域内放入一个_this变量
-  // 在作用域中加一个_this变量，其实就是对AST树中的（scope）新增一个节点即可
+  // 在作用域中加一个_this变量,其实就是对AST树中的（scope）新增一个节点即可
   thisScope.scope.push({
     id: types.identifier('_this'), //生成标识符节点,也就是变量名
     init: types.thisExpression(), //生成this节点 也就是变量值
   });
 
   // 3. 找出当前箭头函数内所有用到this的地方
-  // 遍历当前节点的子节点，如果有this变量，就收集起来
+  // 遍历当前节点的子节点,如果有this变量,就收集起来
   const thisScopePaths = []; //获取当前节点this的路径
   //遍历当前节点的子节点
   path.traverse({
-    // 跟前面一样，如果是 ThisExpress 类型就收集起来
+    // 跟前面一样,如果是 ThisExpress 类型就收集起来
     ThisExpression(thisPath) {
       thisScopePaths.push(thisPath);
     },
   });
 
-  // 4.将当前箭头函数中的this，统一替换成_this
+  // 4.将当前箭头函数中的this,统一替换成_this
   thisScopePaths.forEach((thisPath) => {
     thisPath.replaceWith(types.identifier('_this')); // 将this改成_this
   });
@@ -1078,9 +1078,9 @@ function hoistFunctionEnvironment(path) {
 
 ### 铂金:手写 plus 版日志记录插件
 
-场景：在开发阶段，我们通常会打印一些 console.log 进行调试。但随着项目的日常迭代，console.log 也越来越多，有时候控制台打印了一大堆，不能第一时间定位到想要的日志。这个时候希望可以通过一个插件强化 console，让其也打印出当前文件名，以及打印地方的行和列等代码信息。
+场景:在开发阶段,我们通常会打印一些 console.log 进行调试。但随着项目的日常迭代,console.log 也越来越多,有时候控制台打印了一大堆,不能第一时间定位到想要的日志。这个时候希望可以通过一个插件强化 console,让其也打印出当前文件名,以及打印地方的行和列等代码信息。
 
-经过分析，其实就是往 console.log 中添加几个参数，比如源代码：
+经过分析,其实就是往 console.log 中添加几个参数,比如源代码:
 
 ```js
 const logPlus = (log) => {
@@ -1088,7 +1088,7 @@ const logPlus = (log) => {
 };
 ```
 
-打印的时候期望变成：
+打印的时候期望变成:
 
 ```js
 const logPlus = (log) => {
@@ -1096,24 +1096,24 @@ const logPlus = (log) => {
 };
 ```
 
-对比两个的 AST 数，经过对比发现只是 arguments 略有不同，我们只需处理这一块即可：
+对比两个的 AST 数,经过对比发现只是 arguments 略有不同,我们只需处理这一块即可:
 
 ![console-diff](./assets/module-ast/console-diff.png)
 
-思路：
+思路:
 
-第一步：先找出 console 节点的部分
-第二步：判断是否是这几个方法名中的某一个："log"、"info"、"warn"、"error"
-第三步：往节点的 arguments 中添加参数
+第一步:先找出 console 节点的部分
+第二步:判断是否是这几个方法名中的某一个:"log"、"info"、"warn"、"error"
+第三步:往节点的 arguments 中添加参数
 
 ```js
 /**
- * 手写 console.log 增强插件，打印 log 的同时还能打印出当前文件名和代码的行列信息
+ * 手写 console.log 增强插件,打印 log 的同时还能打印出当前文件名和代码的行列信息
  */
 
 // babel核心模块
 const core = require('@babel/core');
-// 转换箭头函数插件,我们将之前的插件注释掉，自己实现插件部分
+// 转换箭头函数插件,我们将之前的插件注释掉,自己实现插件部分
 
 //用来生成或者判断节点的AST语法树的节点
 const types = require('@babel/types');
@@ -1121,7 +1121,7 @@ const types = require('@babel/types');
 /**
  * 思路
  * 1. 先找出console节点的部分
- * 2. 判断是否是这几个方法名中的某一个："log"、"info"、"warn"、"error"
+ * 2. 判断是否是这几个方法名中的某一个:"log"、"info"、"warn"、"error"
  * 3. 往节点的arguments中添加参数
  */
 const logPlusPlugin = {
@@ -1132,7 +1132,7 @@ const logPlusPlugin = {
       if (types.isMemberExpression(node.callee)) {
         // 确定是 console
         if (node.callee.object.name === 'console') {
-          // 2. 判断是否是这几个方法名中的某一个："log"、"info"、"warn"、"error"
+          // 2. 判断是否是这几个方法名中的某一个:"log"、"info"、"warn"、"error"
           if (
             ['log', 'info', 'warn', 'error'].includes(node.callee.property.name)
           ) {
@@ -1179,9 +1179,9 @@ console.log(`输出:\r\n${targetSource.code}`);
 
 ### 钻石:手写监控系统中的日志上传插件
 
-场景：在监控系统的日志上传过程中，我们需要往每个函数的作用域中添加一行日志执行函数，也就是这样（但这里要注意的是，函数的定义方式总共有四种，都需要考虑进来）：
+场景:在监控系统的日志上传过程中,我们需要往每个函数的作用域中添加一行日志执行函数,也就是这样（但这里要注意的是,函数的定义方式总共有四种,都需要考虑进来）:
 
-源代码：
+源代码:
 
 ```js
 function sum(a, b) {
@@ -1201,7 +1201,7 @@ class Calculator {
 }
 ```
 
-期望转换后的代码：
+期望转换后的代码:
 
 ```js
 import loggerLib from 'logger';
@@ -1226,16 +1226,16 @@ class Calculator {
 }
 ```
 
-整体思路：
+整体思路:
 
-第一步：先判断源代码中是否引入了 logger 库
-第二步：如果引入了，就找出导入的变量名，后面直接使用该变量名即可
-第三步：如果没有引入我们就在源代码的顶部引用一下
-第四步：在函数中插入引入的函数
+第一步:先判断源代码中是否引入了 logger 库
+第二步:如果引入了,就找出导入的变量名,后面直接使用该变量名即可
+第三步:如果没有引入我们就在源代码的顶部引用一下
+第四步:在函数中插入引入的函数
 
-第一步：先判断源代码中是否引入了 logger 库
+第一步:先判断源代码中是否引入了 logger 库
 
-导入的方式总共有三种：
+导入的方式总共有三种:
 
 ```js
 import logger from 'logger';
@@ -1243,13 +1243,13 @@ import { logger2 } from 'logger2';
 import * as logger3 from 'logger3';
 ```
 
-要判断源代码中有没有引入`logger`库，其实就是查找 `from` 节点后面有没有`logger`，老规矩，查看这三种导入方式的 AST：
+要判断源代码中有没有引入`logger`库,其实就是查找 `from` 节点后面有没有`logger`,老规矩,查看这三种导入方式的 AST:
 
 ![logger-import-default](./assets/module-ast/logger-import-default.png)
 ![logger-import-const](./assets/module-ast/logger-import-const.png)
 ![logger-import-all-as](./assets/module-ast/logger-import-all-as.png)
 
-发现不管哪种导入方式，我们都可以通过节点的`source.value`属性获取导入的库名，通过`specifiers.local.name`属性获取导入的变量名。上代码：
+发现不管哪种导入方式,我们都可以通过节点的`source.value`属性获取导入的库名,通过`specifiers.local.name`属性获取导入的变量名。上代码:
 
 ```js
 /**
@@ -1263,7 +1263,7 @@ const types = require('@babel/types');
 /**
  * 思路
  * 1. 先判断源代码中是否引入了 logger 库
- * 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+ * 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
  * 3. 如果没有引入我们就在源代码的顶部引用一下
  * 4. 在函数中插入引入的函数
  */
@@ -1282,7 +1282,7 @@ const autoImportPlugin = {
         },
       });
 
-      //3. 如果没有引入说明源代码中还没有导入此模块，需要我们手动插入一个import语句
+      //3. 如果没有引入说明源代码中还没有导入此模块,需要我们手动插入一个import语句
       if (!loggerId) {
         // 如果没有就插入一个
       }
@@ -1291,9 +1291,9 @@ const autoImportPlugin = {
 };
 ```
 
-第二步：如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+第二步:如果引入了,就找出导入的变量名,后面直接使用该变量名即可
 
-这一步比较简单，直接通过`specifiers.local.name`属性获取导入的变量名再赋值即可
+这一步比较简单,直接通过`specifiers.local.name`属性获取导入的变量名再赋值即可
 
 ```js
 /**
@@ -1307,7 +1307,7 @@ const types = require("@babel/types");
 /**
  * 思路
  * 1. 先判断源代码中是否引入了 logger 库
- * 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+ * 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
  * 3. 如果没有引入我们就在源代码的顶部引用一下
  * 4. 在函数中插入引入的函数
  */
@@ -1321,7 +1321,7 @@ const autoImportPlugin = {
           const { node } = path;
           // 1. 判断源代码中是否引入了 logger 库
           if (node.source.value === "logger") {
-            // 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+            // 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
 +            const specifiers = node.specifiers[0];
 +            loggerId = specifiers.local.name; //取出导入的变量名赋值给loggerId
 +            //找到了就结束循环
@@ -1330,7 +1330,7 @@ const autoImportPlugin = {
         },
       });
 
-      //3. 如果没有引入说明源代码中还没有导入此模块，需要我们手动插入一个import语句
+      //3. 如果没有引入说明源代码中还没有导入此模块,需要我们手动插入一个import语句
       if (!loggerId) {
         // 如果没有就插入一个
       }
@@ -1339,7 +1339,7 @@ const autoImportPlugin = {
 };
 ```
 
-第三步：如果没有引入我们就在源代码的顶部引用一下
+第三步:如果没有引入我们就在源代码的顶部引用一下
 
 ```js
 /**
@@ -1355,7 +1355,7 @@ const template = require("@babel/template");
 /**
  * 思路
  * 1. 先判断源代码中是否引入了 logger 库
- * 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+ * 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
  * 3. 如果没有引入我们就在源代码的顶部引用一下
  * 4. 在函数中插入引入的函数
  */
@@ -1369,7 +1369,7 @@ const autoImportPlugin = {
           const { node } = path;
           // 1. 判断源代码中是否引入了 logger 库
           if (node.source.value === "logger") {
-            // 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+            // 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
             const specifiers = node.specifiers[0];
             loggerId = specifiers.local.name; //取出导入的变量名赋值给loggerId
             //找到了就结束循环
@@ -1378,7 +1378,7 @@ const autoImportPlugin = {
         },
       });
 
-      //3. 如果没有引入说明源代码中还没有导入此模块，需要我们手动插入一个import语句
+      //3. 如果没有引入说明源代码中还没有导入此模块,需要我们手动插入一个import语句
       if (!loggerId) {
         // 如果没有就插入一个
 +        loggerId = path.scope.generateUid("loggerLib"); //防止变量名之间的冲突,使用提供的方法生成
@@ -1396,20 +1396,20 @@ const autoImportPlugin = {
 };
 ```
 
-第四步：在函数中插入引入的函数
+第四步:在函数中插入引入的函数
 
-思路：在获取 loggerLib()代码块的 AST，然后将其插入到函数的顶层。
+思路:在获取 loggerLib()代码块的 AST,然后将其插入到函数的顶层。
 
-这里需要考虑的是，函数共有四种声明方式，我们都需要考虑进来。
+这里需要考虑的是,函数共有四种声明方式,我们都需要考虑进来。
 
-先生成 loggerLib()代码块的 AST：
+先生成 loggerLib()代码块的 AST:
 
 ```js
-//loggerId就是loggerLib，第二个参数【】代表执行该函数无传参
+//loggerId就是loggerLib,第二个参数【】代表执行该函数无传参
 types.expressionStatement(types.callExpression(types.identifier(loggerId), []));
 ```
 
-我们可以将生成后的该节点挂载在 state 对象下，state 就是一个用来暂存数据的对象，是一个容器，用于共享数据
+我们可以将生成后的该节点挂载在 state 对象下,state 就是一个用来暂存数据的对象,是一个容器,用于共享数据
 
 ```js
 /**
@@ -1425,7 +1425,7 @@ const template = require("@babel/template");
 /**
  * 思路
  * 1. 先判断源代码中是否引入了 logger 库
- * 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+ * 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
  * 3. 如果没有引入我们就在源代码的顶部引用一下
  * 4. 在函数中插入引入的函数
  */
@@ -1439,7 +1439,7 @@ const autoImportPlugin = {
           const { node } = path;
           // 1. 判断源代码中是否引入了 logger 库
           if (node.source.value === "logger") {
-            // 2. 如果引入了，就找出导入的变量名，后面直接使用该变量名即可
+            // 2. 如果引入了,就找出导入的变量名,后面直接使用该变量名即可
             const specifiers = node.specifiers[0];
             loggerId = specifiers.local.name; //取出导入的变量名赋值给loggerId
             //找到了就结束循环
@@ -1448,7 +1448,7 @@ const autoImportPlugin = {
         },
       });
 
-      //3. 如果没有引入说明源代码中还没有导入此模块，需要我们手动插入一个import语句
+      //3. 如果没有引入说明源代码中还没有导入此模块,需要我们手动插入一个import语句
       if (!loggerId) {
         // 如果没有就插入一个
         loggerId = path.scope.generateUid("loggerLib"); //防止变量名之间的冲突,使用提供的方法生成
@@ -1470,14 +1470,14 @@ const autoImportPlugin = {
 +      state.loggerNode = template.statement(`${loggerId}()`)();
     },
 +    // 4. 在函数中插入引入的函数
-+    //四种函数方式，这是插件能够识别的语法，这是四种函数的type
++    //四种函数方式,这是插件能够识别的语法,这是四种函数的type
 +    "FunctionDeclaration|FunctionExpression|ArrowFunctionExpression|ClassMethod"(path, state) {
 +      const { node } = path;
 +      if (types.isBlockStatement(node.body)) {
 +        //如果是一个块级语句的话
 +        node.body.body.unshift(state.loggerNode); //在语句的头部添加logger函数节点
 +      } else {
-+        //处理箭头函数，生成一个块级语句，在第一行中插入loggerNode，然后return 之前的内容
++        //处理箭头函数,生成一个块级语句,在第一行中插入loggerNode,然后return 之前的内容
 +        const newBody = types.blockStatement([
 +          state.loggerNode,
 +          types.returnStatement(node.body),
@@ -1498,11 +1498,11 @@ const autoImportPlugin = {
 
 ### 星耀:实现简易版 ESLint
 
-相信大家在工作中都肯定使用过 [ESLint](https://www.npmjs.com/package/eslint)，今天我们就来扒一扒它的工作原理。本节会带着大家手写一个简易版的 ESLint，整体不难，更多的是抛砖引玉，帮助大家更好的理解 ESLint 的工作原理。
+相信大家在工作中都肯定使用过 [ESLint](https://www.npmjs.com/package/eslint),今天我们就来扒一扒它的工作原理。本节会带着大家手写一个简易版的 ESLint,整体不难,更多的是抛砖引玉,帮助大家更好的理解 ESLint 的工作原理。
 
-在手写前先补充一个前置小知识：其实 [Babel](https://babeljs.io/docs/) 里面的 AST 遍历也是有生命周期的，有两个钩子：在遍历开始之前或遍历结束之后，它们可以用于设置或清理/分析工作。
+在手写前先补充一个前置小知识:其实 [Babel](https://babeljs.io/docs/) 里面的 AST 遍历也是有生命周期的,有两个钩子:在遍历开始之前或遍历结束之后,它们可以用于设置或清理/分析工作。
 
-在手写前先补充一个前置小知识：其实 Babel 里面的 AST 遍历也是有生命周期的，有两个钩子：在遍历开始之前或遍历结束之后，它们可以用于设置或清理/分析工作
+在手写前先补充一个前置小知识:其实 Babel 里面的 AST 遍历也是有生命周期的,有两个钩子:在遍历开始之前或遍历结束之后,它们可以用于设置或清理/分析工作
 
 ```js
 export default function () {
@@ -1524,9 +1524,9 @@ export default function () {
 }
 ```
 
-前置小知识学完我们开干吧！ ESLint 中的一个比较简单的校验规则：[noconsole](https://eslint.org/docs/latest/rules/no-console#rule-details)，也就是代码中不允许有`console.log`，我们来简单实现一下他
+前置小知识学完我们开干吧！ ESLint 中的一个比较简单的校验规则:[noconsole](https://eslint.org/docs/latest/rules/no-console#rule-details),也就是代码中不允许有`console.log`,我们来简单实现一下他
 
-源代码：基于此规则，校验肯定不能通过了
+源代码:基于此规则,校验肯定不能通过了
 
 ```js
 const print = (text) => {
@@ -1535,7 +1535,7 @@ const print = (text) => {
 };
 ```
 
-思路：遍历 ATS，然后找出 console 节点，如果有 console 就报错,上代码
+思路:遍历 ATS,然后找出 console 节点,如果有 console 就报错,上代码
 
 ```js
 /**
@@ -1546,7 +1546,7 @@ const core = require('@babel/core');
 //用来生成或者判断节点的AST语法树的节点
 const types = require('@babel/types');
 
-// fix=true：自动修复
+// fix=true:自动修复
 const noConsoleLogPlugin = ({ fix = false }) => ({
   //遍历前
   pre(file) {
@@ -1561,7 +1561,7 @@ const noConsoleLogPlugin = ({ fix = false }) => ({
         errors.push(
           path.buildCodeFrameError(`代码中不能出现console语句`, Error),
         );
-        //如果启动了fix，就删掉该节点
+        //如果启动了fix,就删掉该节点
         if (fix) {
           path.parentPath.remove();
         }
@@ -1602,11 +1602,11 @@ console.log(`输出:\r\n${targetSource.code}`);
 
 ### 王者:实现代码压缩
 
-代码压缩一般是在项目打包上线阶段做的，平时大家可能更多的是直接使用插件，今天也来趴一趴它的工作原理。
+代码压缩一般是在项目打包上线阶段做的,平时大家可能更多的是直接使用插件,今天也来趴一趴它的工作原理。
 
-压缩其实也很简单，就是把变量从有意义变成无意义，保证尽可能的短，例如变成：\_、a、b 等，当然其实远远不止这些，还有将空格缩进取消等等，此处同样也只是抛砖引玉。
+压缩其实也很简单,就是把变量从有意义变成无意义,保证尽可能的短,例如变成:\_、a、b 等,当然其实远远不止这些,还有将空格缩进取消等等,此处同样也只是抛砖引玉。
 
-源代码：
+源代码:
 
 ```js
 const print = (text) => {
@@ -1620,14 +1620,14 @@ const print = (text) => {
 
 压缩后希望将 print、now、log 这些命名进行压缩。
 
-整体思路：
+整体思路:
 
-第一步：需要捕获那些能够生成作用域的节点（函数、类的函数、函数表达式、语句块、if else 、while、for 等），因为只要有作用域，就有可能会使用变量
-第二步：给这些作用域内的捕获到的变量重新命名，进行简化
+第一步:需要捕获那些能够生成作用域的节点（函数、类的函数、函数表达式、语句块、if else 、while、for 等）,因为只要有作用域,就有可能会使用变量
+第二步:给这些作用域内的捕获到的变量重新命名,进行简化
 
 1. 需要捕获那些能够生成作用域的节点
 
-这里引入一个新的知识点：`Bindings`，它是变量引用的集合。比如在下面这个例子中：
+这里引入一个新的知识点:`Bindings`,它是变量引用的集合。比如在下面这个例子中:
 
 ```js
 function print() {
@@ -1641,7 +1641,7 @@ function print() {
 }
 ```
 
-now 与 print 作用域和 subPrint 作用域之间的关系就称为 binding，它的大致结构如下：
+now 与 print 作用域和 subPrint 作用域之间的关系就称为 binding,它的大致结构如下:
 
 ```js
 {
@@ -1659,17 +1659,17 @@ now 与 print 作用域和 subPrint 作用域之间的关系就称为 binding，
 }
 ```
 
-有了这些信息我们就可以查找一个变量的所有引用，并且知道变量的类型是什么（参数，定义等等），寻找到它所属的作用域，或者得到它的标识符的拷贝。 甚至可以知道它是否是一个常量，并查看是哪个路径让它不是一个常量。
+有了这些信息我们就可以查找一个变量的所有引用,并且知道变量的类型是什么（参数,定义等等）,寻找到它所属的作用域,或者得到它的标识符的拷贝。 甚至可以知道它是否是一个常量,并查看是哪个路径让它不是一个常量。
 
-知道了 binding 是否为常量在很多情况下都会很有用，最大的用处就是代码压缩。
+知道了 binding 是否为常量在很多情况下都会很有用,最大的用处就是代码压缩。
 
-回到实战中，可以通过`Scopable`这个别名来捕获所有作用域节点，然后通过`path.scope.bindings`取出作用域内的所有变量
+回到实战中,可以通过`Scopable`这个别名来捕获所有作用域节点,然后通过`path.scope.bindings`取出作用域内的所有变量
 
 ```js
 const uglifyPlugin = () => {
   return {
     visitor: {
-      // 这是一个别名，用于捕获所有作用域节点：函数、类的函数、函数表达式、语句快、if else 、while、for
+      // 这是一个别名,用于捕获所有作用域节点:函数、类的函数、函数表达式、语句快、if else 、while、for
       Scopable(path) {
         // path.scope.bindings 取出作用域内的所有变量
       },
@@ -1683,12 +1683,12 @@ const uglifyPlugin = () => {
 ```js
 const uglyPlugin = {
   visitor: {
-    // 这是一个别名，用于捕获所有作用域节点(函数、类的方法、函数表达式、语句块、if else、while、for)
+    // 这是一个别名,用于捕获所有作用域节点(函数、类的方法、函数表达式、语句块、if else、while、for)
     Scopable(path) {
       // path.scope.bindings 可以取出作用域内的所有变量
       //取出后进行重命名
       Object.entries(path.scope.bindings).forEach(([key, binding]) => {
-        //在当前作用域内生成一个新的uid，并且不会和任何本地定义的变量冲突的标识符
+        //在当前作用域内生成一个新的uid,并且不会和任何本地定义的变量冲突的标识符
         const newName = path.scope.generateUid();
         binding.path.scope.rename(key, newName);
       });
@@ -1697,7 +1697,7 @@ const uglyPlugin = {
 };
 ```
 
-效果：代码中的变量命名已经经过压缩。如下图(假装是个图片)
+效果:代码中的变量命名已经经过压缩。如下图(假装是个图片)
 
 ```js
 const _temp = (_temp5) => {
@@ -1713,27 +1713,27 @@ const _temp = (_temp5) => {
 
 ### 最强王者:实现按需加载插件
 
-相信大家在工作中肯定都用过 [Lodash](https://lodash.com/) 这个工具库，它是一个一致性、模块化、高性能的 JavaScript 实用工具库。
+相信大家在工作中肯定都用过 [Lodash](https://lodash.com/) 这个工具库,它是一个一致性、模块化、高性能的 JavaScript 实用工具库。
 
-但是在使用它的时候有一个痛点，那就是它不支持按需加载，只要我们引用了这个工具库中的某个方法，就相当于引用整个工具库。
+但是在使用它的时候有一个痛点,那就是它不支持按需加载,只要我们引用了这个工具库中的某个方法,就相当于引用整个工具库。
 
-这无疑是不能接受的，今天我们通过一个手写的 Babel 插件来解决这个痛点问题。
+这无疑是不能接受的,今天我们通过一个手写的 Babel 插件来解决这个痛点问题。
 
-在 Webpack 中使用 Babel 插件，配置：
+在 Webpack 中使用 Babel 插件,配置:
 
 ```js
 const path = require('path');
 
 // CommonJS 的写法
 module.exports = {
-  mode: 'development', // 开发环境，不压缩代码
-  entry: './src/main.js', // 配置入口文件，跟很多后端一样 习惯叫 main
+  mode: 'development', // 开发环境,不压缩代码
+  entry: './src/main.js', // 配置入口文件,跟很多后端一样 习惯叫 main
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
   },
   devtool: 'source-map', // 方便查看打包后的代码
-  // 想查看没有使用按需引入插件的时候的效果可以注释下面整个 module，然后查看 dist 目录下的代码
+  // 想查看没有使用按需引入插件的时候的效果可以注释下面整个 module,然后查看 dist 目录下的代码
   module: {
     rules: [
       {
@@ -1742,7 +1742,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              //我们自己手写的babel-plugin-import插件(数组中的第一个参数为我们的插件地址，第二个参数为我们的配置)
+              //我们自己手写的babel-plugin-import插件(数组中的第一个参数为我们的插件地址,第二个参数为我们的配置)
               [
                 path.resolve(__dirname, 'plugins/babel-plugin-import.js'),
                 {
@@ -1759,7 +1759,7 @@ module.exports = {
 };
 ```
 
-源代码（src/main.js）：
+源代码（src/main.js）:
 
 ```js
 import { get } from 'lodash';
@@ -1774,11 +1774,11 @@ import { get } from 'lodash';
 console.log(get(null, 'test', '-'));
 ```
 
-只用了 lodash 中的一个 get 方法，实际编译后有 400 多 k
+只用了 lodash 中的一个 get 方法,实际编译后有 400 多 k
 
 ![no-babel-import-result](./assets/module-ast/no-babel-import-result.png)
 
-解决思路：将源代码变成这样
+解决思路:将源代码变成这样
 
 ```js
 import get from 'lodash/get';
@@ -1788,11 +1788,11 @@ import pick from 'lodash/pick';
 console.log(get, find, pick);
 ```
 
-整体方案：
+整体方案:
 
-第一步：在插件中拿到我们在插件调用时传递的参数 libraryName
-第二步：获取 import 节点，找出引入模块是 libraryName 的语句
-第三步：进行批量替换旧节点
+第一步:在插件中拿到我们在插件调用时传递的参数 libraryName
+第二步:获取 import 节点,找出引入模块是 libraryName 的语句
+第三步:进行批量替换旧节点
 
 1. 在插件中拿到我们在插件调用时传递的参数 libraryName
 
@@ -1814,7 +1814,7 @@ const visitor = {
   },
 };
 
-// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+// 这是插件约定的写法,返回一个函数,函数里面有 visitor 属性
 module.exports = function () {
   return {
     visitor,
@@ -1822,7 +1822,7 @@ module.exports = function () {
 };
 ```
 
-2. 获取 import 节点，找出引入模块是 libraryName 的语句
+2. 获取 import 节点,找出引入模块是 libraryName 的语句
 
 ```js
 /**
@@ -1841,13 +1841,13 @@ const visitor = {
     const { libraryName, libraryDirectory } = state.opts;
 +    const { node } = path; //获取节点
 +    const { specifiers } = node; //获取批量导入声明数组(包括default导入)
-+    //如果当前的节点的模块名称是我们需要的库的名称，并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
++    //如果当前的节点的模块名称是我们需要的库的名称,并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
 +    if ( node.source.value === libraryName && !types.isImportDefaultSpecifier(specifiers[0])) {
 +    }
   },
 }
 
-// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+// 这是插件约定的写法,返回一个函数,函数里面有 visitor 属性
 module.exports = function () {
   return {
     visitor
@@ -1874,17 +1874,17 @@ const visitor = {
     const { libraryName, libraryDirectory } = state.opts;
     const { node } = path; //获取节点
     const { specifiers } = node; //获取批量导入声明数组(包括default导入)
-    //如果当前的节点的模块名称是我们需要的库的名称，并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
+    //如果当前的节点的模块名称是我们需要的库的名称,并且导入不是默认导入才会进来,为啥判断 specifiers[0] 就可以知道是不是有 default 导入(你可以试试 default 导入可不可以不是第一个的情况(语法不允许))
     if (
       node.source.value === libraryName && !types.isImportDefaultSpecifier(specifiers[0])
     ) {
 +      //遍历批量导入声明数组
 +      const declarations = specifiers.map((specifier) => {
-+        //返回一个 import Declaration 节点，这里也可以用 template
++        //返回一个 import Declaration 节点,这里也可以用 template
 +        return types.importDeclaration(
 +          //导入声明 import DefaultSpecifier get
 +          [types.importDefaultSpecifier(specifier.local)],
-+          //导入模块 source lodash/get(不同的包可能处理不同，有些没有lib目录，有些叫别的名称)
++          //导入模块 source lodash/get(不同的包可能处理不同,有些没有lib目录,有些叫别的名称)
 +          types.stringLiteral(
 +            libraryDirectory
 +              ? `${libraryName}/${libraryDirectory}/${specifier.imported.name}`
@@ -1896,7 +1896,7 @@ const visitor = {
   },
 }
 
-// 这是插件约定的写法，返回一个函数，函数里面有 visitor 属性
+// 这是插件约定的写法,返回一个函数,函数里面有 visitor 属性
 module.exports = function () {
   return {
     visitor
@@ -1912,30 +1912,30 @@ module.exports = function () {
 
 ### 荣耀王者:实现 Typescript 的类型校验
 
-这里先说一个题外话，项目中做 TS 文件的类型检测大致有以下几种途径：
+这里先说一个题外话,项目中做 TS 文件的类型检测大致有以下几种途径:
 
 使用 [ts-loader](https://www.npmjs.com/package/ts-loader)
 使用 [babel-loader](https://www.npmjs.com/package/babel-loader)结合 [fork-ts-checker-webpack-plugin](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
 使用 [babel-loader](https://www.npmjs.com/package/babel-loader)结合 [tsc](https://www.typescriptlang.org/)
-这三种方式有利有弊，这三种方式虽然解决方案不同，但原理还是大同小异的，本节将从三种常见场景出发，由易到难，带大家吃透其中的原理。
+这三种方式有利有弊,这三种方式虽然解决方案不同,但原理还是大同小异的,本节将从三种常见场景出发,由易到难,带大家吃透其中的原理。
 
-> 使用 ast 在线工具需要先设置下使用 tyescript 插件，如下图
+> 使用 ast 在线工具需要先设置下使用 tyescript 插件,如下图
 
 ![overview](./assets/module-ast/babel-plugin-typescript-setting.png)
 
 1. 赋值场景
 
-源代码：
+源代码:
 
 ```js
 const age: number = '100';
 ```
 
-校验思路：
+校验思路:
 
-第一步：获取拿到声明的类型（number）
-第二步：获取真实值的类型（"100"的类型）
-第三步：比较声明的类型和值的类型是否相同
+第一步:获取拿到声明的类型（number）
+第二步:获取真实值的类型（"100"的类型）
+第三步:比较声明的类型和值的类型是否相同
 
 ```js
 /**
@@ -1988,7 +1988,7 @@ const sourceCode = `const age:number='100';`;
 
 // 通过插件对箭头函数进行转换
 const targetSource = core.transform(sourceCode, {
-  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  // 解析插件切换微 Typescript,这样才能识别 ts 语法
   parserOpts: {
     plugins: ['typescript'],
   },
@@ -2006,19 +2006,19 @@ const targetSource = core.transform(sourceCode, {
 
 2. 先声明再赋值场景
 
-源代码：
+源代码:
 
 ```js
 let age: number;
 age = '100';
 ```
 
-校验思路：
+校验思路:
 
-第一步：先获取左侧变量的定义（age）
-第二步：在获取左侧变量定义的类型（number）
-第三步：获取右侧的值的类型（"100"）
-第四步：判断变量的左侧变量的类型和右侧的值的类型是否相同
+第一步:先获取左侧变量的定义（age）
+第二步:在获取左侧变量定义的类型（number）
+第三步:获取右侧的值的类型（"100"）
+第四步:判断变量的左侧变量的类型和右侧的值的类型是否相同
 
 ```js
 /**
@@ -2047,16 +2047,16 @@ const tsLintPlugin = {
   visitor: {
     AssignmentExpression(path, state) {
       const errors = state.file.get('errors');
-      //第一步：先获取左侧变量的定义（age）
+      //第一步:先获取左侧变量的定义（age）
       const variable = path.scope.getBinding(path.get('left'));
-      //第二步：再获取左侧变量定义的类型（number）
+      //第二步:再获取左侧变量定义的类型（number）
       const variableAnnotation = variable.path.get('id').getTypeAnnotation();
       const variableType = transformType(variableAnnotation.type);
-      //第三步：获取右侧的值的类型（“12”）
+      //第三步:获取右侧的值的类型（"12"）
       const valueType = transformType(
         path.get('right').getTypeAnnotation().type,
       );
-      //第四步：判断变量的左侧变量的类型和右侧的值的类型是否相同
+      //第四步:判断变量的左侧变量的类型和右侧的值的类型是否相同
       if (variableType !== valueType) {
         Error.stackTraceLimit = 0;
         errors.push(
@@ -2083,7 +2083,7 @@ const sourceCode = `
 
 // 通过插件对箭头函数进行转换
 const targetSource = core.transform(sourceCode, {
-  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  // 解析插件切换微 Typescript,这样才能识别 ts 语法
   parserOpts: {
     plugins: ['typescript'],
   },
@@ -2101,20 +2101,20 @@ const targetSource = core.transform(sourceCode, {
 
 3. 泛型场景
 
-源代码：
+源代码:
 
 ```js
 function join<T1, T2>(a: T1, b: T2) {}
 join < number, string > (1, '2');
 ```
 
-整体思路：
+整体思路:
 
-第一步：先获取实参类型数组（1,'2'的类型数组：[number,string]）
-第二步：获取函数调用时传递的泛型类型数组（[number, string]）
-第三步：拿到函数定义时的泛型 [ T1 , T2 ]，然后结合第二步将 T1 赋值为 number，T2 赋值为 string，得到数组 [T1=number,T2=string]
-第四步：计算函数定义时的形参类型数组：此时 a:number，b:string => [number,string]
-第五步：a 的形参类型跟 a 的实参类型进行比较，b 的形参类型跟 b 的实参类型进行比较
+第一步:先获取实参类型数组（1,'2'的类型数组:[number,string]）
+第二步:获取函数调用时传递的泛型类型数组（[number, string]）
+第三步:拿到函数定义时的泛型 [ T1 , T2 ],然后结合第二步将 T1 赋值为 number,T2 赋值为 string,得到数组 [T1=number,T2=string]
+第四步:计算函数定义时的形参类型数组:此时 a:number,b:string => [number,string]
+第五步:a 的形参类型跟 a 的实参类型进行比较,b 的形参类型跟 b 的实参类型进行比较
 
 ```js
 /**
@@ -2143,17 +2143,17 @@ const tsLintPlugin = {
   visitor: {
     CallExpression(path, state) {
       const errors = state.file.get('errors');
-      //第一步：先获取实参类型数组（1,'2'的类型数组：[number,string]）
+      //第一步:先获取实参类型数组（1,'2'的类型数组:[number,string]）
       const args = path.get('arguments');
       const argTypes = args.map((arg) =>
         transformType(arg.getTypeAnnotation().type),
       );
-      // 第二步：获取函数调用时传递的泛型类型数组（[number, string]）
+      // 第二步:获取函数调用时传递的泛型类型数组（[number, string]）
       const params = path.get('typeParameters').get('params');
-      // 第三步：拿到函数定义时的泛型 [ T1 , T2 ]，然后结合第二步将 T1 赋值为 number，T2 赋值为 string，得到数组 [T1=number,T2=string]
+      // 第三步:拿到函数定义时的泛型 [ T1 , T2 ],然后结合第二步将 T1 赋值为 number,T2 赋值为 string,得到数组 [T1=number,T2=string]
       const paramTypes = params.map((item) => transformType(item.type));
-      // 第四步：计算函数定义时的形参类型数组：此时 a:number，b:string => [number,string]
-      // 第五步：a 的形参类型跟 a 的实参类型进行比较，b 的形参类型跟 b 的实参类型进行比较
+      // 第四步:计算函数定义时的形参类型数组:此时 a:number,b:string => [number,string]
+      // 第五步:a 的形参类型跟 a 的实参类型进行比较,b 的形参类型跟 b 的实参类型进行比较
       // 可以试着自己处理其他情况(如: 参数个数不一致。。。)
       argTypes.map((sourceType, index) => {
         if (sourceType !== paramTypes[index]) {
@@ -2183,7 +2183,7 @@ join < number, number > (1, "2");
 
 // 通过插件对箭头函数进行转换
 const targetSource = core.transform(sourceCode, {
-  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  // 解析插件切换微 Typescript,这样才能识别 ts 语法
   parserOpts: {
     plugins: ['typescript'],
   },
@@ -2195,8 +2195,6 @@ const targetSource = core.transform(sourceCode, {
 
 附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-ts-lint/src/main-generic.js)
 
-## 最佳实践
-
 ## 在线工具
 
 https://astexplorer.net/
@@ -2206,3 +2204,8 @@ https://ts-ast-viewer.com
 附上一个自己实现的 国际化硬编码的 eslint 插件
 
 https://github.com/shulex/eslint-plugin-shulex
+
+## 推荐阅读
+
+[the-super-tiny-compiler](https://github.com/jamiebuilds/the-super-tiny-compiler)
+[babel-handbook](https://github.com/jamiebuilds/babel-handbook)
