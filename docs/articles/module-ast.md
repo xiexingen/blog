@@ -1912,6 +1912,291 @@ module.exports = function () {
 
 ### 荣耀王者:实现 Typescript 的类型校验
 
+这里先说一个题外话，项目中做 TS 文件的类型检测大致有以下几种途径：
+
+使用 [ts-loader](https://www.npmjs.com/package/ts-loader)
+使用 [babel-loader](https://www.npmjs.com/package/babel-loader)结合 [fork-ts-checker-webpack-plugin](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
+使用 [babel-loader](https://www.npmjs.com/package/babel-loader)结合 [tsc](https://www.typescriptlang.org/)
+这三种方式有利有弊，这三种方式虽然解决方案不同，但原理还是大同小异的，本节将从三种常见场景出发，由易到难，带大家吃透其中的原理。
+
+> 使用 ast 在线工具需要先设置下使用 tyescript 插件，如下图
+
+![overview](./assets/module-ast/babel-plugin-typescript-setting.png)
+
+1. 赋值场景
+
+源代码：
+
+```js
+const age: number = '100';
+```
+
+校验思路：
+
+第一步：获取拿到声明的类型（number）
+第二步：获取真实值的类型（"100"的类型）
+第三步：比较声明的类型和值的类型是否相同
+
+```js
+/**
+ * 手写阉割版的 ts-lint 插件
+ */
+// babel核心模块
+const core = require('@babel/core');
+
+// 定义类型映射表
+const TypeAnnotationMap = {
+  TSNumberKeyword: 'NumericLiteral',
+};
+
+const tsLintPlugin = {
+  // 遍历前
+  pre(state) {
+    state.set('errors', []);
+  },
+  visitor: {
+    VariableDeclarator(path, state) {
+      const errors = state.file.get('errors');
+      const { node } = path;
+      //第一步: 获取拿到声明的类型（number）
+      const declareType =
+        TypeAnnotationMap[node.id.typeAnnotation.typeAnnotation.type]; //拿到声明的类型 NumberTypeAnnotation
+      //第二步: 获取真实值的类型（"100"的类型）
+      const initType = node.init.type; // 这里拿到的是真实值的类型 StringLiteral
+      //第三步: 比较声明的类型和值的类型是否相同
+      if (declareType !== initType) {
+        //拿到子路径init
+        errors.push(
+          path
+            .get('init')
+            .buildCodeFrameError(
+              `无法把${initType}类型赋值给${declareType}类型`,
+              Error,
+            ),
+        );
+      }
+    },
+  },
+  // 遍历后
+  post(state) {
+    console.log(...state.get('errors'));
+  },
+};
+
+// 转换前的代码,我们换成简写形式
+const sourceCode = `const age:number='100';`;
+
+// 通过插件对箭头函数进行转换
+const targetSource = core.transform(sourceCode, {
+  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  parserOpts: {
+    plugins: ['typescript'],
+  },
+  //使用插件
+  plugins: [tsLintPlugin],
+  filename: 'main.js',
+});
+```
+
+效果:
+
+![overview](./assets/module-ast/babel-plugin-typescript-result1.png)
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-ts-lint/src/main-generic.js)
+
+2. 先声明再赋值场景
+
+源代码：
+
+```js
+let age: number;
+age = '100';
+```
+
+校验思路：
+
+第一步：先获取左侧变量的定义（age）
+第二步：在获取左侧变量定义的类型（number）
+第三步：获取右侧的值的类型（"100"）
+第四步：判断变量的左侧变量的类型和右侧的值的类型是否相同
+
+```js
+/**
+ * 手写阉割版的 ts-lint 插件 - 先定义再赋值场景
+ */
+// babel核心模块
+const core = require('@babel/core');
+
+// 定义类型映射表
+function transformType(type) {
+  switch (type) {
+    case 'TSNumberKeyword':
+    case 'NumberTypeAnnotation':
+      return 'number';
+    case 'TSStringKeyword':
+    case 'StringTypeAnnotation':
+      return 'string';
+  }
+}
+
+const tsLintPlugin = {
+  // 遍历前
+  pre(state) {
+    state.set('errors', []);
+  },
+  visitor: {
+    AssignmentExpression(path, state) {
+      const errors = state.file.get('errors');
+      //第一步：先获取左侧变量的定义（age）
+      const variable = path.scope.getBinding(path.get('left'));
+      //第二步：再获取左侧变量定义的类型（number）
+      const variableAnnotation = variable.path.get('id').getTypeAnnotation();
+      const variableType = transformType(variableAnnotation.type);
+      //第三步：获取右侧的值的类型（“12”）
+      const valueType = transformType(
+        path.get('right').getTypeAnnotation().type,
+      );
+      //第四步：判断变量的左侧变量的类型和右侧的值的类型是否相同
+      if (variableType !== valueType) {
+        Error.stackTraceLimit = 0;
+        errors.push(
+          path
+            .get('right')
+            .buildCodeFrameError(
+              `无法把 ${valueType} 赋值给 ${variableType} `,
+              Error,
+            ),
+        );
+      }
+    },
+  },
+  // 遍历后
+  post(state) {
+    console.log(...state.get('errors'));
+  },
+};
+
+const sourceCode = `
+  let age:number;
+  age='100';
+`;
+
+// 通过插件对箭头函数进行转换
+const targetSource = core.transform(sourceCode, {
+  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  parserOpts: {
+    plugins: ['typescript'],
+  },
+  //使用插件
+  plugins: [tsLintPlugin],
+  filename: 'main.js',
+});
+```
+
+效果:
+
+![overview](./assets/module-ast/babel-plugin-typescript-result2.png)
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-ts-lint/src/main-declare.js)
+
+3. 泛型场景
+
+源代码：
+
+```js
+function join<T1, T2>(a: T1, b: T2) {}
+join < number, string > (1, '2');
+```
+
+整体思路：
+
+第一步：先获取实参类型数组（1,'2'的类型数组：[number,string]）
+第二步：获取函数调用时传递的泛型类型数组（[number, string]）
+第三步：拿到函数定义时的泛型 [ T1 , T2 ]，然后结合第二步将 T1 赋值为 number，T2 赋值为 string，得到数组 [T1=number,T2=string]
+第四步：计算函数定义时的形参类型数组：此时 a:number，b:string => [number,string]
+第五步：a 的形参类型跟 a 的实参类型进行比较，b 的形参类型跟 b 的实参类型进行比较
+
+```js
+/**
+ * 手写阉割版的 ts-lint 插件 - 泛型场景
+ */
+// babel核心模块
+const core = require('@babel/core');
+
+// 定义类型映射表
+function transformType(type) {
+  switch (type) {
+    case 'TSNumberKeyword':
+    case 'NumberTypeAnnotation':
+      return 'number';
+    case 'TSStringKeyword':
+    case 'StringTypeAnnotation':
+      return 'string';
+  }
+}
+
+const tsLintPlugin = {
+  // 遍历前
+  pre(state) {
+    state.set('errors', []);
+  },
+  visitor: {
+    CallExpression(path, state) {
+      const errors = state.file.get('errors');
+      //第一步：先获取实参类型数组（1,'2'的类型数组：[number,string]）
+      const args = path.get('arguments');
+      const argTypes = args.map((arg) =>
+        transformType(arg.getTypeAnnotation().type),
+      );
+      // 第二步：获取函数调用时传递的泛型类型数组（[number, string]）
+      const params = path.get('typeParameters').get('params');
+      // 第三步：拿到函数定义时的泛型 [ T1 , T2 ]，然后结合第二步将 T1 赋值为 number，T2 赋值为 string，得到数组 [T1=number,T2=string]
+      const paramTypes = params.map((item) => transformType(item.type));
+      // 第四步：计算函数定义时的形参类型数组：此时 a:number，b:string => [number,string]
+      // 第五步：a 的形参类型跟 a 的实参类型进行比较，b 的形参类型跟 b 的实参类型进行比较
+      // 可以试着自己处理其他情况(如: 参数个数不一致。。。)
+      argTypes.map((sourceType, index) => {
+        if (sourceType !== paramTypes[index]) {
+          Error.stackTraceLimit = 0;
+          errors.push(
+            path
+              .get(`arguments.${index}`)
+              .buildCodeFrameError(
+                `无法把 ${sourceType} 赋值给 ${paramTypes[index]} `,
+                Error,
+              ),
+          );
+        }
+      });
+    },
+  },
+  // 遍历后
+  post(state) {
+    console.log(...state.get('errors'));
+  },
+};
+
+const sourceCode = `
+function join<T1, T2>(a: T1, b: T2) {}
+join < number, number > (1, "2");
+`;
+
+// 通过插件对箭头函数进行转换
+const targetSource = core.transform(sourceCode, {
+  // 解析插件切换微 Typescript，这样才能识别 ts 语法
+  parserOpts: {
+    plugins: ['typescript'],
+  },
+  //使用插件
+  plugins: [tsLintPlugin],
+  filename: 'main.js',
+});
+```
+
+附上[案例源码](https://github.com/xiexingen/module-study/tree/main/module-ast-plugin-ts-lint/src/main-generic.js)
+
+## 最佳实践
+
 ## 在线工具
 
 https://astexplorer.net/
