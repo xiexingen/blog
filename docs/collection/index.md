@@ -75,6 +75,7 @@ nav:
 | 图形库                 | [rough.js](https://github.com/pshihn/rough)                                                                                                                                                                                                          | 可以让你用手绘的访视回执草图                             |
 | 元素操作               | [moveable](https://github.com/daybrush/moveable)                                                                                                                                                                                                     | 让元素变成可拖动、可调整大小、可伸缩、可旋转、可组合的库 |
 | 工作流                 | [n8n](https://github.com/n8n-io/n8n) bpmnjs                                                                                                                                                                                                          | 基于节点的工作流                                         |
+| 文件大小展示           | [filesize](https://github.com/avoidwork/filesize.js)                                                                                                                                                                                                 | 文件大小格式化展示                                       |
 
 ## github
 

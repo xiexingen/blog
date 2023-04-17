@@ -1,7 +1,7 @@
-Function.prototype['myCall'] = function (ctx, ...args) {
+Function.prototype["myCall"] = function (ctx, ...args) {
   // 未传ctx上下文，或者传的是null和undefined等场景
   if (!ctx) {
-    ctx = typeof window !== 'undefined' ? window : global;
+    ctx = typeof window !== "undefined" ? window : global;
   }
   ctx = Object(ctx);
   // 生成一个唯一的key
@@ -17,10 +17,10 @@ Function.prototype['myCall'] = function (ctx, ...args) {
 };
 
 // 注: 与call的区别就是args为数组(不需要展开)
-Function.prototype['myApply'] = function (ctx, args = []) {
+Function.prototype["myApply"] = function (ctx, args = []) {
   // 未传ctx上下文，或者传的是null和undefined等场景
   if (!ctx) {
-    ctx = typeof window !== 'undefined' ? window : global;
+    ctx = typeof window !== "undefined" ? window : global;
   }
   ctx = Object(ctx);
   // 生成一个唯一的key
@@ -33,4 +33,11 @@ Function.prototype['myApply'] = function (ctx, args = []) {
   delete ctx[fnName];
   // 返回结果
   return result;
+};
+
+Function.prototype["myBind"] = function (ctx, ...args) {
+  const fn = this;
+  return function (...innerArgs) {
+    return fn.myCall(ctx, [...args, ...innerArgs]);
+  };
 };
