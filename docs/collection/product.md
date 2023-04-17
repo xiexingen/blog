@@ -55,6 +55,7 @@ nav:
 | 自动测试 | [Airtest]（https://github.com/AirtestProject/Airtest）                                               | 跨平台的 UI 自动化测试框架，适用于游戏和 App |
 | 爬虫     | [puppeteer](https://github.com/GoogleChrome/puppeteer) [Hawk](https://github.com/ferventdesert/Hawk) | 爬虫                                         |
 | 定时任务 | [quartzui](https://github.com/zhaopeiym/quartzui)、[Topshelf](https://github.com/Topshelf/Topshelf)  |                                              |
+| 测试框架 | [Airtest](https://github.com/AirtestProject/Airtest)                                                 |                                              |
 
 ## vscode 插件
 
