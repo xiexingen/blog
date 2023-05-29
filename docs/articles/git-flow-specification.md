@@ -1,6 +1,6 @@
 ---
 title: git-flow 规范
-order: 60
+order: 65
 nav:
   title: 随笔
   path: /articles

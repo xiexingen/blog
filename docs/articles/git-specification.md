@@ -1,6 +1,6 @@
 ---
 title: git 规范
-order: 45
+order: 60
 nav:
   title: 随笔
   path: /articles

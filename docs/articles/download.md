@@ -1,6 +1,6 @@
 ---
 title: 前端下载
-order: 50
+order: 51
 nav:
   title: 随笔
   path: /articles
@@ -10,7 +10,7 @@ group:
 
 # 前端下载
 
-整理一下前端涉及文件下载常用的访视
+整理一下前端涉及文件下载常用的方式
 
 ## window.open
 
@@ -20,7 +20,7 @@ group:
 缺点: 如果是 token 形式访问，这种形式得自行处理 token 问题
 
 ```js
-window.open("文件地址", "_target");
+window.open('文件地址', '_target');
 ```
 
 ## a 标签
@@ -33,16 +33,16 @@ window.open("文件地址", "_target");
 
 ```js
 const xhr = new XMLHttpRequest();
-xhr.open("GET", "文件地址");
+xhr.open('GET', '文件地址');
 xhr.send();
 
 xhr.onload = function () {
-  const blob = new Blob([xhr.response], { type: "text/html" });
-  const a = document.createElement("a");
+  const blob = new Blob([xhr.response], { type: 'text/html' });
+  const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = "xxx.html";
+  a.download = 'xxx.html';
   // 触发模拟点击
-  a.dispatchEvent(new MouseEvent("click"));
+  a.dispatchEvent(new MouseEvent('click'));
   // a.click()
 };
 ```
