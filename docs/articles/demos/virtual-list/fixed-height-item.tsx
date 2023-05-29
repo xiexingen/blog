@@ -4,7 +4,7 @@
  */
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { generateData } from './bigdata'
-import ListContainer from './ListContainer';
+import ListContainer from './components/ListContainer';
 import './index.less';
 
 const list = generateData(1000000);
