@@ -1,9 +1,9 @@
 /**
  * title: 虚拟渲染
- * description: 单项高度固定的虚拟渲染
+ * description: 单项高度不固定的虚拟渲染
  */
 import React, { useState, useCallback, useRef, useMemo } from 'react';
-import { generateData } from './bigdata'
+import { generateData } from '../bigdata'
 import ListContainer from './components/ListContainer';
 import './index.less';
 
