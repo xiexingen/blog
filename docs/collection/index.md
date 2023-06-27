@@ -66,6 +66,12 @@ url 参数转化 (parse 和 stringify)的轻量级 js 库
 
 数字转大写
 
+### numbro
+
+数字的格式可以像货币、百分比、时间，甚至是带有小数位、千位和缩写的普通旧数字。
+
+https://github.com/BenjaminVanRyseghem/numbro
+
 ### pretty-bytes
 
 - https://github.com/sindresorhus/pretty-bytes
