@@ -1,4 +1,4 @@
-import React, { memo, useState, useMemo, useCallback, useRef, useEffect } from "react";
+import React, { memo, useState, useMemo, useCallback, useRef, useEffect, useImperativeHandle } from "react";
 import { generateData } from './bigdata'
 
 const list = generateData(1000000);
@@ -30,13 +30,19 @@ function binarySearch(list, value, compareFunc) {
   return tempIndex;
 }
 
-const Container = ({ height, children, ...props }) => {
+const Container = React.forwardRef(({ height, children, onScroll }, ref) => {
+  const divRef = useRef(null);
+  useImperativeHandle(ref, () => {
+    return {
+      target: divRef.current
+    }
+  })
   return (
-    <div style={{ overflowY: 'auto', height }} {...props}>
+    <div ref={divRef} style={{ overflowY: 'auto', height }} onScroll={onScroll}>
       {children}
     </div>
   )
-}
+})
 
 const ListBox = ({ children, ...props }) => {
   return (
@@ -46,13 +52,19 @@ const ListBox = ({ children, ...props }) => {
   )
 }
 
-const Wraper = ({ children }) => {
+const Wraper = React.forwardRef(({ children, ...props }, ref) => {
+  const divRef = useRef(null);
+  useImperativeHandle(ref, () => {
+    return {
+      target: divRef.current
+    }
+  })
   return (
-    <>
+    <div ref={divRef} {...props}>
       {children}
-    </>
+    </div>
   )
-}
+})
 
 const Item = ({ data, index, key, style }) => {
   return (
@@ -71,8 +83,8 @@ const VirList4 = memo(function ({
   ItemBox = <></>,
   estimatedItemHeight = 80,
   ...props }) {
-  const containerRef = useRef();
-  const wrapperRef = useRef();
+  const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
   const [startIndex, setStartIndex] = useState(0);
   const [scrollTop, setScrollTop] = useState(0);
 
@@ -114,11 +126,11 @@ const VirList4 = memo(function ({
   }, [list, positionCache, estimatedItemHeight])
 
   useEffect(function () {
-    console.log(wrapperRef.current)
-    if (!Array.isArray(wrapperRef.current?.childNodes)) {
+    const childrenNodesCount = wrapperRef.current?.target?.childNodes?.length ?? 0;
+    if (childrenNodesCount === 0) {
       return;
     }
-    const nodeList = wrapperRef.current.childNodes;
+    const nodeList = wrapperRef.current.target.childNodes;
     const positList = [...positionCache]
     let needUpdate = false;
     nodeList.forEach((node, i) => {
@@ -140,7 +152,7 @@ const VirList4 = memo(function ({
     if (needUpdate) {
       setPositionCache(positList)
     }
-  }, [scrollTop, wrapperRef.current?.childNodes])
+  }, [scrollTop, wrapperRef.current?.target?.childNodes])
 
   const getTransform = useCallback(function () {
     return `translate3d(0,${startIndex >= 1 ? positionCache[startIndex - 1].bottom : 0}px,0)`
@@ -165,7 +177,7 @@ const VirList4 = memo(function ({
   }
 
   const handleSrcoll = useCallback(function (e) {
-    if (e.target !== containerRef.current) return;
+    if (e.target !== containerRef.current.target) return;
     const scrollTop = e.target.scrollTop;
     setScrollTop(scrollTop)
     const currentStartIndex = getStartIndex(scrollTop);
@@ -175,7 +187,7 @@ const VirList4 = memo(function ({
       console.log(startIndex + "====--" + limit + "--====" + endIndex)
     }
 
-  }, [containerRef, estimatedItemHeight, startIndex])
+  }, [estimatedItemHeight, startIndex])
 
   const renderList = useCallback(function () {
     const rows: any[] = [];

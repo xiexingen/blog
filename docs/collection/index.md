@@ -42,6 +42,12 @@ nav:
 
 任意精度的十进制算术运算
 
+### MathJax
+
+- https://github.com/mathjax/MathJax
+
+数学公式展示
+
 ### qs
 
 - https://github.com/ljharb/qs

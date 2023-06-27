@@ -12,7 +12,7 @@ group:
 
 先看个不经过任何处理的情况下展示
 
-<code src="./demos/virtual-list/normal.tsx"></code>
+<!-- <code src="./demos/virtual-list/normal.tsx"></code> -->
 
 虚拟列表是啥?
 
@@ -30,7 +30,7 @@ ListBox 高度 = 每一项的高度 \* 列表项的总条数。使得撑开 List
 
 这就实现了列表的无缝衔接(根据实际情况可以调整下 buffer)
 
-<code src="./demos/virtual-list/fixed-height-item/index.tsx"></code>
+<!-- <code src="./demos/virtual-list/fixed-height-item/index.tsx"></code> -->
 
 # 单项高度不固定
 
