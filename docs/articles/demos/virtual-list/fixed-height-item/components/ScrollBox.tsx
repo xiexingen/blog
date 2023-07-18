@@ -22,12 +22,12 @@ const ScrollBox: React.FC<IScrollBoxProps> = (props) => {
   }, [height, itemHeight]);
 
   // 当前可视区域显示的列表的结束索引
-  const endIndex = useMemo(function () {
+  const endIndex = useMemo(() => {
     return Math.min(startIndex + limit + buffer - 1, list.length - 1);
   }, [startIndex, limit, buffer]);
 
   // 计算实际数据产生的总高度
-  const listBoxHeight = useMemo(function () {
+  const listBoxHeight = useMemo(() => {
     return list.length * itemHeight;
   }, [list, itemHeight])
 

@@ -1,16 +1,17 @@
 /**
  * title: 虚拟渲染
- * description: 元素高度固定的虚拟列表
+ * description: 单项动态高度的虚拟渲染
  */
-import React from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { generateData } from '../bigdata'
-import ScrollBox from './components/ScrollBox';
+import ListContainer from './components/ListContainer';
+import './index.less';
 
 const list = generateData(1000000);
 
 export default () => {
   return (
-    <ScrollBox
+    <ListContainer
       list={list}
       buffer={1}
       height={360}

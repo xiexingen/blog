@@ -560,3 +560,73 @@ javascript 内存 数据库
 基于节点的工作流
 
 ### g6
+
+## 低代码平台
+
+### GoView
+
+- https://gitee.com/dromara/go-view
+
+GoView 是一个使用 Vue3 搭建的低代码数据可视化开发平台，将图表或页面元素封装为基础组件，无需编写代码即可完成业务需求。它的技术栈为：Vue3 + TypeScript4 + Vite2 + NaiveUI + ECharts5 + Axios + Pinia2 + PlopJS
+
+### vlife
+
+- https://github.com/wwwlike/vlife
+
+企业级低代码快速开发平台，包含页面可视化配置、自定义表单、自定义报表、权限管理脚手架应用、前后端代码自动生成；主要特点是低代码开发，可实现复杂 CRUD 功能仅编写数据模型就能完成前后端开发
+
+### JeecgBoot
+
+- https://gitee.com/jeecg/jeecgboot-vue3
+
+JeecgBoot 采用 Vue3.0+TypeScript+Vite+Ant-Design-Vue 等新技术方案，包括二次封装组件、utils、hooks、动态菜单、权限校验、按钮级别权限控制等功能
+
+### maku-generator
+
+- https://gitee.com/makunet/maku-generator
+
+一款低代码生成器，可根据自定义模板内容，快速生成代码，实现项目的快速开发、上线，减少重复的代码编写，开发人员只需专注业务逻辑即可
+
+### MtBird
+
+- https://github.com/staringos/mtbird
+
+星搭精卫 MtBird 是一款基于 React 的低代码可视化页面生成器。帮助用户以可视化的形式搭建网页、小程序和表单等应用
+
+### 鲁班 H5
+
+- https://github.com/ly525/luban-h5
+
+鲁班 H5 是基于 Vue 2 开发、通过拖拽快速生成页面的平台。类似 易企秀、Maka、百度 H5 等平台。其支持表单组件，即时倾听用户反馈，可以在后台查看和下载用户数据。包含了丰富的组件系统、支持可视化编辑、自由拖拽排版、实时预览、在线访问。支持一键导入 PSD，将设计师的创意转换为 H5，快速查看效果、反馈、上线
+
+### Seezoon Stack
+
+- https://toscode.gitee.com/huangdf/seezoon-stack
+
+Seezoon Stack 是一款基于当前最前沿的前端（Vue3 + Vite + Antdv）和后台（Spring boot）实现的低代码开发平台。以快速开发为目的，在开发速度和代码结构上做出一定取舍。项目采用主流开发框架，无论打包、编译、部署都按着大公司的标准完成并不断逐步完善
+
+### Variant Form
+
+- https://github.com/vform666/variant-form
+
+Variant Form 是一款高效的 Vue 低代码表单，可视化设计，一键生成源码。其特性如下：
+
+拖拽式可视化表单设计；
+支持 PC、Pad、H5 三种布局；
+支持运行时动态加载表单；
+支持表单复杂交互控制；
+支持自定义 CSS 样式；
+支持自定义校验逻辑；
+支持国际化多语言；
+兼容 IE 11 浏览器；
+可导出 Vue 组件、HTML 源码；
+可导出 Vue 的 SFC 单文件组件；、
+支持开发自定义组件；
+支持响应式自适应布局；
+支持 VS Code 插件
+
+### h5-factory
+
+- https://github.com/yangyuji/h5-factory
+
+h5-factory 是一个 h5 专题页面可视化编辑工具，拖拽编辑，灵活切换，一键生成 html 文件

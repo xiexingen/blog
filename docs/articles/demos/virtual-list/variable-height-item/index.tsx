@@ -10,11 +10,6 @@ const list = generateData(1000000);
 
 export default () => {
   return (
-    <VariableSizeList
-      height={200}
-      width={200}
-      dataSource={list}
-      isDynamic
-    />
+    <VariableSizeList />
   );
 };

@@ -89,7 +89,7 @@ const VirList4 = memo(function ({
   const [scrollTop, setScrollTop] = useState(0);
 
   const [positionCache, setPositionCache] = useState(function () {
-    const positList = [];
+    const positList: any[] = [];
     list.forEach((_, i) => {
       positList[i] = {
         index: i,

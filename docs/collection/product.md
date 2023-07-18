@@ -77,6 +77,10 @@ https://github.com/oldj/SwitchHosts
 
 - iShot
 
+- ScreenToGif
+
+https://www.screentogif.com/
+
 - FSCapture
 
 ## 压缩解压工具
