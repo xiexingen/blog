@@ -405,6 +405,12 @@ https://github.com/borisyankov/react-sparklines
 
 Markdown 渲染
 
+### xterm.js
+
+- https://github.com/xtermjs/xterm.js
+
+一个 web 端的命令行组件
+
 ## 数据查看
 
 ### react-json-view
@@ -563,6 +569,60 @@ javascript 内存 数据库
 
 ## 低代码平台
 
+### LowCodeEngine
+
+- https://github.com/alibaba/lowcode-demo
+
+LowCodeEngine 由阿里巴巴钉钉宜搭团队开发的低代码框架，基于阿里云的云基础设施和钉钉的企业数字化操作系统。使用者只需要基于低代码引擎便可以快速定制符合自己业务需求的低代码平台。同时 LowCodeEngine 还提供了很多的基础组件，可以帮助开发者快速的构建业务页面
+
+### Appsmith
+
+- https://github.com/appsmithorg/appsmith
+
+Appsmith 是一款开源低代码框架，主要用于构建管理面板、内部工具和仪表板等，允许拖放 UI 组件来构建页面，通过连接到任何 API、数据库或 GraphQL 源，并使用 JavaScript 语言编写逻辑，可以在短时间内创建内部应用程序
+
+### Amis
+
+- https://github.com/baidu/amis
+
+Amis 是百度开源的一款前端低代码框架，通过 JSON 配置就能生成各种后台页面，包括数据获取、表单提交及验证等功能，同时，Amis 内置 100+ 种 UI 组件，能够满足各种页面组件展现的需求，极大减少开发成本，甚至可以不需要了解前端。amis 在百度内部得到了广泛使用，在 4 年多的时间里创建了 3w 多页面，从内容审核到机器管理，从数据分析到模型训练，amis 满足了各种各样的页面需求。我们可以下载源码，然后使用如下的命令来体验
+
+### tmagic-editor
+
+- https://github.com/Tencent/tmagic-editor
+
+tmagic-editor 是一款由腾讯技术中心出品的一款开源低代码框架，能够实现零代码/低代码生成页面 ， 可以快速搭建可视化页面生产平台，让非技术人员可以通过拖拽和配置，自助生成 H5 页面、PC 页面、TV 页面，大大降低页面生产成本
+
+### dooring-electron-lowcode
+
+- https://github.com/H5-Dooring/dooring-electron-lowcode
+
+dooring-electron-lowcode 是一款功能强大，专业可靠的可视化页面配置解决方案，致力于提供一套简单方便、专业可靠、无限可能的 H5 落地页最佳实践。技术栈以 react 和 typescript 为主， 后台采用 nodejs 开发, electron 作为桌面端基础方案
+
+### vite-vue3-lowcode
+
+- https://github.com/buqiyuan/vite-vue3-lowcode
+
+vite-vue3-lowcode 是一款基于 Vite2.x + Vue3.x + TypeScript 技术框架的的 H5 低代码平台。目前只是一个简单的模板，支持数据配置的导入和导出，配置的修改和删除操作，用到的技术有 sandbox 中执行自定义逻辑、monaco-editor 自定义代码补全、vue3 createRenderer 自定义渲染器等
+
+### shida
+
+- https://github.com/tnfe/shida
+
+shida 是一个视频可视化搭建项目，开发者可以通过拖拽就可以快速地生产一个短视频，使用方式就像易企秀或百度 H5 等 h5 低代码平台一样。shida 的后端视频合成部分是基于 FFCreator 进行开发的，FFCreator 是一个基于 node.js 的轻量、灵活的短视频加工库，只需要添加几张图片或视频片段再加一段背景音乐，就可以快速生成一个很酷的视频短片
+
+### quark-h5
+
+- https://github.com/huangwei9527/quark-h5
+
+quark-h5 是一个使用 Vue + Koa 的前端低代码框架，和大多数的前端低代码框架一样，采用的是编辑器生成页面 JSON 数据，服务端负责存取 JSON 数据，渲染时从服务端取数据 JSON 交给前端模板处理
+
+### gods-pen
+
+- https://github.com/ymm-tech/gods-pen
+
+码良是一个在线生成 H5 页面并提供页面管理和页面编辑的平台，用于快速制作 H5 页面。用户无需掌握复杂的编程技术，通过简单拖拽、少量配置即可制作精美的页面，可用于营销场景下的页面制作。同时，也为开发者提供了完备的编程接入能力，通过脚本和组件的形式获得强大的组件行为和交互控制能力
+
 ### GoView
 
 - https://gitee.com/dromara/go-view
@@ -597,7 +657,7 @@ JeecgBoot 采用 Vue3.0+TypeScript+Vite+Ant-Design-Vue 等新技术方案，包�
 
 - https://github.com/ly525/luban-h5
 
-鲁班 H5 是基于 Vue 2 开发、通过拖拽快速生成页面的平台。类似 易企秀、Maka、百度 H5 等平台。其支持表单组件，即时倾听用户反馈，可以在后台查看和下载用户数据。包含了丰富的组件系统、支持可视化编辑、自由拖拽排版、实时预览、在线访问。支持一键导入 PSD，将设计师的创意转换为 H5，快速查看效果、反馈、上线
+鲁班 H5 是基于 Vue2.0 开发的支持拖拽方式来快速生成页面的低代码平台，功能基本类似于易企秀、Maka、百度等 H5 平台
 
 ### Seezoon Stack
 

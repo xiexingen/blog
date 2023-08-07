@@ -5,6 +5,7 @@
 import React from 'react';
 import { generateData } from '../bigdata'
 import ScrollBox from './components/ScrollBox';
+import './index.less';
 
 const list = generateData(1000000);
 
@@ -17,7 +18,7 @@ export default () => {
       itemHeight={46}
       renderBoxItem={({ data, index, style }) => {
         return (
-          <div className="item" style={style}>
+          <div className={`item ${index % 2 == 0 ? 'list-item-even' : 'list-item-odd'}`} style={style}>
             {data.id} - {data.name} - {data.age} - {data.address} -{data.salary}
           </div>
         )

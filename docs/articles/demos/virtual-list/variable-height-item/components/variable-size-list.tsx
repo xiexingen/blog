@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 
 // 元数据
 const measuredData = {
@@ -43,7 +44,6 @@ const getItemMetaData = (props, index) => {
   }
   return measuredDataMap[index];
 };
-
 const getStartIndex = (props, scrollOffset) => {
   const { itemCount } = props;
   let index = 0;
@@ -86,52 +86,75 @@ const getRangeToRender = (props, scrollOffset) => {
   ];
 };
 
+/**
+ * 滚动容器
+ */
+const ScrollBox = styled.div.attrs(props => ({
+  $width: props.$width || '100%',
+  $height: props.$height || '400px'
+})) <{
+  $width?: string;
+  $height?: string;
+}>`
+  position: relative;
+  overflow: auto;
+  will-change: transform;
+  width: ${props => props.$width};
+  height: ${props => props.$height};
+`;
+
+/**
+ * 实际放置内容的容器
+ */
+const ListBox = styled.div.attrs(props => ({
+  $width: props.$width || '100%',
+  $height: props.$height || '400px'
+})) <{
+  $width?: string;
+  $height?: string;
+}>`
+  width: ${props => props.$width || 'auto'};
+  height: ${props => props.$height || 'auto'};
+`
+
 const VariableSizeList = (props) => {
-  const { height, width, itemCount, itemEstimatedSize, children: Child } = props;
+  const { height, width, itemCount, itemEstimatedSize, renderItem } = props;
   const [scrollOffset, setScrollOffset] = useState(0);
+  const contentHeight = estimatedHeight(itemEstimatedSize, itemCount);
 
-  const containerStyle = {
-    position: 'relative',
-    width,
-    height,
-    overflow: 'auto',
-    willChange: 'transform'
-  };
-
-  const contentStyle = {
-    height: estimatedHeight(itemEstimatedSize, itemCount),
-    width: '100%',
-  };
-
-  const getCurrentChildren = () => {
+  const renderChildren = () => {
     const [startIndex, endIndex, originStartIndex, originEndIndex] = getRangeToRender(props, scrollOffset)
-    const items = [];
+    const rows: React.ReactElement[] = [];
     for (let i = startIndex; i <= endIndex; i++) {
       const item = getItemMetaData(props, i);
-      const itemStyle = {
-        position: 'absolute',
-        height: item.size,
-        width: '100%',
-        top: item.offset,
-      };
-      items.push(
-        <Child key={i} index={i} style={itemStyle} />
-      );
+      const itemEle = renderItem({
+        index: i,
+        data: item,
+        style: {
+          position: 'absolute',
+          height: item.size,
+          width: '100%',
+          top: item.offset,
+        }
+      });
+      rows.push(itemEle);
     }
-    return items;
+    return rows;
   }
 
-  const scrollHandle = (event) => {
-    const { scrollTop } = event.currentTarget;
+  const scrollHandle = (e) => {
+    const { scrollTop } = e.currentTarget;
     setScrollOffset(scrollTop);
   }
 
   return (
-    <div style={containerStyle} onScroll={scrollHandle}>
-      <div style={contentStyle}>
-        {getCurrentChildren()}
-      </div>
-    </div>
+    <ScrollBox $width={width} $height={height} onScroll={scrollHandle}>
+      <ListBox $width="100%" $height={contentHeight}>
+        {
+          renderChildren()
+        }
+      </ListBox>
+    </ScrollBox>
   );
 };
 
