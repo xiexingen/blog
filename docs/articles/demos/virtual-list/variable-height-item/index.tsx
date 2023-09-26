@@ -6,7 +6,7 @@ import React from 'react';
 import { generateData } from '../bigdata'
 import VariableSizeList from './components/variable-size-list'
 
-const list = generateData(1000);
+const list = generateData(10000);
 
 // 生成模拟每行数据高度的数组
 const rowSizes = new Array(list.length).fill(true).map(() => 25 + Math.round(Math.random() * 55))
