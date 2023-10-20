@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Item from './item';
 import styled, { css } from 'styled-components';
 
 /**
@@ -6,8 +7,10 @@ import styled, { css } from 'styled-components';
  */
 const measuredData: {
   measuredDataMap: {
-    offset: number,
-    height: number,
+    [key: number]: {
+      offset: number,
+      height: number,
+    }
   },
   LastMeasuredItemIndex: number
 } = {
@@ -55,7 +58,7 @@ const calcTotalHeight = (defaultItemHeight = 50, dataSourceLength) => {
  * @param index
  * @returns
  */
-const getItemMetaData = (getItemHeightFunc, index) => {
+const getItemMetaData = (defaultItemHeight, index) => {
   const { measuredDataMap, LastMeasuredItemIndex } = measuredData;
   // 如果当前索引比已记录的索引要大，说明要计算当前索引的项的size和offset
   if (index > LastMeasuredItemIndex) {
@@ -67,7 +70,7 @@ const getItemMetaData = (getItemHeightFunc, index) => {
     }
     // 计算直到index为止，所有未计算过的项
     for (let i = LastMeasuredItemIndex + 1; i <= index; i++) {
-      const currentItemSize = getItemHeightFunc(i);
+      const currentItemSize = measuredDataMap[i]?.height || defaultItemHeight;
       measuredDataMap[i] = { height: currentItemSize, offset };
       offset += currentItemSize;
     }
@@ -78,10 +81,10 @@ const getItemMetaData = (getItemHeightFunc, index) => {
 };
 
 const getStartIndex = (props, scrollTop) => {
-  const { getItemHeight, dataSourceLength } = props;
+  const { dataSourceLength, defaultItemHeight } = props;
   let index = 0;
   while (true) {
-    const currentOffset = getItemMetaData(getItemHeight, index).offset;
+    const currentOffset = getItemMetaData(defaultItemHeight, index).offset;
     if (currentOffset >= scrollTop) {
       return index;
     }
@@ -93,9 +96,9 @@ const getStartIndex = (props, scrollTop) => {
 }
 
 const getEndIndex = (props, startIndex) => {
-  const { getItemHeight, dataSourceLength, height } = props;
+  const { dataSourceLength, height, defaultItemHeight } = props;
   // 获取可视区内开始的项
-  const startItem = getItemMetaData(getItemHeight, startIndex);
+  const startItem = getItemMetaData(defaultItemHeight, startIndex);
   // 可视区内最大的offset值
   const maxOffset = startItem.offset + height;
   // 开始项的下一项的offset，之后不断累加此offset，直到等于或超过最大offset，就是找到结束索引了
@@ -105,7 +108,7 @@ const getEndIndex = (props, startIndex) => {
   // 累加offset
   while (offset <= maxOffset && endIndex < (dataSourceLength - 1)) {
     endIndex++;
-    const currentItem = getItemMetaData(getItemHeight, endIndex);
+    const currentItem = getItemMetaData(defaultItemHeight, endIndex);
     offset += currentItem.height;
   }
   return endIndex;
@@ -114,11 +117,9 @@ const getEndIndex = (props, startIndex) => {
 const getRangeToRender = (props, scrollTop) => {
   const dataSourceLength = props.dataSource?.length ?? 0;
   const startIndex = getStartIndex({
-    getItemHeight: props.getItemHeight,
     dataSourceLength,
   }, scrollTop);
   const endIndex = getEndIndex({
-    getItemHeight: props.getItemHeight,
     dataSourceLength,
     height: props.height,
   }, startIndex);
@@ -173,6 +174,7 @@ const VariableSizeList = (props) => {
   const { height, width, dataSource, defaultItemHeight, renderItem } = props;
   const [scrollTop, setScrollOffset] = useState(0);
   const contentHeight = calcTotalHeight(defaultItemHeight, dataSource.length);
+  const [, setState] = useState({});
 
   const handleSetScrollTop = (e) => {
     const { scrollTop } = e.currentTarget;
@@ -182,19 +184,40 @@ const VariableSizeList = (props) => {
   const renderChildren = () => {
     const [startIndex, endIndex] = getRangeToRender(props, scrollTop)
     const rows: React.ReactElement[] = [];
+
+    const handleItemSizeChange = (index, size) => {
+      const { measuredDataMap, LastMeasuredItemIndex } = measuredData;
+      const itemMetaData = measuredDataMap[index];
+      itemMetaData.height = size.height;
+      let offset = 0;
+      for (let i = 0; i <= LastMeasuredItemIndex; i++) {
+        const itemMetaData = measuredDataMap[i];
+        itemMetaData.offset = offset;
+        offset += itemMetaData.height;
+      }
+      // 没啥用处，单纯就是触发ui更新
+      setState({});
+    }
+
     for (let i = startIndex; i <= endIndex; i++) {
       const item = getItemMetaData(props.getItemHeight, i);
       const itemEle = renderItem({
         index: i,
         data: dataSource[i],
-        style: {
-          position: 'absolute',
-          height: item.height,
-          width: '100%',
-          top: item.offset,
-        }
       });
-      rows.push(itemEle);
+      rows.push(
+        <Item
+          onSizeChange={(size) => handleItemSizeChange(i, size)}
+          style={{
+            position: 'absolute',
+            height: item.height,
+            width: '100%',
+            top: item.offset,
+          }}
+        >
+          {itemEle}
+        </Item>
+      );
     }
     return rows;
   }

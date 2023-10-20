@@ -87,4 +87,4 @@ b. 如果记录中（由上图得知我们只记录了 item1 - item10 的数据�
 
 ### 案例
 
-<!-- <code src="./demos/virtual-list/dynamic-height-item/index.tsx"></code> -->
+<code src="./demos/virtual-list/dynamic-height-item/index.tsx"></code>

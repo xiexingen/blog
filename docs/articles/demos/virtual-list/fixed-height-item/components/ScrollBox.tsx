@@ -3,15 +3,15 @@ import ListBox from './ListBox';
 import './ScrollBox.less';
 
 export interface IScrollBoxProps<T = any> {
-  list: T[];
-  height: Number | String;
-  itemHeight: Number | String;
-  buffer?: Number;
+  dataSource: T[];
+  height: number;
+  itemHeight: number;
+  buffer?: number;
   renderBoxItem: (props: { data: T, index: number, style?: React.CSSProperties, className?: string }) => React.ReactNode;
 }
 
 const ScrollBox: React.FC<IScrollBoxProps> = (props) => {
-  const { height, itemHeight, buffer, list, renderBoxItem } = props;
+  const { height, itemHeight, buffer, dataSource, renderBoxItem } = props;
   // 容器的 ref
   const ScrollBoxRef = useRef()
   // 当前可视区域显示的列表的开始索引
@@ -23,13 +23,13 @@ const ScrollBox: React.FC<IScrollBoxProps> = (props) => {
 
   // 当前可视区域显示的列表的结束索引
   const endIndex = useMemo(() => {
-    return Math.min(startIndex + limit + buffer - 1, list.length - 1);
+    return Math.min(startIndex + limit + (buffer ?? 0) - 1, dataSource.length - 1);
   }, [startIndex, limit, buffer]);
 
   // 计算实际数据产生的总高度
   const listBoxHeight = useMemo(() => {
-    return list.length * itemHeight;
-  }, [list, itemHeight])
+    return dataSource.length * itemHeight;
+  }, [dataSource, itemHeight])
 
   // 容器滚动的时候计算出当前可视区域显示的列表的开始索引
   const handleScroll = useCallback((e) => {
@@ -50,7 +50,7 @@ const ScrollBox: React.FC<IScrollBoxProps> = (props) => {
     for (let i = startIndex; i <= endIndex; i++) {
       // 渲染每个列表项
       const itemRender = renderBoxItem({
-        data: list[i],
+        data: dataSource[i],
         index: i,
         style: {
           width: "100%",

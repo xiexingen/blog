@@ -126,6 +126,10 @@ https://github.com/greensock/GreenSock-JS
 
 - https://www.react-spring.io
 
+### lottie
+
+- https://github.com/airbnb/lottie-web
+
 ## office 锡类
 
 ### sheetjs

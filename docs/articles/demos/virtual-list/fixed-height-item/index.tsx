@@ -12,7 +12,7 @@ const list = generateData(1000000);
 export default () => {
   return (
     <ScrollBox
-      list={list}
+      dataSource={list}
       buffer={1}
       height={360}
       itemHeight={46}

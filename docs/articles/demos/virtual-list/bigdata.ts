@@ -3,25 +3,13 @@
  */
 export const generateData = (length: number = 1000000) => {
   return Array.from({ length }).map((item, index) => {
+    const id = index + 1;
     return {
-      id: index,
-      name: `name-${index}`,
+      id,
+      name: `name-${id}`,
       age: Math.floor(Math.random() * 100),
-      address: `address-${index}`,
+      address: `address-${id}`,
       salary: Math.floor(Math.random() * 10000),
-    };
-  });
-};
-
-export const generateDataWithRandomHeight = (length: number = 1000000) => {
-  return Array.from({ length }).map((item, index) => {
-    return {
-      id: index,
-      name: `name-${index}`,
-      age: Math.floor(Math.random() * 100),
-      address: `address-${index}`,
-      salary: Math.floor(Math.random() * 10000),
-      height: 25 + Math.round(Math.random() * 55), // 生成随机高度
     };
   });
 };
