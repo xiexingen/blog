@@ -51,6 +51,12 @@ http://tuzhidian.com/
 
 # 本地工具
 
+## 查看磁盘占用空间
+
+- SpaceSniffer
+
+SpaceSniffer 是一个可以让您硬盘中文件和文件夹的分布情况的应用程序。通过使用 TreeMap 的可视化布局，你可以直观地看到在你硬盘上大的文件和文件夹
+
 ## 文件比对
 
 - bcompare
@@ -245,9 +251,13 @@ Partial Diff (ryu1kn.partial-diff)
 
 - AI 代码
 
-GitHub Copilot (GitHub.copilot)
+1. CodeGeex
 
-Github Copilot Labs
+https://codegeex.cn/ 免费，不像 Github Copilot
+
+2. GitHub Copilot (GitHub.copilot)
+
+3. Github Copilot Labs
 
 - 代码片段贴图
 
