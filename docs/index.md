@@ -19,3 +19,5 @@ hero:
 - .NETCore、ABP、SqlServer、Dapper、EF、PetaPoco、Redis、MongoDB
 
 - Docker、CICD
+
+- LLM
