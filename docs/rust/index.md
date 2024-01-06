@@ -3,7 +3,7 @@ title: Cargo
 order: 1
 nav:
   title: Rust
-  order: 20
+  order: 25
 group:
   title: 前置准备
   order: 1

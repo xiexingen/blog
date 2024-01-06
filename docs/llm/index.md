@@ -3,7 +3,7 @@ title: 基础知识
 order: 1
 nav:
   title: LLM
-  order: 8
+  order: 20
 group:
   title: 基础
   order: 1

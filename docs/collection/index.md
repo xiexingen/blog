@@ -3,7 +3,7 @@ title: 精选组件
 order: 10
 nav:
   title: 珍藏
-  order: 25
+  order: 30
 ---
 
 # 精选组件(长期更新)

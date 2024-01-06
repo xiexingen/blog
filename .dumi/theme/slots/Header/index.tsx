@@ -1,79 +1,75 @@
-import { memo, type FC } from 'react';
-import { Flexbox } from 'react-layout-kit';
+import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
+import { useRouteMeta, useSiteData } from 'dumi';
+import ColorSwitch from 'dumi/theme-default/slots/ColorSwitch';
+import HeaderExtra from 'dumi/theme-default/slots/HeaderExtra';
+import LangSwitch from 'dumi/theme-default/slots/LangSwitch';
+import Logo from 'dumi/theme-default/slots/Logo';
+import Navbar from 'dumi/theme-default/slots/Navbar';
+import RtlSwitch from 'dumi/theme-default/slots/RtlSwitch';
+import SearchBar from 'dumi/theme-default/slots/SearchBar';
+import SocialIcon from 'dumi/theme-default/slots/SocialIcon';
+import React, { useMemo, useState, type FC } from 'react';
 
-import LangSwitch from 'dumi-theme-antd-style/dist/slots/LangSwitch';
-import Logo from 'dumi-theme-antd-style/dist/slots/Logo';
-import Navbar from 'dumi-theme-antd-style/dist/slots/Navbar';
-import SearchBar from 'dumi-theme-antd-style/dist/slots/SearchBar';
 import More from './More'
 
-import Burger from 'dumi-theme-antd-style/dist/components/Burger';
-import GithubButton from 'dumi-theme-antd-style/dist/components/GithubButton';
-import ThemeSwitch from 'dumi-theme-antd-style/dist/components/ThemeSwitch';
+import 'dumi/theme-default/slots/Header/index.less';
 
-import { Grid } from 'antd';
-import { useSiteStore } from 'dumi-theme-antd-style/dist/store/useSiteStore';
-import { useStyle } from 'dumi-theme-antd-style/dist/slots/Header/style';
-
-const { useBreakpoint } = Grid;
 const Header: FC = () => {
-  const hasHeader = useSiteStore((s) => !!s.routeMeta.frontmatter);
+  const { frontmatter } = useRouteMeta();
+  const [showMenu, setShowMenu] = useState(false);
+  const { themeConfig } = useSiteData();
 
-  const screens = useBreakpoint();
-  const { styles } = useStyle();
+  const socialIcons = useMemo(
+    () =>
+      themeConfig.socialLinks
+        ? Object.keys(themeConfig.socialLinks)
+          .slice(0, 5)
+          .map((key) => ({
+            icon: key,
+            link: themeConfig?.socialLinks?.[key],
+          }))
+        : [],
+    [themeConfig.socialLinks],
+  );
 
-  return !hasHeader ? null : (
-    <div className={styles.header}>
-      <Flexbox
-        horizontal
-        distribution={'space-between'}
-        align={'center'}
-        width={'auto'}
-        className={styles.content}
-      >
-        {screens['xs'] ? (
-          <>
-            <Flexbox>
-              <Burger />
-            </Flexbox>
-            <Flexbox horizontal className={styles.left}>
-              <Logo />
-            </Flexbox>
-            <Flexbox>
-              <More />
-            </Flexbox>
-            <Flexbox>
-              <ThemeSwitch />
-            </Flexbox>
-          </>
-        ) : (
-          <>
-            <Flexbox horizontal className={styles.left}>
-              <Logo />
-            </Flexbox>
-            <Flexbox style={{ marginLeft: 48, alignSelf: 'end' }}>
-              <Navbar />
-            </Flexbox>
-            <section className={styles.right}>
-              <div />
-              <Flexbox
-                gap={16}
-                horizontal
-                align={'center'}
-                className="dumi-default-header-right-aside"
-              >
-                <SearchBar />
-                <More />
-                <LangSwitch />
-                <GithubButton />
-                <ThemeSwitch />
-              </Flexbox>
-            </section>
-          </>
-        )}
-      </Flexbox>
+  return (
+    <div
+      className="dumi-default-header"
+      data-static={Boolean(frontmatter.hero) || undefined}
+      data-mobile-active={showMenu || undefined}
+      onClick={() => setShowMenu(false)}
+    >
+      <div className="dumi-default-header-content">
+        <section className="dumi-default-header-left">
+          <Logo />
+        </section>
+        <section className="dumi-default-header-right">
+          <Navbar />
+          <div className="dumi-default-header-right-aside">
+            <SearchBar />
+            <LangSwitch />
+            <RtlSwitch />
+            {themeConfig.prefersColor.switch && <ColorSwitch />}
+            <More />
+            {socialIcons.map((item) => (
+              <SocialIcon icon={item.icon} link={item.link} key={item.link} />
+            ))}
+            <HeaderExtra />
+          </div>
+        </section>
+        <button
+          type="button"
+          className="dumi-default-header-menu-btn"
+          onClick={(ev) => {
+            ev.stopPropagation();
+            setShowMenu((v) => !v);
+          }}
+        >
+          {showMenu ? <CloseOutlined /> : <MenuOutlined />}
+        </button>
+      </div>
     </div>
   );
 };
 
-export default memo(Header);
+export default Header;

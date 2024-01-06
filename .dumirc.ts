@@ -7,7 +7,7 @@ export default defineConfig({
   // publicPath: 'https://fastly.jsdelivr.net/gh/xiexingen/blog@gh-pages/', // cdn.jsdelivr.net
   // publicPath: 'https://github.com.cnpmjs.org/xiexingen/blog/tree/gh-pages/',
   favicons: [
-    "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
+    "https://avatars.githubusercontent.com/u/7939085",
   ],
 
   outputPath: "docs-dist",
@@ -23,20 +23,23 @@ export default defineConfig({
   //   { rel: 'stylesheet', href: '/style.css' },
   // ],
   // copy: ['CNAME'], // 自定义域名,放public文件夹即可
-  codeSplitting: {
-    jsStrategy: "granularChunks",
-  },
+  // codeSplitting: {
+  //   jsStrategy: "granularChunks",
+  // },
   themeConfig: {
-    name: "程序有Bug-秘密基地",
-    logo: "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
+    name: "程序有Bug",
+    hd: { rules: [] },
+    rtl: true,
+    logo: "https://avatars.githubusercontent.com/u/7939085",
     socialLinks: {
       github: "https://github.com/xiexingen",
     },
-    footer: false,
+    footer: `Open-source MIT Licensed | Copyright © 2021-present Powered by 程序有Bug`,
+    prefersColor: { default: 'auto' },
   },
-  lessLoader: {
-    // modifyVars: userConfig.theme,
-    javascriptEnabled: true,
-  },
+  // lessLoader: {
+  //   // modifyVars: userConfig.theme,
+  //   javascriptEnabled: true,
+  // },
   // ssr: {},
 });
