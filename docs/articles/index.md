@@ -3,7 +3,7 @@ title: 浏览器原理
 order: 1
 nav:
   title: 随笔
-  order: 5
+  order: 10
 group:
   title: 通用
   order: 10

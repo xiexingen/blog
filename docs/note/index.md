@@ -3,7 +3,7 @@ title: 请求合并管理
 order: 5
 nav:
   title: 笔记
-  order: 10
+  order: 20
 group:
   title: 技巧
   order: 5
