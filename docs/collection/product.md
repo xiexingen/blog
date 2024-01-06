@@ -51,6 +51,14 @@ http://tuzhidian.com/
 
 # 本地工具
 
+## 软件下载
+
+- WingetUI
+
+https://www.marticliment.com/wingetui
+
+https://github.com/marticliment/WingetUI
+
 ## 查看磁盘占用空间
 
 - SpaceSniffer

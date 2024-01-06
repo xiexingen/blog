@@ -23,11 +23,12 @@
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@emotion/react": "^11.10.6",
-    "antd": "^5.2.2",
     "axios": "^1.6.0",
+    "antd": "^5.12.8",
     "lodash": "^4.17.21",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-layout-kit": "^1.4.1",
     "styled-components": "^6.0.0-rc.3"
   },
@@ -35,8 +36,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "babel-plugin-import": "^1.13.6",
-    "dumi": "^2.0.2",
-    "dumi-theme-antd-style": "^0.11.2",
+    "dumi": "^2.2.16",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1"
