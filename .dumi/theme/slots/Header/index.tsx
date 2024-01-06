@@ -13,6 +13,7 @@ import React, { useMemo, useState, type FC } from 'react';
 import More from './More'
 
 import 'dumi/theme-default/slots/Header/index.less';
+import './index.less'
 
 const Header: FC = () => {
   const { frontmatter } = useRouteMeta();
