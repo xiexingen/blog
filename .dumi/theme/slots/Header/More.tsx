@@ -60,7 +60,7 @@ export const getEcosystemGroup = (): MenuProps['items'] => [
         拓扑图设计器
       </a>
     ),
-    key: 'wetrial',
+    key: 'topology-designable',
   },
   {
     label: (
