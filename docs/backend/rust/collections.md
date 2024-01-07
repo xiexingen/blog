@@ -3,8 +3,9 @@ title: 常用收藏
 order: 4
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 前置准备
+  title: Rust
 ---
 
 # 常用收藏

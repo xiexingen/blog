@@ -3,8 +3,9 @@ title: 推荐插件
 order: 10
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 前置准备
+  title: Rust
 ---
 
 # 插件推荐

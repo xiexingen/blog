@@ -3,8 +3,9 @@ title: 方法
 order: 14
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 方法

@@ -3,6 +3,9 @@ title: dockerfile
 order: 30
 nav:
   title: Docker
+  path: /docker/basic
+group:
+  title: Docker 基础
 ---
 
 # dockerfile

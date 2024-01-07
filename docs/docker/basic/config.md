@@ -3,6 +3,9 @@ title: Docker安装
 order: 20
 nav:
   title: Docker
+  path: /docker/basic
+group:
+  title: Docker 基础
 ---
 
 # Docker 安装及配置加速镜像

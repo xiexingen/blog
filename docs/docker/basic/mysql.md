@@ -3,6 +3,9 @@ title: 安装mysql
 order: 50
 nav:
   title: Docker
+  path: /docker/basic
+group:
+  title: Docker 基础
 ---
 
 # 安装 mysql
@@ -28,7 +31,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'sa'@'%';
 mysql-compose.yml 内容如下
 
 ```yml
-version: "2.3"
+version: '2.3'
 
 services:
   db:

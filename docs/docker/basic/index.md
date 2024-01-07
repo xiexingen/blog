@@ -3,7 +3,10 @@ title: 常用命令
 order: 10
 nav:
   title: Docker
+  path: /docker/basic
   order: 40
+group:
+  title: Docker 基础
 ---
 
 # 常用命令

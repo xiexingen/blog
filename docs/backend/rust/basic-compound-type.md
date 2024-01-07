@@ -3,8 +3,9 @@ title: 复合类型
 order: 8
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 复合类型

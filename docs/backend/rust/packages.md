@@ -3,8 +3,9 @@ title: 优质包
 order: 2
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 前置准备
+  title: Rust
 ---
 
 # 优质包

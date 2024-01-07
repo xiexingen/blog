@@ -3,6 +3,9 @@ title: 安装mongodb
 order: 40
 nav:
   title: Docker
+  path: /docker/basic
+group:
+  title: Docker 基础
 ---
 
 # 安装 mongodb

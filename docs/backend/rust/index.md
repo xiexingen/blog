@@ -2,10 +2,11 @@
 title: Cargo
 order: 1
 nav:
-  title: Rust
-  order: 60
+  title: 后端
+  order: 30
+  path: /backend/rust
 group:
-  title: 前置准备
+  title: Rust
   order: 1
 ---
 

@@ -3,8 +3,9 @@ title: 变量绑定与解构
 order: 2
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 变量绑定与解构

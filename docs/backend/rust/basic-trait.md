@@ -3,8 +3,9 @@ title: 泛型&特性
 order: 18
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 泛型&特性

@@ -3,8 +3,9 @@ title: 集合
 order: 20
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 集合

@@ -4,8 +4,9 @@ order: 1
 nav:
   title: 后端
   order: 30
+  path: /backend/net
 group:
-  title: 分享
+  title: .NET
   order: 1
 ---
 

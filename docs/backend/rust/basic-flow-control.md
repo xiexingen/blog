@@ -3,8 +3,9 @@ title: 流程控制
 order: 10
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 流程控制

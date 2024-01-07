@@ -3,8 +3,9 @@ title: 所有权&借用
 order: 6
 nav:
   title: Rust
+  path: /backend/rust
 group:
-  title: 基础知识
+  title: Rust
 ---
 
 # 所有权&借用

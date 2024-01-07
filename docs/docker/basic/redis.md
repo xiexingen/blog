@@ -3,6 +3,9 @@ title: 安装redis
 order: 60
 nav:
   title: Docker
+  path: /docker/basic
+group:
+  title: Docker 基础
 ---
 
 # 安装 redis
