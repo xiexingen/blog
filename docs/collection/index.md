@@ -273,6 +273,10 @@ Rough.js 是一个轻量级的（大约 8k），基于 Canvas 的可以绘制出
 
 - https://github.com/fabricjs/fabric.js
 
+### konva
+
+- https://github.com/konvajs/konva
+
 ### canvas-editor
 
 canvas-editor 是一个基于 canvas/svg 的富文本编辑器，类似 word
