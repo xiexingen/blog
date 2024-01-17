@@ -40,3 +40,9 @@ group:
 ## 弹珠
 
 <code src="./_demos/style/loading/ball.tsx" ></code>
+
+# 其他
+
+附上一个比较赞的地址 https://css-loaders.com/
+
+[https://css-loaders.com/](https://css-loaders.com/)
