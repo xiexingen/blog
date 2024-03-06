@@ -162,6 +162,22 @@ https://github.com/greensock/GreenSock-JS
 
 - https://github.com/plangrid/react-file-viewer
 
+## 数学公式
+
+### mathlive
+
+- https://github.com/arnog/mathlive
+
+用于数学输入的 Web 组件
+
+### latex
+
+- https://github.com/mikolalysenko/node-latex
+
+### mathml
+
+- https://github.com/gipplab/node-mathml
+
 ## 图形操作
 
 ### cropperjs
