@@ -51,6 +51,12 @@ http://tuzhidian.com/
 
 # 本地工具
 
+## 工具
+
+- JamTools
+
+- https://github.com/fandesfyf/JamTools/releases
+
 ## 软件下载
 
 - WingetUI
