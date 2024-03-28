@@ -447,6 +447,12 @@ Markdown 渲染
 
 - https://github.com/mac-s-g/react-json-view
 
+## 环境检测
+
+- https://github.com/bowser-js/bowser
+
+检测浏览器厂商、版本、操作系统等信息
+
 ## 虚拟渲染
 
 ### rc-virtual-list
@@ -457,7 +463,7 @@ Markdown 渲染
 
 - https://github.com/bvaughn/react-virtualized
 
-## react-infinite-scroll-component
+### react-infinite-scroll-component
 
 - https://github.com/ankeetmaini/react-infinite-scroll-component
 
