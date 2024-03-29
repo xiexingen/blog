@@ -137,6 +137,14 @@ http://wproxy.org/whistle/pattern.html
 
 # 浏览器插件
 
+## 浏览器请求拦截插件
+
+- Netify
+
+地址 https://chromewebstore.google.com/detail/netify/mdafhjaillpdogjdigdkmnoddeoegblj
+
+比浏览器自带的 overwrite 好用,有了这个可以把你安装的其他的比如:Ajax Modifier、Ajax Proxy 这种卸掉了
+
 ## 开发工具
 
 - FeHelper
