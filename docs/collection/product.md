@@ -115,6 +115,14 @@ https://www.better365.cn
 
 https://gitee.com/MaxBill/RedisPlus
 
+## DB 工具
+
+- dbeaver
+
+https://dbeaver.io/download/
+
+支持 MySQL, MariaDB, PostgreSQL, SQLite 等
+
 ## 内网穿透
 
 - ngrok
