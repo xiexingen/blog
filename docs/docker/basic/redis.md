@@ -49,7 +49,6 @@ services:
     networks:
       - net_redis
     volumes:
-      - /docker/redis/config:/docker/config
       - /docker/redis/data:/data
     command: redis-server /docker/config/redis.conf
 networks:
