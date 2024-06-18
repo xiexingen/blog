@@ -30,6 +30,12 @@ nav:
 
 2kb 的日期类操作库，已经放弃 moment.js
 
+### timeago.js
+
+- https://github.com/hustcc/timeago.js
+
+实现 x 分钟以前，x 天前的效果
+
 ### mathjs
 
 - https://github.com/josdejong/mathjs

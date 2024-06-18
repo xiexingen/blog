@@ -27,5 +27,13 @@ docker run -d -p 27017:27017 --name mongodb mongo
 首先创建文件夹 /docker/mongo/config 以及/docker/mongo/data 用于与 docker 中 mongo 实例链接 然后运行命令
 
 ```bash
-docker run -d -p 27017:27017 --name mongo01 -v /docker/mongo/config:/data/configdb -v=/docker/mongo/data:/data/db mongo
+## 指定数据目录以及用户名密码
+docker run -d -p 27017:27017 --name mongodb -v /docker/mongo/config:/data/configdb -v=/docker/mongo/data:/data/db  -e MONGO_INITDB_ROOT_USERNAME=sa -e MONGO_INITDB_ROOT_PASSWORD=123456 mongo
+```
+
+以我本地为例
+
+```bash
+## 指定数据目录以及用户名密码
+docker run -d -p 27017:27017 --name mongodb --network=host -v D:/ProgramData/Docker/mongodb/config:/data/config -v=D:/ProgramData/Docker/mongodb/db:/data/db -e MONGO_INITDB_ROOT_USERNAME=sa -e MONGO_INITDB_ROOT_PASSWORD=123456 mongo
 ```

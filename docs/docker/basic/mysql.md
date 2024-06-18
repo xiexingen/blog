@@ -116,3 +116,9 @@ use mysql; --使用数据库查询
 
 > docker run -d -p 3306:3306 -e"MYSQL_USER=Zarc" -e"MYSQL_PASSWORD=pwd123456" -e"MYSQL_ROOT_PASSWORD=password123" -e"MYSQL_RANDOM_ROOT_PASSWORD=true" --name mysql01 mysql/mysql-server --character-set-server=utf8 --collation-server=utf8_general_ci
 > 备注： : When this is true (which is its default state, unless MYSQL_ROOT_PASSWORD is set or MYSQL_ALLOW_EMPTY_PASSWORD is set to true), a random password for the server's root user is generated when the Docker container is started 当这个 MYSQL_RANDOM_ROOT_PASSWORD 为 true 时 为 root 用户设置密码是没有作用的还是会生成随机的密码，设置为 false 或者不加这个环境变量
+
+以我本地为例
+
+```bash
+docker run  --restart=always  --name mysql  -v D:/ProgramData/Docker/mysql/conf:/etc/mysql:/etc/mysql  -v D:/ProgramData/Docker/mysql/conf:/etc/mysql/data:/var/lib/mysql  -v D:/ProgramData/Docker/mysql/conf:/etc/mysql/log:/var/log  -v D:/ProgramData/Docker/mysql/conf:/etc/mysql/mysql-files:/var/lib/mysql-files -p 3306:3306  -e MYSQL_ROOT_PASSWORD='Abcd1234' -d mysql
+```
