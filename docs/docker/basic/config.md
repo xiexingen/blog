@@ -41,6 +41,14 @@ sudo systemctl enable docker
 {
   "registry-mirrors": ["https://noe4mlw6.mirror.aliyuncs.com"]
 }
+
+# 附上一个其他的
+# "registry-mirrors": [
+#       "https://docker.m.daocloud.io",
+#       "https://dockerproxy.com",
+#       "https://docker.mirrors.ustc.edu.cn",
+#       "https://docker.nju.edu.cn"
+# ]
 ```
 
 重启 docker
