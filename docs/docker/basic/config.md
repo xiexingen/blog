@@ -73,3 +73,46 @@ sudo chmod a+x /usr/local/bin/docker-compose
 ```bash
 sudo rm /usr/local/bin/docker-compose
 ```
+
+
+# Debian 系统
+
+## 安装源更新
+
+```bash
+# 更新  /etc/apt/sources.list 中的内容为阿里源
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+
+# 更新
+sudo apt update
+sudo apt upgrade
+```
+
+## 安装
+
+``` bash
+# 安装所需的库和工具
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+#添加Docker官方GPT秘钥
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+# 设置稳定存储库
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# 安装Docker引擎
+sudo apt install docker-ce docker-ce-cli containerd.io
+# 添加当前用户到docker组
+sudo usermod -aG docker $USER
+
+```
+
+## 验证
+
+``` bash
+docker version #查看版本
+```
