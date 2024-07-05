@@ -187,9 +187,11 @@ rm -rf ~/miniconda3/miniconda.sh
 # 执行安装
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
-# 验证
+# 查看信息
 conda info
 
+# 更新
+# conda update conda
 # 通过 conda 安装包
 ## 通过首选渠道安装
 # conda install numpy
