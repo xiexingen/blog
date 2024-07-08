@@ -208,6 +208,12 @@ conda info --envs
 conda activate PY3.12
 # 取消
 conda deactivate
+
+# 创建一个新的虚拟环境(名称为 venv)
+python -m venv example-llama
+
+# 激活这个虚拟环境(激活虚拟环境后,您就可以在这个隔离的环境中安装所需的依赖包,而不会影响到系统级的 Python 环境)
+source ./example-llama/bin/activate
 ```
 
 ## 安装 OLLAMA
