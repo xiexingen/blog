@@ -42,7 +42,7 @@ conda info --envs
 # 切换python版本
 conda activate PY3.12
 # 取消切换到这个版本
-conda deactivate
+#conda deactivate
 # 创建一个新的虚拟环境(名称为 venv)
 python -m venv example-llama
 

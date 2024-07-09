@@ -171,6 +171,14 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 
 yum check-update
 sudo yum install code # or code-insiders
+
+# root打开vscode无响应
+vm ~/.bashrc
+# 加入下面的行
+alias code='/usr/share/code/code . --no-sandbox --unity-launch'
+# 使配置生效
+sudo source .bashrc
+
 ```
 
 ## 安装 Minionda
