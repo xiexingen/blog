@@ -175,7 +175,7 @@ sudo yum install code # or code-insiders
 # root打开vscode无响应
 vi ~/.bashrc
 # 加入下面的行
-alias code='/usr/share/code/code . --no-sandbox --unity-launch'
+alias code='/usr/share/code/code ~/文档/code --no-sandbox --unity-launch'
 # 使配置生效
 source .bashrc
 
