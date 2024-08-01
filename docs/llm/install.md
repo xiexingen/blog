@@ -10,7 +10,7 @@ group:
 
 ## 安装 Minionda
 
-由于Minionda可以很好地处理复杂的依赖关系和环境管理，它通常是首选工具。但是，如果只需要安装纯 Python 包，使用pip可能会更加简单直接
+由于 Minionda 可以很好地处理复杂的依赖关系和环境管理，它通常是首选工具。但是，如果只需要安装纯 Python 包，使用 pip 可能会更加简单直接
 
 https://docs.anaconda.com/miniconda/
 
