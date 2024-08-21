@@ -34,21 +34,31 @@ conda info
 # conda install conda-forge::numpy
 
 # 安装虚拟python环境(创建一个名称为Python 3.12的虚拟环境，使用 Python 版本为3.12.3)
-conda create --name PY3.12 python=3.12.3
+conda create --name llm python=3.12.3
 
 # 查看虚拟环境列表
 conda info --envs
 
 # 切换python版本
-conda activate PY3.12
+conda activate llm
 # 取消切换到这个版本
 #conda deactivate
-# 创建一个新的虚拟环境(名称为 venv)
-python -m venv example-llama
 
-# 激活这个虚拟环境(激活虚拟环境后,您就可以在这个隔离的环境中安装所需的依赖包,而不会影响到系统级的 Python 环境)
-source ./example-llama/bin/activate
+# 安装包
+conda install [package] -c conda-forge
+
+# 导出环境
+conda env export > environment.yml
+
+# 导入环境
+conda env create -f environment.yml
+# 更新导入
+# conda env update -f environment.yml
+# 激活环境
+conda activate llm
+
 ```
+
 
 ## 安装 OLLAMA
 
