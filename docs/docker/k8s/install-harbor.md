@@ -74,7 +74,7 @@ cd /usr/local/harbor/
 https://192.168.203.110
 
 # 登录
-admin/Harbor12345
+admin/
 
 
 ```

@@ -21,11 +21,12 @@ kubectl get pods -n=default
 # 创建
 kubectl create -f xxx.yml
 
-# 查看pod帮助文档
+# 查看 pod 帮助文档
 kubectl explain pod
 # kubectl explain pod.description
 
-
+# 查看pod的详细信息
+kubectl get pod -o wide
 ```
 
 - 集群级别
@@ -33,3 +34,17 @@ kubectl explain pod
 - 元数据型
 
 ## 资源清单
+
+```bash
+apiVersion: v1
+kind: pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    version: v1
+spec:
+  containers:
+  - name: app
+    image: hub.xxgtalk.cn/library/myapp:v1
+```

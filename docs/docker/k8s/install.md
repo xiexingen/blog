@@ -194,6 +194,8 @@ EOF
 
 ## 3. 启动docker
 systemctl start docker
+# 设置开机自启
+systemctl enable docker
 
 
 # 安装containerd
