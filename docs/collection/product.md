@@ -95,6 +95,9 @@ https://github.com/oldj/SwitchHosts
 - snipaste
   https://www.snipaste.com
 
+- PixPin
+  https://pixpinapp.com/
+
 - iShot
 
 - ScreenToGif
