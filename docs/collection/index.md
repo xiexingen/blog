@@ -305,6 +305,12 @@ canvas-editor 是一个基于 canvas/svg 的富文本编辑器，类似 word
 
 - https://github.com/Hufe921/canvas-editor
 
+### xnote
+
+xnote 是一个无头、高性能的富文本编辑器，支持多人在线协作。
+
+- https://github.com/textbus/xnote
+
 ### lucky-canvas
 
 lucky-canvas 是一套基于 TS + Canvas 开发的【大转盘 / 九宫格 / 老虎机】抽奖插件，一套源码适配多端框架 JS / Vue / React / Taro / UniApp / 微信小程序等，奖品 / 文字 / 图片 / 颜色 / 按钮均可配置，支持同步 / 异步抽奖，概率前 / 后端可控，自动根据 dpr 调整清晰度适配移动端
@@ -611,6 +617,18 @@ javascript 内存 数据库
 
 ## 低代码平台
 
+### nocodb
+
+围绕着数据为中心的无代码平台
+
+- https://github.com/nocodb/nocodb
+
+### nocobase
+
+NocoBase 是一个可扩展性优先、开源无代码/低代码平台，用于构建业务应用程序和企业解决方案
+
+- https://github.com/nocobase/nocobase
+
 ### LowCodeEngine
 
 - https://github.com/alibaba/lowcode-demo
@@ -732,3 +750,11 @@ Variant Form 是一款高效的 Vue 低代码表单，可视化设计，一键�
 - https://github.com/yangyuji/h5-factory
 
 h5-factory 是一个 h5 专题页面可视化编辑工具，拖拽编辑，灵活切换，一键生成 html 文件
+
+## 大屏模板
+
+### BigDataView
+
+100+套大数据可视化炫酷大屏 Html5 模板；包含行业：社区、物业、政务、交通、金融银行等，全网最新、最多，最全、最酷、最炫大数据可视化模板。陆续更新中
+
+- https://github.com/iGaoWei/BigDataView
