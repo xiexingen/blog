@@ -29,6 +29,8 @@ Ollama 可 以在命令行中直接进行使用，也可以作为服务通过 ap
 
 这些是在你没有显存只有内存的情况下，如果你有显存，那么 Ollama 会将模型放在显存中，当显存中放不下时会将模型同时放在内存中
 
+![系统需求](./assets/deepseek-require.png)
+
 # 支持的模型
 
 可以在https://ollama.com/library进行查看
