@@ -37,10 +37,23 @@ sudo systemctl enable docker
 > 如何配置镜像加速器
 > 您可以通过修改 daemon 配置文件/etc/docker/daemon.json 来使用加速器：
 
-```bash
+```json
 # https://dockerproxy.com 当拉取dockerhub镜像拉不下来的情况下可以用 https://dockerproxy.com
 {
-  "registry-mirrors": ["https://noe4mlw6.mirror.aliyuncs.com","https://dockerproxy.com"]
+  "registry-mirrors": [
+    "https://noe4mlw6.mirror.aliyuncs.com",
+    "https://dockerproxy.com",
+    "https://docker.hpcloud.cloud",
+    "https://docker.m.daocloud.io",
+    "https://docker.unsee.tech",
+    "https://docker.1panel.live",
+    "http://mirrors.ustc.edu.cn",
+    "https://docker.chenby.cn",
+    "http://mirror.azure.cn",
+    "https://dockerpull.org",
+    "https://dockerhub.icu",
+    "https://hub.rat.dev"
+  ]
 }
 
 # 附上一个其他的
@@ -75,7 +88,6 @@ sudo chmod a+x /usr/local/bin/docker-compose
 sudo rm /usr/local/bin/docker-compose
 ```
 
-
 # Debian 系统
 
 ## 安装源更新
@@ -98,7 +110,7 @@ sudo apt upgrade
 
 ## 安装
 
-``` bash
+```bash
 # 安装所需的库和工具
 sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
 #添加Docker官方GPT秘钥
@@ -114,7 +126,7 @@ sudo usermod -aG docker $USER
 
 ## 验证
 
-``` bash
+```bash
 docker version #查看版本
 ```
 
@@ -122,7 +134,7 @@ docker version #查看版本
 
 ## 安装
 
-``` bash
+```bash
 # 系统安装源
 http: mirrors.aliyun.com/centos/8/BaseOS/x86_64/os/
 
@@ -132,9 +144,10 @@ sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
 sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 sudo yum update -y
 ```
+
 ## 安装 docker
 
-``` bash
+```bash
 # 移除老的
 sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
 # 安装依赖
@@ -155,6 +168,7 @@ vi /etc/docker/daemon.json
 ```
 
 ## 安装 docker-compose
+
 ```bash
 # 下载指定版本(可自行去github查看版本号)
 sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -183,7 +197,7 @@ source .bashrc
 
 ## 安装 Minionda
 
-由于Minionda可以很好地处理复杂的依赖关系和环境管理，它通常是首选工具。但是，如果只需要安装纯 Python 包，使用pip可能会更加简单直接
+由于 Minionda 可以很好地处理复杂的依赖关系和环境管理，它通常是首选工具。但是，如果只需要安装纯 Python 包，使用 pip 可能会更加简单直接
 
 https://docs.anaconda.com/miniconda/
 
@@ -226,7 +240,7 @@ source ./example-llama/bin/activate
 
 ## 安装 OLLAMA
 
-``` bash
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 拉取 gemma2 模型
