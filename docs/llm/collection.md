@@ -52,6 +52,10 @@ https://huggingface.co/datasets
 
 ## 绘图
 
+- 即梦 AI
+
+https://jimeng.jianying.com/ai-tool/home/
+
 - 文心一言
 
 https://yiyan.baidu.com/
@@ -79,10 +83,6 @@ https://www.xingliu.art/
 - Vega Al
 
 https://www.vegaai.net/
-
-- 即梦 AI
-
-https://jimeng.jianying.com/ai-tool/home/
 
 - 可灵 AI
 
