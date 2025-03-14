@@ -7,7 +7,6 @@ group:
   title: 基础
 ---
 
-
 ## 安装 Minionda
 
 由于 Minionda 可以很好地处理复杂的依赖关系和环境管理，它通常是首选工具。但是，如果只需要安装纯 Python 包，使用 pip 可能会更加简单直接
@@ -24,6 +23,11 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init zsh
 # 查看信息
 conda info
+
+# 添加国内镜像
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+# conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
 
 # 更新
 # conda update conda
@@ -59,10 +63,9 @@ conda activate llm
 
 ```
 
-
 ## 安装 OLLAMA
 
-``` bash
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
 
 # 拉取 gemma2 模型
