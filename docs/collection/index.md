@@ -629,6 +629,18 @@ NocoBase 是一个可扩展性优先、开源无代码/低代码平台，用于�
 
 - https://github.com/nocobase/nocobase
 
+### apitable
+
+APITable，一个面向 API 的低代码平台，用于构建协作应用程序，优于所有其他 Airtable 开源替代方
+
+- https://github.com/apitable/apitable
+
+### ToolJet
+
+用于构建业务应用程序的低代码平台。连接到数据库、云存储、GraphQL、API 端点、Airtable、Google 表格、OpenAI 等，并使用拖放式应用程序构建器构建应用程序。使用 JavaScript/TypeScript 构建
+
+- https://github.com/ToolJet/ToolJet
+
 ### LowCodeEngine
 
 - https://github.com/alibaba/lowcode-demo
