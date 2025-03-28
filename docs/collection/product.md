@@ -146,6 +146,18 @@ http://wproxy.org/whistle/pattern.html
 
 - Honeyview
 
+## 硬件检测功能
+
+- AIDA64 Extreme
+
+测试 CPU、GPU、内存、硬盘等
+
+- Cinebench
+
+- Furmark3Dmark
+
+测试显卡
+
 # 浏览器插件
 
 ## 浏览器请求拦截插件
