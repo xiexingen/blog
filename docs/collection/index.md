@@ -160,6 +160,10 @@ https://github.com/greensock/GreenSock-JS
 
 - https://github.com/meshesha/PPTXjs
 
+### Stirling-PDF
+
+- https://github.com/Stirling-Tools/Stirling-PDF
+
 ### jsPDF
 
 - https://github.com/MrRio/jsPD

@@ -44,6 +44,12 @@ https://github.com/jasonhua95/awesome-dotnet-core
 [https://gitee.com/CoreUnion/CoreShop](https://gitee.com/CoreUnion/CoreShop)
 基于.NET9+AutoFac+DotLiquid+HangFire+Nlog+Jwt+LayUIAdmin+SqlSugar+MySQL+SqlServer+Redis 实现的前后端分离的、高并发、高可用的微服务电商网站系统。包括商品、订单、会员、服务、财务、字典、促销、分销、代理、库存、统计、自定义表单、文章、广告、商城、平台、后台、短信、日志、门店、消息、小票、直播带货等 50 多种实用功能。从 0 到 1，企业级项目需求实现，源码方便复用！内卷时代，不会微服务，工作都难！非常适合.NET9+微服务项目新手
 
+- EU.Admin
+
+[https://gitee.com/xiaochanghai520/eu-admin](https://gitee.com/xiaochanghai520/eu-admin)
+
+EU-Admin 一款基于.NET 8、React18、React-RouterV6、React-Hooks、Redux-Toolkit、Zustand、TypeScript、Vite5、Ant-Design5 的实现的通用管理平台框架，开箱即用。集成 SqlSugar、缓存、 通讯、远程请求、任务调度等
+
 # 上位机
 
 - UpperSystem
