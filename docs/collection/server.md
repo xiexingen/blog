@@ -57,3 +57,11 @@ EU-Admin 一款基于.NET 8、React18、React-RouterV6、React-Hooks、Redux-Too
 [https://github.com/cang2012/UpperSystem](https://github.com/cang2012/UpperSystem)
 
 基于.NET9+WPF+Prism+MVVM+MySQL8.0+S7-1500 实现的高性能，高效的上位机工控系统。包括实时大屏、登录、注册、设备配置、设备控制、数据报表、实时报警、IO 监控、PLC 地址保存、导出、导出等 20 种实用功能
+
+# 库
+
+## 压缩/解压
+
+- sharpcompress
+
+https://github.com/adamhathcock/sharpcompress
