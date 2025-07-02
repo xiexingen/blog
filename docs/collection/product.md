@@ -49,6 +49,24 @@ http://tuzhidian.com/
 
 一键同步文章到多个内容平台，支持今日头条、WordPress、知乎、简书、掘金、CSDN、typecho 各大平台
 
+## 图片工具
+
+- Bemove Background
+
+智能背景移除、多样背景替换
+
+https://remove.photos/?ref=web-note.cn
+
+## 手写稿
+
+将文字转成手写稿
+
+https://www.autohanding.com/
+
+## 热门工具榜单
+
+- https://www.web-note.cn/
+
 # 本地工具
 
 ## 工具
