@@ -784,3 +784,11 @@ https://github.com/Vanessa219/vditor
 - cherry-markdown
 
 https://github.com/Tencent/cherry-markdown
+
+## AI
+
+## vanna
+
+Text-to-SQL
+
+- https://github.com/vanna-ai/vanna
