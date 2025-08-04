@@ -65,3 +65,9 @@ EU-Admin 一款基于.NET 8、React18、React-RouterV6、React-Hooks、Redux-Too
 - sharpcompress
 
 https://github.com/adamhathcock/sharpcompress
+
+# 图表
+
+- ScottPlot
+
+https://github.com/ScottPlot/ScottPlot

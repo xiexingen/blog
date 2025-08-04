@@ -787,8 +787,12 @@ https://github.com/Tencent/cherry-markdown
 
 ## AI
 
-## vanna
-
-Text-to-SQL
+### vanna
 
 - https://github.com/vanna-ai/vanna
+
+### MonkeyCode
+
+MonkeyCode 是一款企业级智能编程辅助平台，定位为私有化部署的 AI 编程助手
+
+- https://github.com/chaitin/MonkeyCode
