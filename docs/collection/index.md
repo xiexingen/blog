@@ -565,6 +565,12 @@ javascript 内存 数据库
 
 ## 未归类
 
+## pinyin-match
+
+https://github.com/xmflswood/pinyin-match
+
+拼音匹配，具备分词、缩写、多音字匹配能力，支持繁体版
+
 ### react-color
 
 - http://casesandberg.github.io/react-color/
