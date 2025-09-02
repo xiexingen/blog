@@ -138,6 +138,12 @@ https://github.com/greensock/GreenSock-JS
 
 ## office 锡类
 
+### univer
+
+- https://github.com/dream-num/univer
+
+构建 AI 原生电子表格。Univer 是一个用于在 Web 和服务器上创建和编辑电子表格的全栈框架。通过 Univer MCP，Univer 电子表格可以直接通过自然语言驱动
+
 ### sheetjs
 
 - https://github.com/SheetJS/sheetjs
