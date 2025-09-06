@@ -49,6 +49,24 @@ http://tuzhidian.com/
 
 一键同步文章到多个内容平台，支持今日头条、WordPress、知乎、简书、掘金、CSDN、typecho 各大平台
 
+## 图片工具
+
+- Bemove Background
+
+智能背景移除、多样背景替换
+
+https://remove.photos/?ref=web-note.cn
+
+## 手写稿
+
+将文字转成手写稿
+
+https://www.autohanding.com/
+
+## 热门工具榜单
+
+- https://www.web-note.cn/
+
 # 本地工具
 
 ## 工具
@@ -311,3 +329,75 @@ CodeSnap (adpyke.codesnap)
 https://github.com/microsoft/vscode-extension-samples
 
 https://marketplace.visualstudio.com/publishers/NicholasHsiang
+
+# 接码平台
+
+## 椰子
+
+http://h5.yezi66.net:90/
+
+## D1 平台
+
+http://www.d1jiema.com/inviteToDl.html
+
+## e 接码
+
+http://www.ejiema.com/appweb/signUp.html
+
+## 豪猪码（原飞鱼）
+
+http://h5.haozhuma.com/reg.html
+
+## 他信
+
+http://a.my531.com/
+
+## 海鸥（原鲲鹏，地球梦,火绒果）
+
+下载链接：http://st.uiebsrgd.xyz
+
+## 打豆豆
+
+https://www.dadoudou117.com/
+
+## 众人码
+
+https://www.zhongrenyun.cn//app/zhuce.html
+
+## 大柚子
+
+http://www.oqwlsanrs.cyou
+
+## 果果接码短信平台下载
+
+http://www.bbsstp.cyou
+
+## 猕猴桃接码短信平台下载
+
+http://www.oqwlsanrs.cyou
+
+http://www.hgsaeuyrgd.club
+
+## 哈密瓜接码短信平台下载
+
+http://haihaijm.shop
+
+http://www.shbjmpt.life
+
+http://st.uiebsrgd.xyz
+
+http://www.juzijm.me
+
+## 国外接码
+
+### 四方接码
+
+https://smsn.szfang.tw/
+
+## 龙凤国际
+
+http://longfongma.com/
+
+## robot 平台
+
+http://robot-sms.xyz

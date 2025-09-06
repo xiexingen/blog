@@ -144,6 +144,12 @@ https://github.com/greensock/GreenSock-JS
 
 ## office 锡类
 
+### univer
+
+- https://github.com/dream-num/univer
+
+构建 AI 原生电子表格。Univer 是一个用于在 Web 和服务器上创建和编辑电子表格的全栈框架。通过 Univer MCP，Univer 电子表格可以直接通过自然语言驱动
+
 ### sheetjs
 
 - https://github.com/SheetJS/sheetjs
@@ -165,6 +171,10 @@ https://github.com/greensock/GreenSock-JS
 ### PPTXJS
 
 - https://github.com/meshesha/PPTXjs
+
+### Stirling-PDF
+
+- https://github.com/Stirling-Tools/Stirling-PDF
 
 ### jsPDF
 
@@ -567,6 +577,12 @@ javascript 内存 数据库
 
 ## 未归类
 
+## pinyin-match
+
+https://github.com/xmflswood/pinyin-match
+
+拼音匹配，具备分词、缩写、多音字匹配能力，支持繁体版
+
 ### react-color
 
 - http://casesandberg.github.io/react-color/
@@ -786,3 +802,15 @@ https://github.com/Vanessa219/vditor
 - cherry-markdown
 
 https://github.com/Tencent/cherry-markdown
+
+## AI
+
+### vanna
+
+- https://github.com/vanna-ai/vanna
+
+### MonkeyCode
+
+MonkeyCode 是一款企业级智能编程辅助平台，定位为私有化部署的 AI 编程助手
+
+- https://github.com/chaitin/MonkeyCode

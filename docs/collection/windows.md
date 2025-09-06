@@ -7,6 +7,128 @@ nav:
 
 # window 技巧-长期更新
 
+## 启动器 / 文件搜索器 / 快速工具类
+
+### Everything
+
+- 功能：超快速本地文件搜索工具
+- 优点：几乎秒搜、极轻量、资源占用低
+- 官网：https://www.voidtools.com/
+
+### Listary
+
+- 功能：快速文件定位、启动器
+- 优点：深度集成资源管理器、效率极高
+- 官网：https://www.listary.com/
+
+### Flow Launcher
+
+- 功能：多功能启动器，支持插件、搜索应用、文件等
+- 优点：开源、支持丰富插件、定制灵活
+- 官网：https://www.flowlauncher.com/
+
+## 清理优化 / 状态监控
+
+### Geek Uninstaller
+
+- 功能：卸载软件并清除残留文件
+- 优点：轻巧便携、卸载干净、无广告
+- 官网：https://geekuninstaller.com/
+
+### CrystalDiskInfo
+
+- 功能：查看硬盘健康状态、温度、通电次数等
+- 优点：界面直观、支持多硬盘、稳定好用
+- 官网：https://crystalmark.info/
+
+## 文档阅读/办公套件
+
+### Sumatra PDF
+
+- 功能：PDF、EPUB、MOBI 等格式阅读器
+- 优点：超轻便、极简设计、速度快
+- 官网：https://www.sumatrapdfreader.org/
+
+### Okular
+
+- 功能：支持注释、阅读多种文档格式（PDF、EPUB、DjVu 等）
+- 优点：跨平台、功能丰富、开源
+- 官网：https://okular.kde.org/zh-cn/
+
+### LibreOffice
+
+- 功能：办公套件（文字、表格、演示、绘图等）
+- 优点：开源、免费、兼容微软 Office 文档格式
+- 官网：https://zh-cn.libreoffice.org/
+
+### PDFgear
+
+- 功能：PDF 编辑、合并、拆分、转换、OCR
+- 优点：完全免费无广告、功能强大、界面清爽
+- 官网：https://www.pdfgear.com/zh/
+
+## 截图录屏 / 图片查看 / 桌面美化
+
+### ImageGlass
+
+- 功能：图片浏览器，支持多种格式
+- 优点：体积小、启动快、无广告、支持动画格式
+- 官网：https://imageglass.org/
+
+### Free Shooter
+
+- 功能：简洁实用的截图工具
+- 优点：开源、轻巧、操作简单
+- 官网：https://github.com/henrypp/freeshooter
+
+### ShareX
+
+- 功能：截图、录屏、图片处理、自动上传等
+- 优点：超强自定义、功能丰富、无水印、开源
+- 官网：https://getsharex.com/
+
+### Lively Wallpaper
+
+- 功能：设置动态壁纸，可用视频、网页做背景
+- 优点：免费、开源、可定制性强
+- 官网：https://rocksdanister.github.io/lively/
+
+## 视频 / 音乐播放
+
+### PotPlayer
+
+- 功能：本地视频播放，支持多种字幕、滤镜
+- 优点：解码能力强、功能丰富、播放流畅
+- 官网：https://potplayer.daum.net/
+
+### VLC Media Player
+
+- 功能：支持所有常见音视频格式，流媒体播放
+- 优点：完全免费开源、跨平台、无广告
+- 官网：https://www.videolan.org/
+
+## 笔记 / 知识管理 / 思维记录类
+
+### Joplin
+
+- 功能：Markdown 笔记软件，支持云同步
+- 优点：开源、插件丰富、支持加密和多端同步
+- 官网：https://joplinapp.org/
+
+### Obsidian
+
+- 功能：本地 Markdown 笔记管理，支持知识图谱
+- 优点：双向链接、可拓展性强、完全本地化存储
+- 官网：https://obsidian.md/
+
+## 压缩与解压缩
+
+### PeaZip
+
+- 功能：压缩、解压、加密文件，支持多种格式
+- 优点：开源免费、界面现代、支持加密与分卷压缩
+- 官网：https://peazip.com/
+
 ## 技巧篇
 
 - 查看占用端口
@@ -282,3 +404,23 @@ nav:
 - Windows Explorer 相关快捷键
   　　 Ctrl+N 打开新窗口
   　　 Ctrl+Shift+N 新建文件夹
+
+## Visual Studio
+
+- 编辑器颜色、字体
+
+字体: Consolas
+
+大小:12
+
+项背景: 色调: 86 饱和度: 96 亮度: 187 红:176 绿: 221 蓝: 183
+
+- 自动定位到解决方案文件
+
+工具 -> 选项 -> 项目和解决方案 -> 常规 => 勾选 "在解决方案资源管理器中跟踪活动项"
+
+- 自动格式化、排序等
+
+工具 -> 选项 -> 文本编辑器 -> 代码清理 -> 勾选 "保存时运行代码清理配置文件"
+
+配置文件内容: 删除未使用的变量、移除不必要的导入或使用、引用文件头首选项、删除不必要的转换、对导入或 using 排序、设置文档的格式
