@@ -42,6 +42,12 @@ nav:
 
 提供算数运算
 
+### decimal.js
+
+https://github.com/MikeMcl/decimal.js
+
+JavaScript 的任意精度 Decimal 类型
+
 ### big.js
 
 - https://github.com/MikeMcl/big.js
