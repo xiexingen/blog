@@ -246,6 +246,12 @@ Rough.js 是一个轻量级的（大约 8k），基于 Canvas 的可以绘制出
 
 快捷键
 
+### tinykeys
+
+快捷键
+
+- https://github.com/jamiebuilds/tinykeys
+
 ### react-copy-to-clipboard
 
 - https://github.com/nkbt/react-copy-to-clipboard
