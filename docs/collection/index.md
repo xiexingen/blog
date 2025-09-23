@@ -18,11 +18,23 @@ nav:
 
 ## 工具库
 
+### mitt
+
+- github.com/developit/mitt
+
+全局事件总线
+
 ### lodash
 
 - https://github.com/lodash/lodash
 
 提供模块化 性能和附加功能的现代 JavaScript 实用程序库
+
+### Radash.js
+
+- https://radashi.js.org/
+
+跟 lodash 类似
 
 ### dayjs
 
@@ -588,6 +600,28 @@ javascript 内存 数据库
 - https://github.com/omgovich/colord
 
 色调转换
+
+### color-thief
+
+提取主色、调色板
+
+### vibrant.js
+
+提取突出色彩
+
+### rgbaster.js
+
+提取主色、次色
+
+### autohue.js
+
+- https://github.com/Auto-Plugin/autohue.js
+
+主题色 + 边缘色
+
+### gradient-string
+
+文字颜色效果
 
 ## 未归类
 
