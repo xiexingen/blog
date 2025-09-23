@@ -575,6 +575,20 @@ javascript 内存 数据库
 
 可以用来并行或串行运行多个 npm script
 
+## 颜色
+
+### react-color
+
+- http://casesandberg.github.io/react-color/
+
+拾色器
+
+### colord
+
+- https://github.com/omgovich/colord
+
+色调转换
+
 ## 未归类
 
 ## pinyin-match
@@ -582,12 +596,6 @@ javascript 内存 数据库
 https://github.com/xmflswood/pinyin-match
 
 拼音匹配，具备分词、缩写、多音字匹配能力，支持繁体版
-
-### react-color
-
-- http://casesandberg.github.io/react-color/
-
-拾色器
 
 ### react-responsive
 
