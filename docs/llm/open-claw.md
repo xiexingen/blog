@@ -13,6 +13,19 @@ group:
 
 自行查看官网，https://openclaw.cc/start/getting-started.html
 
+# 介绍
+
+| 层级       | 文件                 | 作用                           |
+| ---------- | -------------------- | ------------------------------ |
+| 身份层     | SOUL.md              | 定义 AI 的性格、语调、行为边界 |
+| 用户层     | USER.md              | 用户的个人资料和偏好           |
+| 操作层     | AGENTS.md            | 操作指南、工作流程、能力边界   |
+| 索引层     | MEMORY.md            | 核心信息索引，保持精简         |
+| 项目层     | memory/projects.md   | 各项目当前状态与待办           |
+| 基础设施层 | memory/infra.md      | 服务器、API、部署配置速查      |
+| 经验层     | memory/lessons.md    | 踩过的坑，按严重程度分级       |
+| 日志层     | memory/YYYY-MM-DD.md | 每日原始记录                   |
+
 # 推荐技能
 
 ```bash

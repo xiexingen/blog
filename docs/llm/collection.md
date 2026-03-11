@@ -8,6 +8,14 @@ group:
   order: 100
 ---
 
+# 推荐
+
+- 日常 豆包
+- 开发 Claude Code
+- 图片 Gemini
+- 视频 即梦
+- 调研 GPT
+
 # AI 平台
 
 ## [DeepSeek](https://chat.deepseek.com)
